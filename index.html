@@ -144,7 +144,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
             text-decoration: none;
             color: var(--color-text-secondary);
             font-size: 0.75rem;
@@ -154,6 +154,15 @@
             transition: color 0.15s ease, border-color 0.15s ease;
             white-space: nowrap;
             cursor: pointer;
+            position: relative;
+        }
+
+        .category-pill .coming-soon {
+            font-size: 0.55rem;
+            color: var(--color-brand-red);
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-top: 1px;
         }
 
         .category-pill:hover {
@@ -250,14 +259,14 @@
         }
 
         .post-text-content {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             font-weight: 400;
             color: var(--color-text-primary);
-            line-height: 1.6;
+            line-height: 1.5;
             margin: 0 0 16px 0;
             white-space: pre-line;
             display: -webkit-box;
-            -webkit-line-clamp: 4;
+            -webkit-line-clamp: 6;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
@@ -343,12 +352,12 @@
                 <span>karl's briefing</span>
             </a>
             <div class="header-search">
-                <span>Anywhere</span>
+                <span>6:30AM</span>
                 <span style="color: #dddddd;">|</span>
-                <span>Any week</span>
+                <span>Daily</span>
                 <span style="color: #dddddd;">|</span>
-                <span style="color: var(--color-text-secondary); font-weight: 400;">Add guests</span>
-                <div class="search-badge">🔍</div>
+                <span id="share-trigger" style="color: var(--color-text-secondary); font-weight: 400;">Share briefing</span>
+                <div class="search-badge" id="share-badge">🔍</div>
             </div>
         </div>
     </header>
@@ -359,7 +368,7 @@
             <p>Your custom compiled, error-correcting perspective on ideas and progress.</p>
         </div>
 
-        <!-- Airbnb Category Pillbar -->
+        /* Airbnb Category Pillbar */
         <div class="category-row">
             <div class="category-pill active">
                 <span class="category-icon">💡</span>
@@ -368,22 +377,27 @@
             <div class="category-pill">
                 <span class="category-icon">🗽</span>
                 <span>Libertarianism</span>
+                <span class="coming-soon">Coming Soon</span>
             </div>
             <div class="category-pill">
                 <span class="category-icon">🧬</span>
                 <span>Epistemology</span>
+                <span class="coming-soon">Coming Soon</span>
             </div>
             <div class="category-pill">
                 <span class="category-icon">🏛️</span>
                 <span>Governance</span>
+                <span class="coming-soon">Coming Soon</span>
             </div>
             <div class="category-pill">
                 <span class="category-icon">🤖</span>
                 <span>AI & mind</span>
+                <span class="coming-soon">Coming Soon</span>
             </div>
             <div class="category-pill">
                 <span class="category-icon">📈</span>
                 <span>Progress</span>
+                <span class="coming-soon">Coming Soon</span>
             </div>
         </div>
 
@@ -661,5 +675,35 @@ Mine was founded on the belief that governments are there to serve the liberties
         <p>© 2026 Karl's Briefing. Built with the Beginning of Infinity as our guide.</p>
         <p style="font-size: 0.75rem;">Optimized with Airbnb Cereal tokens via DM Sans</p>
     </footer>
+    <script>
+        // Web Share API implementation
+        const shareBtn = document.getElementById('share-trigger');
+        const shareBadge = document.getElementById('share-badge');
+        
+        const shareAction = async () => {
+            if (navigator.share) {
+                try {
+                    await navigator.share({
+                        title: "Karl's Daily Briefing",
+                        text: "Check out today's curated Rationalist & Libertarian briefing!",
+                        url: window.location.href
+                    });
+                } catch (err) {
+                    console.log('Share cancelled or failed', err);
+                }
+            } else {
+                // Fallback: Copy link to clipboard
+                try {
+                    await navigator.clipboard.writeText(window.location.href);
+                    alert('Link copied to clipboard!');
+                } catch (err) {
+                    console.error('Could not copy link: ', err);
+                }
+            }
+        };
+
+        if (shareBtn) shareBtn.addEventListener('click', shareAction);
+        if (shareBadge) shareBadge.addEventListener('click', shareAction);
+    </script>
 </body>
 </html>
