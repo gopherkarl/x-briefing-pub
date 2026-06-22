@@ -3,375 +3,663 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>X (Twitter) Daily Briefing</title>
+    <title>X Daily Briefing</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #0d1117;
-            --container-bg: #161b22;
-            --text-color: #c9d1d9;
-            --text-muted: #8b949e;
-            --accent-color: #58a6ff;
-            --border-color: #30363d;
-            --card-bg: #21262d;
+            --color-bg: #ffffff;
+            --color-surface-bg: #ffffff;
+            --color-card-bg: #ffffff;
+            --color-text-primary: #222222;
+            --color-text-secondary: #6a6a6a;
+            --color-brand-red: #ff385c;
+            --color-brand-red-hover: #e00b41;
+            --color-border: #dddddd;
+            
+            /* Airbnb 3-layer shadow system */
+            --shadow-card: rgba(0,0,0,0.02) 0px 0px 0px 1px, rgba(0,0,0,0.04) 0px 2px 6px, rgba(0,0,0,0.1) 0px 4px 8px;
+            --shadow-hover: rgba(0,0,0,0.08) 0px 4px 12px;
         }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text-primary);
             margin: 0;
-            padding: 15px;
-            line-height: 1.6;
+            padding: 0;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
         }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
+
+        /* Navigation Header */
         header {
-            text-align: center;
-            padding: 20px 0 10px 0;
-            border-bottom: 1px solid var(--border-color);
-            margin-bottom: 20px;
+            position: sticky;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--color-border);
+            z-index: 1000;
+            padding: 15px 24px;
         }
-        h1 {
+
+        .header-container {
+            max-width: 1080px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: var(--color-brand-red);
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-icon {
             font-size: 1.5rem;
-            margin: 0;
-            color: #ffffff;
         }
-        .timestamp {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 5px;
-        }
-        .section-header {
+
+        .header-search {
+            background-color: #ffffff;
+            border: 1px solid var(--color-border);
+            border-radius: 32px;
+            padding: 10px 18px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
             display: flex;
             align-items: center;
             gap: 12px;
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 8px;
-            margin-top: 35px;
-            margin-bottom: 15px;
+            cursor: pointer;
+            transition: box-shadow 0.2s ease;
         }
-        .avatar {
+
+        .header-search:hover {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .search-badge {
+            background-color: var(--color-brand-red);
+            color: #ffffff;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+        }
+
+        /* Container Section */
+        .main-container {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        .welcome-hero {
+            margin-bottom: 45px;
+        }
+
+        .welcome-hero h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.8px;
+            margin: 0 0 8px 0;
+            color: var(--color-text-primary);
+        }
+
+        .welcome-hero p {
+            color: var(--color-text-secondary);
+            font-size: 1rem;
+            font-weight: 400;
+            margin: 0;
+        }
+
+        /* Horizontal Category Filter */
+        .category-row {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--color-border);
+            margin-bottom: 40px;
+            scrollbar-width: none; /* Firefox */
+        }
+        .category-row::-webkit-scrollbar {
+            display: none; /* Safari & Chrome */
+        }
+
+        .category-pill {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            color: var(--color-text-secondary);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding-bottom: 8px;
+            border-bottom: 2px solid transparent;
+            transition: color 0.15s ease, border-color 0.15s ease;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+
+        .category-pill:hover {
+            color: var(--color-text-primary);
+            border-bottom-color: var(--color-border);
+        }
+
+        .category-pill.active {
+            color: var(--color-text-primary);
+            border-bottom-color: var(--color-text-primary);
+        }
+
+        .category-icon {
+            font-size: 1.25rem;
+        }
+
+        /* Responsive Columns Grid */
+        .listings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 32px;
+        }
+
+        /* Card Component Styling */
+        .listing-card {
+            background-color: var(--color-card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-card);
+            transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s ease;
+            cursor: pointer;
+        }
+
+        .listing-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Card Profile Header */
+        .card-profile-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 20px 20px 14px 20px;
+            border-bottom: 1px solid #f2f2f2;
+        }
+
+        .profile-img {
             width: 44px;
             height: 44px;
             border-radius: 50%;
-            border: 1.5px solid var(--border-color);
+            border: 1px solid var(--color-border);
             object-fit: cover;
         }
-        .user-names {
+
+        .profile-info {
             display: flex;
             flex-direction: column;
         }
-        .display-name {
-            font-size: 1.05rem;
+
+        .profile-name {
+            font-size: 0.95rem;
             font-weight: 700;
-            color: #ffffff;
+            color: var(--color-text-primary);
             line-height: 1.2;
         }
-        .handle-link {
-            font-size: 0.85rem;
-            color: var(--accent-color);
+
+        .profile-handle {
+            font-size: 0.8rem;
+            color: var(--color-brand-red);
             text-decoration: none;
+            font-weight: 500;
         }
-        .handle-link:hover {
+
+        .profile-handle:hover {
             text-decoration: underline;
         }
-        .post-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
+
+        /* Listing Details */
+        .card-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
-        .post-header {
-            text-align: right;
-            margin-bottom: 10px;
+
+        .post-date-badge {
+            font-size: 0.75rem;
+            color: var(--color-text-secondary);
+            font-weight: 500;
+            margin-bottom: 8px;
         }
-        .post-date {
-            color: var(--text-muted);
-            font-size: 0.8rem;
-        }
-        .post-content {
+
+        .post-text-content {
             font-size: 0.95rem;
+            font-weight: 400;
+            color: var(--color-text-primary);
+            line-height: 1.6;
+            margin: 0 0 16px 0;
             white-space: pre-line;
-            margin-bottom: 12px;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
-        .takeaway-title {
-            font-weight: bold;
-            color: var(--accent-color);
-            margin-top: 10px;
-            font-size: 0.9rem;
+
+        /* Takeaway Element */
+        .takeaway-section {
+            background-color: #f7f7f7;
+            border-radius: 12px;
+            padding: 12px 16px;
+            margin-bottom: 16px;
+            flex-grow: 1;
         }
-        .takeaway-box {
-            background-color: var(--container-bg);
-            border-left: 3px solid var(--accent-color);
-            padding: 8px 12px;
-            margin-top: 5px;
-            font-size: 0.9rem;
+
+        .takeaway-tag {
+            font-size: 0.69rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--color-brand-red);
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .takeaway-text {
+            font-size: 0.88rem;
+            font-weight: 500;
+            line-height: 1.5;
+            color: var(--color-text-primary);
+            margin: 0;
+        }
+
+        /* View Link */
+        .cta-view-btn {
+            background-color: var(--color-text-primary);
             color: #ffffff;
-        }
-        .citation {
-            text-align: right;
-            margin-top: 10px;
-            font-size: 0.8rem;
-        }
-        .citation a {
-            color: var(--accent-color);
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 16px;
+            border-radius: 8px;
             text-decoration: none;
-        }
-        .citation a:hover {
-            text-decoration: underline;
-        }
-        footer {
+            width: 100%;
             text-align: center;
-            padding: 20px 0;
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            border-top: 1px solid var(--border-color);
-            margin-top: 30px;
+            transition: background-color 0.15s ease;
+        }
+
+        .cta-view-btn:hover {
+            background-color: var(--color-brand-red);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--color-border);
+            padding: 40px 24px;
+            background-color: #f7f7f7;
+            color: var(--color-text-secondary);
+            font-size: 0.85rem;
+            font-weight: 400;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        footer p {
+            margin: 0 0 8px 0;
+        }
+
+        .footer-logo {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--color-brand-red);
+            margin-bottom: 12px;
+            display: block;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Rationalist & Libertarian Briefing</h1>
-            <div class="timestamp">Updated: 2026-06-22 05:03 PM EST</div>
-        </header>
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo-area">
+                <span class="logo-icon">⋒</span>
+                <span>karl's briefing</span>
+            </a>
+            <div class="header-search">
+                <span>Anywhere</span>
+                <span style="color: #dddddd;">|</span>
+                <span>Any week</span>
+                <span style="color: #dddddd;">|</span>
+                <span style="color: var(--color-text-secondary); font-weight: 400;">Add guests</span>
+                <div class="search-badge">🔍</div>
+            </div>
+        </div>
+    </header>
 
-        
-        <div class="section-header">
-            <img class="avatar" src="https://pbs.twimg.com/profile_images/1977979925635215360/G3HAlSxE_normal.jpg" alt="Arjun Khemani">
-            <div class="user-names">
-                <span class="display-name">Arjun Khemani</span>
-                <a class="handle-link" href="https://x.com/arjunkhemani" target="_blank">@arjunkhemani</a>
+    <div class="main-container">
+        <div class="welcome-hero">
+            <h1>Rationalist & Libertarian Briefing</h1>
+            <p>Your custom compiled, error-correcting perspective on ideas and progress.</p>
+        </div>
+
+        <!-- Airbnb Category Pillbar -->
+        <div class="category-row">
+            <div class="category-pill active">
+                <span class="category-icon">💡</span>
+                <span>Rationalism</span>
+            </div>
+            <div class="category-pill">
+                <span class="category-icon">🗽</span>
+                <span>Libertarianism</span>
+            </div>
+            <div class="category-pill">
+                <span class="category-icon">🧬</span>
+                <span>Epistemology</span>
+            </div>
+            <div class="category-pill">
+                <span class="category-icon">🏛️</span>
+                <span>Governance</span>
+            </div>
+            <div class="category-pill">
+                <span class="category-icon">🤖</span>
+                <span>AI & mind</span>
+            </div>
+            <div class="category-pill">
+                <span class="category-icon">📈</span>
+                <span>Progress</span>
+            </div>
+        </div>
+
+        <div class="listings-grid">
+            
+        <div class="listing-card">
+            <div class="card-profile-header">
+                <img class="profile-img" src="https://pbs.twimg.com/profile_images/1977979925635215360/G3HAlSxE_normal.jpg" alt="Arjun Khemani">
+                <div class="profile-info">
+                    <span class="profile-name">Arjun Khemani</span>
+                    <a class="profile-handle" href="https://x.com/arjunkhemani" target="_blank">@arjunkhemani</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="post-date-badge">🗓️ Published on June 21, 2026</div>
+                <p class="post-text-content">"@RoKhanna @friedberg That says more about the University of Chicago than it does about @friedberg, who is correct here. “A professor wouldn’t give this a passing grade” is not an argument."</p>
+                
+                <div class="takeaway-section">
+                    <span class="takeaway-tag">🔑 Key Takeaway</span>
+                    <p class="takeaway-text">Appealing to academic authority or institutional credentials is a poor substitute for critical rationalism. Explanations must be judged purely on their inherent content, explanatory power, and capacity to withstand criticism, not on the status of those who criticize them.</p>
+                </div>
+                
+                <a class="cta-view-btn" href="https://x.com/arjunkhemani/status/2068808808780951672" target="_blank">View on X</a>
             </div>
         </div>
         
-            <div class="post-card">
-                <div class="post-header">
-                    <span class="post-date">June 21, 2026</span>
-                </div>
-                <div class="post-content">"@RoKhanna @friedberg That says more about the University of Chicago than it does about @friedberg, who is correct here. “A professor wouldn’t give this a passing grade” is not an argument."</div>
-                
-                <div class="takeaway-title">🔑 Key Takeaway</div>
-                <div class="takeaway-box">Appealing to academic authority or institutional credentials is a poor substitute for critical rationalism. Explanations must be judged purely on their inherent content, explanatory power, and capacity to withstand criticism, not on the status of those who criticize them.</div>
-                
-                <div class="citation">
-                    <a href="https://x.com/arjunkhemani/status/2068808808780951672" target="_blank">View original post on X &rarr;</a>
+        <div class="listing-card">
+            <div class="card-profile-header">
+                <img class="profile-img" src="https://pbs.twimg.com/profile_images/1977979925635215360/G3HAlSxE_normal.jpg" alt="Arjun Khemani">
+                <div class="profile-info">
+                    <span class="profile-name">Arjun Khemani</span>
+                    <a class="profile-handle" href="https://x.com/arjunkhemani" target="_blank">@arjunkhemani</a>
                 </div>
             </div>
-            
-            <div class="post-card">
-                <div class="post-header">
-                    <span class="post-date">June 20, 2026</span>
-                </div>
-                <div class="post-content">"The people you hate most are often the people most like you, but not quite."</div>
+            <div class="card-body">
+                <div class="post-date-badge">🗓️ Published on June 20, 2026</div>
+                <p class="post-text-content">"The people you hate most are often the people most like you, but not quite."</p>
                 
-                <div class="takeaway-title">🔑 Key Takeaway</div>
-                <div class="takeaway-box">Ideological or philosophical conflict is often at its most intense when worldviews share a rich, common explanatory framework but diverge on fine details. These minor variations threaten the coherence of a system of ideas, triggering rapid critical correction.</div>
-                
-                <div class="citation">
-                    <a href="https://x.com/arjunkhemani/status/2068259225214869765" target="_blank">View original post on X &rarr;</a>
+                <div class="takeaway-section">
+                    <span class="takeaway-tag">🔑 Key Takeaway</span>
+                    <p class="takeaway-text">Ideological or philosophical conflict is often at its most intense when worldviews share a rich, common explanatory framework but diverge on fine details. These minor variations threaten the coherence of a system of ideas, triggering rapid critical correction.</p>
                 </div>
-            </div>
-            
-        <div class="section-header">
-            <img class="avatar" src="https://pbs.twimg.com/profile_images/1599154524459241472/7RQWUjkC_normal.jpg" alt="Brett Hall (ToK Teacher)">
-            <div class="user-names">
-                <span class="display-name">Brett Hall (ToK Teacher)</span>
-                <a class="handle-link" href="https://x.com/ToKTeacher" target="_blank">@ToKTeacher</a>
+                
+                <a class="cta-view-btn" href="https://x.com/arjunkhemani/status/2068259225214869765" target="_blank">View on X</a>
             </div>
         </div>
         
-            <div class="post-card">
-                <div class="post-header">
-                    <span class="post-date">June 22, 2026</span>
+        <div class="listing-card">
+            <div class="card-profile-header">
+                <img class="profile-img" src="https://pbs.twimg.com/profile_images/1599154524459241472/7RQWUjkC_normal.jpg" alt="Brett Hall (ToK Teacher)">
+                <div class="profile-info">
+                    <span class="profile-name">Brett Hall (ToK Teacher)</span>
+                    <a class="profile-handle" href="https://x.com/ToKTeacher" target="_blank">@ToKTeacher</a>
                 </div>
-                <div class="post-content">"@DanielZipperer1 Useful is entirely up to the learner.
+            </div>
+            <div class="card-body">
+                <div class="post-date-badge">🗓️ Published on June 22, 2026</div>
+                <p class="post-text-content">"@DanielZipperer1 Useful is entirely up to the learner.
 
 The original sin is adults *insisting* on what children must regard as useful to the point of necessity. And then passing that dogma about learning on generation after generation after generation…
 
-Mindlessly."</div>
+Mindlessly."</p>
                 
-                <div class="takeaway-title">🔑 Key Takeaway</div>
-                <div class="takeaway-box">True education is a creative, problem-directed endeavor driven by the learner's own curiosities and problems. Coercing a standardized curriculum from the top down stifles the spontaneous creation of knowledge and violates individual agency.</div>
-                
-                <div class="citation">
-                    <a href="https://x.com/ToKTeacher/status/2068971935153926378" target="_blank">View original post on X &rarr;</a>
+                <div class="takeaway-section">
+                    <span class="takeaway-tag">🔑 Key Takeaway</span>
+                    <p class="takeaway-text">True education is a creative, problem-directed endeavor driven by the learner's own curiosities and problems. Coercing a standardized curriculum from the top down stifles the spontaneous creation of knowledge and violates individual agency.</p>
                 </div>
-            </div>
-            
-            <div class="post-card">
-                <div class="post-header">
-                    <span class="post-date">June 22, 2026</span>
-                </div>
-                <div class="post-content">"@Holly_Da Being blocked by an individual on this platform or even being removed from this platform entirely is not an infringement on free speech.
-
-But *demanding* someone must listen to you or insisting you have access to some space when you’re not wanted does indeed infringe on liberty."</div>
                 
-                <div class="takeaway-title">🔑 Key Takeaway</div>
-                <div class="takeaway-box">Freedom of speech is the right to express ideas, not the power to compel others' attention. Compulsory listening is a form of coercion, whereas the liberty to disassociate or block others preserves individual sovereignty within the open society.</div>
-                
-                <div class="citation">
-                    <a href="https://x.com/ToKTeacher/status/2068978875514888667" target="_blank">View original post on X &rarr;</a>
-                </div>
-            </div>
-            
-        <div class="section-header">
-            <img class="avatar" src="https://pbs.twimg.com/profile_images/925701269041401857/ff6NE-H-_normal.jpg" alt="David Deutsch">
-            <div class="user-names">
-                <span class="display-name">David Deutsch</span>
-                <a class="handle-link" href="https://x.com/DavidDeutschOxf" target="_blank">@DavidDeutschOxf</a>
+                <a class="cta-view-btn" href="https://x.com/ToKTeacher/status/2068971935153926378" target="_blank">View on X</a>
             </div>
         </div>
         
-            <div class="post-card">
-                <div class="post-header">
-                    <span class="post-date">June 22, 2026</span>
-                </div>
-                <div class="post-content">"For almost two centuries it was followers of Karl Marx's crackpot economic theory who wrecked economies and dispossessed, murdered and enslaved people on the promise of returning nonexistent fruits of their labour to them. Now it seems to be the turn of the Scrooge McDuck theory."</div>
-                
-                <div class="takeaway-title">🔑 Key Takeaway</div>
-                <div class="takeaway-box">Societal decay occurs when people fall prey to zero-sum economic fallacies—whether the labor theory of value or wealth-hoarding dogmas. Progress is achieved by recognizing that wealth is created through open-ended knowledge, not zero-sum redistribution or static accumulation.</div>
-                
-                <div class="citation">
-                    <a href="https://x.com/DavidDeutschOxf/status/2068957232633384982" target="_blank">View original post on X &rarr;</a>
+        <div class="listing-card">
+            <div class="card-profile-header">
+                <img class="profile-img" src="https://pbs.twimg.com/profile_images/1599154524459241472/7RQWUjkC_normal.jpg" alt="Brett Hall (ToK Teacher)">
+                <div class="profile-info">
+                    <span class="profile-name">Brett Hall (ToK Teacher)</span>
+                    <a class="profile-handle" href="https://x.com/ToKTeacher" target="_blank">@ToKTeacher</a>
                 </div>
             </div>
-            
-            <div class="post-card">
-                <div class="post-header">
-                    <span class="post-date">June 21, 2026</span>
-                </div>
-                <div class="post-content">"@unvrslexplainer @elonmusk Not in the sense I guess you mean. Universal constructors will in general perform difficult tasks by first making making the machine to make the machine to make the machine… [Niven and Gerrold]"</div>
+            <div class="card-body">
+                <div class="post-date-badge">🗓️ Published on June 22, 2026</div>
+                <p class="post-text-content">"@Holly_Da Being blocked by an individual on this platform or even being removed from this platform entirely is not an infringement on free speech.
+
+But *demanding* someone must listen to you or insisting you have access to some space when you’re not wanted does indeed infringe on liberty."</p>
                 
-                <div class="takeaway-title">🔑 Key Takeaway</div>
-                <div class="takeaway-box">Universality is the ultimate power of physical systems. Universal constructors do not achieve highly complex tasks in a single leap, but recursively—developing the tools to make the tools that ultimately build the solution.</div>
-                
-                <div class="citation">
-                    <a href="https://x.com/DavidDeutschOxf/status/2068722600621056389" target="_blank">View original post on X &rarr;</a>
+                <div class="takeaway-section">
+                    <span class="takeaway-tag">🔑 Key Takeaway</span>
+                    <p class="takeaway-text">Freedom of speech is the right to express ideas, not the power to compel others' attention. Compulsory listening is a form of coercion, whereas the liberty to disassociate or block others preserves individual sovereignty within the open society.</p>
                 </div>
-            </div>
-            
-        <div class="section-header">
-            <img class="avatar" src="https://pbs.twimg.com/profile_images/1256841238298292232/ycqwaMI2_normal.jpg" alt="Naval Ravikant">
-            <div class="user-names">
-                <span class="display-name">Naval Ravikant</span>
-                <a class="handle-link" href="https://x.com/naval" target="_blank">@naval</a>
+                
+                <a class="cta-view-btn" href="https://x.com/ToKTeacher/status/2068978875514888667" target="_blank">View on X</a>
             </div>
         </div>
         
-            <div class="post-card">
-                <div class="post-header">
-                    <span class="post-date">June 18, 2026</span>
-                </div>
-                <div class="post-content">"If your success or failure is judged by other people, rather than by nature or free markets, you’re playing a game, albeit a reified and social one."</div>
-                
-                <div class="takeaway-title">🔑 Key Takeaway</div>
-                <div class="takeaway-box">Dynamic progress demands objective feedback loops—either directly from physical reality (nature) or voluntary cooperative cooperation (free markets). Status-seeking games that rely purely on social consensus lead to path-dependent stagnation.</div>
-                
-                <div class="citation">
-                    <a href="https://x.com/naval/status/2067399736601285071" target="_blank">View original post on X &rarr;</a>
+        <div class="listing-card">
+            <div class="card-profile-header">
+                <img class="profile-img" src="https://pbs.twimg.com/profile_images/925701269041401857/ff6NE-H-_normal.jpg" alt="David Deutsch">
+                <div class="profile-info">
+                    <span class="profile-name">David Deutsch</span>
+                    <a class="profile-handle" href="https://x.com/DavidDeutschOxf" target="_blank">@DavidDeutschOxf</a>
                 </div>
             </div>
-            
-            <div class="post-card">
-                <div class="post-header">
-                    <span class="post-date">June 18, 2026</span>
-                </div>
-                <div class="post-content">"It's the Age of Builders.
-
- (sorry financiers and talkers)"</div>
+            <div class="card-body">
+                <div class="post-date-badge">🗓️ Published on June 22, 2026</div>
+                <p class="post-text-content">"For almost two centuries it was followers of Karl Marx's crackpot economic theory who wrecked economies and dispossessed, murdered and enslaved people on the promise of returning nonexistent fruits of their labour to them. Now it seems to be the turn of the Scrooge McDuck theory."</p>
                 
-                <div class="takeaway-title">🔑 Key Takeaway</div>
-                <div class="takeaway-box">Real problem-solving is driving by builders who formulate bold conjectures and manifest them into physical reality, creating hard-to-vary knowledge rather than merely playing discursive or financial games.</div>
-                
-                <div class="citation">
-                    <a href="https://x.com/naval/status/2067496301244338461" target="_blank">View original post on X &rarr;</a>
+                <div class="takeaway-section">
+                    <span class="takeaway-tag">🔑 Key Takeaway</span>
+                    <p class="takeaway-text">Societal decay occurs when people fall prey to zero-sum economic fallacies—whether the labor theory of value or wealth-hoarding dogmas. Progress is achieved by recognizing that wealth is created through open-ended knowledge, not zero-sum redistribution or static accumulation.</p>
                 </div>
-            </div>
-            
-        <div class="section-header">
-            <img class="avatar" src="https://pbs.twimg.com/profile_images/1882250582846476288/hCW6mtnT_normal.jpg" alt="Karl Popper Quotes">
-            <div class="user-names">
-                <span class="display-name">Karl Popper Quotes</span>
-                <a class="handle-link" href="https://x.com/QuotePopper" target="_blank">@QuotePopper</a>
+                
+                <a class="cta-view-btn" href="https://x.com/DavidDeutschOxf/status/2068957232633384982" target="_blank">View on X</a>
             </div>
         </div>
         
-            <div class="post-card">
-                <div class="post-header">
-                    <span class="post-date">June 17, 2026</span>
-                </div>
-                <div class="post-content">""Neither nature nor history can tell us what we ought to do. Facts, whether those of nature or those of history, cannot make the decision for us, they cannot determine the ends we are going to choose. It is we who introduce purpose and meaning into nature and into history.""</div>
-                
-                <div class="takeaway-title">🔑 Key Takeaway</div>
-                <div class="takeaway-box">Purpose and moral progress do not passively flow from historical or physical facts. Human agency is the source of meaning: we must choose to introduce intention and design into our theories, taking full responsibility for our decisions.</div>
-                
-                <div class="citation">
-                    <a href="https://x.com/QuotePopper/status/2067363066983878978" target="_blank">View original post on X &rarr;</a>
+        <div class="listing-card">
+            <div class="card-profile-header">
+                <img class="profile-img" src="https://pbs.twimg.com/profile_images/925701269041401857/ff6NE-H-_normal.jpg" alt="David Deutsch">
+                <div class="profile-info">
+                    <span class="profile-name">David Deutsch</span>
+                    <a class="profile-handle" href="https://x.com/DavidDeutschOxf" target="_blank">@DavidDeutschOxf</a>
                 </div>
             </div>
-            
-            <div class="post-card">
-                <div class="post-header">
-                    <span class="post-date">June 18, 2026</span>
-                </div>
-                <div class="post-content">""The amoeba shuns falsification: its expectation is part of itself, and prescientific bearers of an expectation or a hypothesis are often destroyed by refutation of the expectation or the hypothesis.
-
-Einstein, however, made his hypothesis objective. The hypothesis is something"</div>
+            <div class="card-body">
+                <div class="post-date-badge">🗓️ Published on June 21, 2026</div>
+                <p class="post-text-content">"@unvrslexplainer @elonmusk Not in the sense I guess you mean. Universal constructors will in general perform difficult tasks by first making making the machine to make the machine to make the machine… [Niven and Gerrold]"</p>
                 
-                <div class="takeaway-title">🔑 Key Takeaway</div>
-                <div class="takeaway-box">Objectifying our theories allows them to die in our stead. By placing ideas outside of ourselves where they can be criticized and falsified, we achieve rapid, painless evolution and knowledge creation without our physical destruction.</div>
-                
-                <div class="citation">
-                    <a href="https://x.com/QuotePopper/status/2067568499921186855" target="_blank">View original post on X &rarr;</a>
+                <div class="takeaway-section">
+                    <span class="takeaway-tag">🔑 Key Takeaway</span>
+                    <p class="takeaway-text">Universality is the ultimate power of physical systems. Universal constructors do not achieve highly complex tasks in a single leap, but recursively—developing the tools to make the tools that ultimately build the solution.</p>
                 </div>
-            </div>
-            
-        <div class="section-header">
-            <img class="avatar" src="https://pbs.twimg.com/profile_images/1530858925981319169/Bc8YMnz2_normal.jpg" alt="Margaret Thatcher">
-            <div class="user-names">
-                <span class="display-name">Margaret Thatcher</span>
-                <a class="handle-link" href="https://x.com/realmrsthatcher" target="_blank">@realmrsthatcher</a>
+                
+                <a class="cta-view-btn" href="https://x.com/DavidDeutschOxf/status/2068722600621056389" target="_blank">View on X</a>
             </div>
         </div>
         
-            <div class="post-card">
-                <div class="post-header">
-                    <span class="post-date">June 22, 2026</span>
-                </div>
-                <div class="post-content">"Let me emphasise this point: I do not believe in weak government, but rather strong and limited government. Government must be strong to uphold the rule of law, strong to hold the ring against cartels and monopolies, strong to keep the finances sound, strong to set an affordable"</div>
-                
-                <div class="takeaway-title">🔑 Key Takeaway</div>
-                <div class="takeaway-box">An open, free society is not served by weak institutions, but by a strong, limited framework. The primary role of governance is to decisively protect individual liberty, prevent cartels or coercive forces from dominating, and ensure a stable canvas for human progress.</div>
-                
-                <div class="citation">
-                    <a href="https://x.com/realmrsthatcher/status/2068940799107076150" target="_blank">View original post on X &rarr;</a>
+        <div class="listing-card">
+            <div class="card-profile-header">
+                <img class="profile-img" src="https://pbs.twimg.com/profile_images/1256841238298292232/ycqwaMI2_normal.jpg" alt="Naval Ravikant">
+                <div class="profile-info">
+                    <span class="profile-name">Naval Ravikant</span>
+                    <a class="profile-handle" href="https://x.com/naval" target="_blank">@naval</a>
                 </div>
             </div>
-            
-            <div class="post-card">
-                <div class="post-header">
-                    <span class="post-date">June 21, 2026</span>
+            <div class="card-body">
+                <div class="post-date-badge">🗓️ Published on June 18, 2026</div>
+                <p class="post-text-content">"If your success or failure is judged by other people, rather than by nature or free markets, you’re playing a game, albeit a reified and social one."</p>
+                
+                <div class="takeaway-section">
+                    <span class="takeaway-tag">🔑 Key Takeaway</span>
+                    <p class="takeaway-text">Dynamic progress demands objective feedback loops—either directly from physical reality (nature) or voluntary cooperative cooperation (free markets). Status-seeking games that rely purely on social consensus lead to path-dependent stagnation.</p>
                 </div>
-                <div class="post-content">"If you take strong action and it is very different action from what your country has known before...you can only be confident that your action is right if it is founded on strong principles.
-
-Mine was founded on the belief that governments are there to serve the liberties of the"</div>
                 
-                <div class="takeaway-title">🔑 Key Takeaway</div>
-                <div class="takeaway-box">Bold, revolutionary actions must be rooted in immutable moral principles, specifically the protection of human liberty. Without a stable explanatory foundation, political maneuvering decays into arbitrary, short-sighted pragmatism.</div>
-                
-                <div class="citation">
-                    <a href="https://x.com/realmrsthatcher/status/2068580058449732044" target="_blank">View original post on X &rarr;</a>
+                <a class="cta-view-btn" href="https://x.com/naval/status/2067399736601285071" target="_blank">View on X</a>
+            </div>
+        </div>
+        
+        <div class="listing-card">
+            <div class="card-profile-header">
+                <img class="profile-img" src="https://pbs.twimg.com/profile_images/1256841238298292232/ycqwaMI2_normal.jpg" alt="Naval Ravikant">
+                <div class="profile-info">
+                    <span class="profile-name">Naval Ravikant</span>
+                    <a class="profile-handle" href="https://x.com/naval" target="_blank">@naval</a>
                 </div>
             </div>
-            
+            <div class="card-body">
+                <div class="post-date-badge">🗓️ Published on June 18, 2026</div>
+                <p class="post-text-content">"It's the Age of Builders.
 
-        <footer>
-            Prepared by Karl using Hermes Agent on macOS
-        </footer>
+ (sorry financiers and talkers)"</p>
+                
+                <div class="takeaway-section">
+                    <span class="takeaway-tag">🔑 Key Takeaway</span>
+                    <p class="takeaway-text">Real problem-solving is driving by builders who formulate bold conjectures and manifest them into physical reality, creating hard-to-vary knowledge rather than merely playing discursive or financial games.</p>
+                </div>
+                
+                <a class="cta-view-btn" href="https://x.com/naval/status/2067496301244338461" target="_blank">View on X</a>
+            </div>
+        </div>
+        
+        <div class="listing-card">
+            <div class="card-profile-header">
+                <img class="profile-img" src="https://pbs.twimg.com/profile_images/1882250582846476288/hCW6mtnT_normal.jpg" alt="Karl Popper Quotes">
+                <div class="profile-info">
+                    <span class="profile-name">Karl Popper Quotes</span>
+                    <a class="profile-handle" href="https://x.com/QuotePopper" target="_blank">@QuotePopper</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="post-date-badge">🗓️ Published on June 17, 2026</div>
+                <p class="post-text-content">""Neither nature nor history can tell us what we ought to do. Facts, whether those of nature or those of history, cannot make the decision for us, they cannot determine the ends we are going to choose. It is we who introduce purpose and meaning into nature and into history.""</p>
+                
+                <div class="takeaway-section">
+                    <span class="takeaway-tag">🔑 Key Takeaway</span>
+                    <p class="takeaway-text">Purpose and moral progress do not passively flow from historical or physical facts. Human agency is the source of meaning: we must choose to introduce intention and design into our theories, taking full responsibility for our decisions.</p>
+                </div>
+                
+                <a class="cta-view-btn" href="https://x.com/QuotePopper/status/2067363066983878978" target="_blank">View on X</a>
+            </div>
+        </div>
+        
+        <div class="listing-card">
+            <div class="card-profile-header">
+                <img class="profile-img" src="https://pbs.twimg.com/profile_images/1882250582846476288/hCW6mtnT_normal.jpg" alt="Karl Popper Quotes">
+                <div class="profile-info">
+                    <span class="profile-name">Karl Popper Quotes</span>
+                    <a class="profile-handle" href="https://x.com/QuotePopper" target="_blank">@QuotePopper</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="post-date-badge">🗓️ Published on June 18, 2026</div>
+                <p class="post-text-content">""The amoeba shuns falsification: its expectation is part of itself, and prescientific bearers of an expectation or a hypothesis are often destroyed by refutation of the expectation or the hypothesis.
+
+Einstein, however, made his hypothesis objective. The hypothesis is something"</p>
+                
+                <div class="takeaway-section">
+                    <span class="takeaway-tag">🔑 Key Takeaway</span>
+                    <p class="takeaway-text">Objectifying our theories allows them to die in our stead. By placing ideas outside of ourselves where they can be criticized and falsified, we achieve rapid, painless evolution and knowledge creation without our physical destruction.</p>
+                </div>
+                
+                <a class="cta-view-btn" href="https://x.com/QuotePopper/status/2067568499921186855" target="_blank">View on X</a>
+            </div>
+        </div>
+        
+        <div class="listing-card">
+            <div class="card-profile-header">
+                <img class="profile-img" src="https://pbs.twimg.com/profile_images/1530858925981319169/Bc8YMnz2_normal.jpg" alt="Margaret Thatcher">
+                <div class="profile-info">
+                    <span class="profile-name">Margaret Thatcher</span>
+                    <a class="profile-handle" href="https://x.com/realmrsthatcher" target="_blank">@realmrsthatcher</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="post-date-badge">🗓️ Published on June 22, 2026</div>
+                <p class="post-text-content">"Let me emphasise this point: I do not believe in weak government, but rather strong and limited government. Government must be strong to uphold the rule of law, strong to hold the ring against cartels and monopolies, strong to keep the finances sound, strong to set an affordable"</p>
+                
+                <div class="takeaway-section">
+                    <span class="takeaway-tag">🔑 Key Takeaway</span>
+                    <p class="takeaway-text">An open, free society is not served by weak institutions, but by a strong, limited framework. The primary role of governance is to decisively protect individual liberty, prevent cartels or coercive forces from dominating, and ensure a stable canvas for human progress.</p>
+                </div>
+                
+                <a class="cta-view-btn" href="https://x.com/realmrsthatcher/status/2068940799107076150" target="_blank">View on X</a>
+            </div>
+        </div>
+        
+        <div class="listing-card">
+            <div class="card-profile-header">
+                <img class="profile-img" src="https://pbs.twimg.com/profile_images/1530858925981319169/Bc8YMnz2_normal.jpg" alt="Margaret Thatcher">
+                <div class="profile-info">
+                    <span class="profile-name">Margaret Thatcher</span>
+                    <a class="profile-handle" href="https://x.com/realmrsthatcher" target="_blank">@realmrsthatcher</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="post-date-badge">🗓️ Published on June 21, 2026</div>
+                <p class="post-text-content">"If you take strong action and it is very different action from what your country has known before...you can only be confident that your action is right if it is founded on strong principles.
+
+Mine was founded on the belief that governments are there to serve the liberties of the"</p>
+                
+                <div class="takeaway-section">
+                    <span class="takeaway-tag">🔑 Key Takeaway</span>
+                    <p class="takeaway-text">Bold, revolutionary actions must be rooted in immutable moral principles, specifically the protection of human liberty. Without a stable explanatory foundation, political maneuvering decays into arbitrary, short-sighted pragmatism.</p>
+                </div>
+                
+                <a class="cta-view-btn" href="https://x.com/realmrsthatcher/status/2068580058449732044" target="_blank">View on X</a>
+            </div>
+        </div>
+        
+        </div>
     </div>
+
+    <footer>
+        <span class="footer-logo">⋒ karl's briefing</span>
+        <p>© 2026 Karl's Briefing. Built with the Beginning of Infinity as our guide.</p>
+        <p style="font-size: 0.75rem;">Optimized with Airbnb Cereal tokens via DM Sans</p>
+    </footer>
 </body>
 </html>
