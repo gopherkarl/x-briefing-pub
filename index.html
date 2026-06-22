@@ -42,16 +42,39 @@
             color: var(--text-muted);
             margin-top: 5px;
         }
-        .section-title {
-            font-size: 1.1rem;
-            color: var(--accent-color);
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 5px;
-            margin-top: 25px;
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 8px;
+            margin-top: 35px;
             margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
+        }
+        .avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1.5px solid var(--border-color);
+            object-fit: cover;
+        }
+        .user-names {
+            display: flex;
+            flex-direction: column;
+        }
+        .display-name {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.2;
+        }
+        .handle-link {
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+        .handle-link:hover {
+            text-decoration: underline;
         }
         .post-card {
             background-color: var(--card-bg);
@@ -61,15 +84,8 @@
             margin-bottom: 15px;
         }
         .post-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            text-align: right;
             margin-bottom: 10px;
-            font-size: 0.9rem;
-        }
-        .handle {
-            font-weight: bold;
-            color: #ffffff;
         }
         .post-date {
             color: var(--text-muted);
@@ -120,13 +136,20 @@
     <div class="container">
         <header>
             <h1>Rationalist & Libertarian Briefing</h1>
-            <div class="timestamp">Updated: 2026-06-22 06:31 AM EST</div>
+            <div class="timestamp">Updated: 2026-06-22 05:03 PM EST</div>
         </header>
 
-        <div class="section-title">@arjunkhemani</div>
+        
+        <div class="section-header">
+            <img class="avatar" src="https://pbs.twimg.com/profile_images/1977979925635215360/G3HAlSxE_normal.jpg" alt="Arjun Khemani">
+            <div class="user-names">
+                <span class="display-name">Arjun Khemani</span>
+                <a class="handle-link" href="https://x.com/arjunkhemani" target="_blank">@arjunkhemani</a>
+            </div>
+        </div>
+        
             <div class="post-card">
                 <div class="post-header">
-                    <span class="handle">@arjunkhemani</span>
                     <span class="post-date">June 21, 2026</span>
                 </div>
                 <div class="post-content">"@RoKhanna @friedberg That says more about the University of Chicago than it does about @friedberg, who is correct here. “A professor wouldn’t give this a passing grade” is not an argument."</div>
@@ -141,7 +164,6 @@
             
             <div class="post-card">
                 <div class="post-header">
-                    <span class="handle">@arjunkhemani</span>
                     <span class="post-date">June 20, 2026</span>
                 </div>
                 <div class="post-content">"The people you hate most are often the people most like you, but not quite."</div>
@@ -153,10 +175,17 @@
                     <a href="https://x.com/arjunkhemani/status/2068259225214869765" target="_blank">View original post on X &rarr;</a>
                 </div>
             </div>
-            <div class="section-title">@ToKTeacher</div>
+            
+        <div class="section-header">
+            <img class="avatar" src="https://pbs.twimg.com/profile_images/1599154524459241472/7RQWUjkC_normal.jpg" alt="Brett Hall (ToK Teacher)">
+            <div class="user-names">
+                <span class="display-name">Brett Hall (ToK Teacher)</span>
+                <a class="handle-link" href="https://x.com/ToKTeacher" target="_blank">@ToKTeacher</a>
+            </div>
+        </div>
+        
             <div class="post-card">
                 <div class="post-header">
-                    <span class="handle">@ToKTeacher</span>
                     <span class="post-date">June 22, 2026</span>
                 </div>
                 <div class="post-content">"@DanielZipperer1 Useful is entirely up to the learner.
@@ -175,7 +204,6 @@ Mindlessly."</div>
             
             <div class="post-card">
                 <div class="post-header">
-                    <span class="handle">@ToKTeacher</span>
                     <span class="post-date">June 22, 2026</span>
                 </div>
                 <div class="post-content">"@Holly_Da Being blocked by an individual on this platform or even being removed from this platform entirely is not an infringement on free speech.
@@ -189,10 +217,17 @@ But *demanding* someone must listen to you or insisting you have access to some 
                     <a href="https://x.com/ToKTeacher/status/2068978875514888667" target="_blank">View original post on X &rarr;</a>
                 </div>
             </div>
-            <div class="section-title">@DavidDeutschOxf</div>
+            
+        <div class="section-header">
+            <img class="avatar" src="https://pbs.twimg.com/profile_images/925701269041401857/ff6NE-H-_normal.jpg" alt="David Deutsch">
+            <div class="user-names">
+                <span class="display-name">David Deutsch</span>
+                <a class="handle-link" href="https://x.com/DavidDeutschOxf" target="_blank">@DavidDeutschOxf</a>
+            </div>
+        </div>
+        
             <div class="post-card">
                 <div class="post-header">
-                    <span class="handle">@DavidDeutschOxf</span>
                     <span class="post-date">June 22, 2026</span>
                 </div>
                 <div class="post-content">"For almost two centuries it was followers of Karl Marx's crackpot economic theory who wrecked economies and dispossessed, murdered and enslaved people on the promise of returning nonexistent fruits of their labour to them. Now it seems to be the turn of the Scrooge McDuck theory."</div>
@@ -207,7 +242,6 @@ But *demanding* someone must listen to you or insisting you have access to some 
             
             <div class="post-card">
                 <div class="post-header">
-                    <span class="handle">@DavidDeutschOxf</span>
                     <span class="post-date">June 21, 2026</span>
                 </div>
                 <div class="post-content">"@unvrslexplainer @elonmusk Not in the sense I guess you mean. Universal constructors will in general perform difficult tasks by first making making the machine to make the machine to make the machine… [Niven and Gerrold]"</div>
@@ -219,10 +253,17 @@ But *demanding* someone must listen to you or insisting you have access to some 
                     <a href="https://x.com/DavidDeutschOxf/status/2068722600621056389" target="_blank">View original post on X &rarr;</a>
                 </div>
             </div>
-            <div class="section-title">@naval</div>
+            
+        <div class="section-header">
+            <img class="avatar" src="https://pbs.twimg.com/profile_images/1256841238298292232/ycqwaMI2_normal.jpg" alt="Naval Ravikant">
+            <div class="user-names">
+                <span class="display-name">Naval Ravikant</span>
+                <a class="handle-link" href="https://x.com/naval" target="_blank">@naval</a>
+            </div>
+        </div>
+        
             <div class="post-card">
                 <div class="post-header">
-                    <span class="handle">@naval</span>
                     <span class="post-date">June 18, 2026</span>
                 </div>
                 <div class="post-content">"If your success or failure is judged by other people, rather than by nature or free markets, you’re playing a game, albeit a reified and social one."</div>
@@ -237,7 +278,6 @@ But *demanding* someone must listen to you or insisting you have access to some 
             
             <div class="post-card">
                 <div class="post-header">
-                    <span class="handle">@naval</span>
                     <span class="post-date">June 18, 2026</span>
                 </div>
                 <div class="post-content">"It's the Age of Builders.
@@ -251,10 +291,17 @@ But *demanding* someone must listen to you or insisting you have access to some 
                     <a href="https://x.com/naval/status/2067496301244338461" target="_blank">View original post on X &rarr;</a>
                 </div>
             </div>
-            <div class="section-title">@QuotePopper</div>
+            
+        <div class="section-header">
+            <img class="avatar" src="https://pbs.twimg.com/profile_images/1882250582846476288/hCW6mtnT_normal.jpg" alt="Karl Popper Quotes">
+            <div class="user-names">
+                <span class="display-name">Karl Popper Quotes</span>
+                <a class="handle-link" href="https://x.com/QuotePopper" target="_blank">@QuotePopper</a>
+            </div>
+        </div>
+        
             <div class="post-card">
                 <div class="post-header">
-                    <span class="handle">@QuotePopper</span>
                     <span class="post-date">June 17, 2026</span>
                 </div>
                 <div class="post-content">""Neither nature nor history can tell us what we ought to do. Facts, whether those of nature or those of history, cannot make the decision for us, they cannot determine the ends we are going to choose. It is we who introduce purpose and meaning into nature and into history.""</div>
@@ -269,7 +316,6 @@ But *demanding* someone must listen to you or insisting you have access to some 
             
             <div class="post-card">
                 <div class="post-header">
-                    <span class="handle">@QuotePopper</span>
                     <span class="post-date">June 18, 2026</span>
                 </div>
                 <div class="post-content">""The amoeba shuns falsification: its expectation is part of itself, and prescientific bearers of an expectation or a hypothesis are often destroyed by refutation of the expectation or the hypothesis.
@@ -283,10 +329,17 @@ Einstein, however, made his hypothesis objective. The hypothesis is something"</
                     <a href="https://x.com/QuotePopper/status/2067568499921186855" target="_blank">View original post on X &rarr;</a>
                 </div>
             </div>
-            <div class="section-title">@realmrsthatcher</div>
+            
+        <div class="section-header">
+            <img class="avatar" src="https://pbs.twimg.com/profile_images/1530858925981319169/Bc8YMnz2_normal.jpg" alt="Margaret Thatcher">
+            <div class="user-names">
+                <span class="display-name">Margaret Thatcher</span>
+                <a class="handle-link" href="https://x.com/realmrsthatcher" target="_blank">@realmrsthatcher</a>
+            </div>
+        </div>
+        
             <div class="post-card">
                 <div class="post-header">
-                    <span class="handle">@realmrsthatcher</span>
                     <span class="post-date">June 22, 2026</span>
                 </div>
                 <div class="post-content">"Let me emphasise this point: I do not believe in weak government, but rather strong and limited government. Government must be strong to uphold the rule of law, strong to hold the ring against cartels and monopolies, strong to keep the finances sound, strong to set an affordable"</div>
@@ -301,7 +354,6 @@ Einstein, however, made his hypothesis objective. The hypothesis is something"</
             
             <div class="post-card">
                 <div class="post-header">
-                    <span class="handle">@realmrsthatcher</span>
                     <span class="post-date">June 21, 2026</span>
                 </div>
                 <div class="post-content">"If you take strong action and it is very different action from what your country has known before...you can only be confident that your action is right if it is founded on strong principles.
