@@ -342,6 +342,117 @@
             margin-bottom: 12px;
             display: block;
         }
+
+        /* Essay tab custom styling */
+        .essay-container {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        .essay-card {
+            background-color: var(--color-card-bg);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: var(--shadow-card);
+            border: 1px solid var(--color-border);
+        }
+
+        .essay-header {
+            border-bottom: 1px solid var(--color-border);
+            padding-bottom: 24px;
+            margin-bottom: 32px;
+        }
+
+        .essay-tag {
+            display: inline-block;
+            background-color: #fff0f2;
+            color: var(--color-brand-red);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 6px 12px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+        }
+
+        .essay-header h2 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            line-height: 1.25;
+            letter-spacing: -1px;
+            margin: 0 0 16px 0;
+            color: var(--color-text-primary);
+        }
+
+        .essay-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.88rem;
+            color: var(--color-text-secondary);
+            font-weight: 500;
+            flex-wrap: wrap;
+        }
+
+        .meta-divider {
+            color: var(--color-border);
+        }
+
+        .essay-body {
+            font-size: 1.05rem;
+            line-height: 1.75;
+            color: var(--color-text-primary);
+        }
+
+        .essay-body p {
+            margin: 0 0 24px 0;
+        }
+
+        .essay-body h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin: 40px 0 16px 0;
+            color: var(--color-text-primary);
+        }
+
+        .essay-body h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 24px 0 12px 0;
+            color: var(--color-text-primary);
+        }
+
+        .essay-quote {
+            border-left: 4px solid var(--color-brand-red);
+            padding: 8px 0 8px 24px;
+            margin: 0 0 32px 0;
+            font-style: italic;
+            color: var(--color-text-secondary);
+            font-size: 1.15rem;
+            line-height: 1.6;
+        }
+
+        .essay-body ul {
+            margin: 0 0 24px 0;
+            padding-left: 24px;
+        }
+
+        .essay-body li {
+            margin-bottom: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .essay-card {
+                padding: 24px;
+                border-radius: 16px;
+            }
+            .essay-header h2 {
+                font-size: 1.75rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -370,39 +481,40 @@
 
         <!-- Airbnb Category Pillbar -->
         <div class="category-row">
-            <div class="category-pill active">
+            <div class="category-pill active" data-tab="rationalism">
                 <span class="category-icon">💡</span>
                 <span>Rationalism</span>
             </div>
-            <div class="category-pill">
+            <div class="category-pill" data-tab="ai-mind">
+                <span class="category-icon">🤖</span>
+                <span>AI & Mind</span>
+            </div>
+            <div class="category-pill" data-tab="libertarianism">
                 <span class="category-icon">🗽</span>
                 <span>Libertarianism</span>
                 <span class="coming-soon">Coming Soon</span>
             </div>
-            <div class="category-pill">
+            <div class="category-pill" data-tab="epistemology">
                 <span class="category-icon">🧬</span>
                 <span>Epistemology</span>
                 <span class="coming-soon">Coming Soon</span>
             </div>
-            <div class="category-pill">
+            <div class="category-pill" data-tab="governance">
                 <span class="category-icon">🏛️</span>
                 <span>Governance</span>
                 <span class="coming-soon">Coming Soon</span>
             </div>
-            <div class="category-pill">
-                <span class="category-icon">🤖</span>
-                <span>AI & mind</span>
-                <span class="coming-soon">Coming Soon</span>
-            </div>
-            <div class="category-pill">
+            <div class="category-pill" data-tab="progress">
                 <span class="category-icon">📈</span>
                 <span>Progress</span>
                 <span class="coming-soon">Coming Soon</span>
             </div>
         </div>
 
-        <div class="listings-grid">
-            
+        <!-- Rationalism Tab Content -->
+        <div id="tab-rationalism" class="tab-content" style="display: block;">
+            <div class="listings-grid">
+                
         <div class="listing-card">
             <div class="card-profile-header">
                 <img class="profile-img" src="https://pbs.twimg.com/profile_images/1530858925981319169/Bc8YMnz2_normal.jpg" alt="Margaret Thatcher">
@@ -625,6 +737,78 @@ If any other disease killed 110,000 people a day, we’d call it an apocalypse a
             </div>
         </div>
         
+            </div>
+        </div>
+
+        <!-- AI & Mind Tab Content -->
+        <div id="tab-ai-mind" class="tab-content" style="display: none;">
+            <div class="essay-container">
+                <article class="essay-card">
+                    <div class="essay-header">
+                        <span class="essay-tag">Featured Essay</span>
+                        <h2>Thoughts on Anthropic: Decoupled Epistemic Environments</h2>
+                        <div class="essay-meta">
+                            <span class="author-badge">✍️ Shubham Mehrish</span>
+                            <span class="meta-divider">•</span>
+                            <span class="date-badge">📅 June 28, 2026</span>
+                            <span class="meta-divider">•</span>
+                            <span class="read-time">⏱️ 5 min read</span>
+                        </div>
+                    </div>
+                    
+                    <div class="essay-body">
+                        <div class="essay-quote">
+                            <p>To understand a decoupled epistemic environment, we must first define what an epistemic environment is. It is the system of rules, incentives, cultural norms, and physical infrastructure through which a group of people generates, tests, filters, and establishes knowledge. It is the practical framework for Deutsch’s "error-correction engine."</p>
+                        </div>
+                        
+                        <p>When we say an epistemic environment is decoupled, we mean that the rules for determining "truth" and making progress inside the laboratory are insulated from—and often run entirely counter to—the rules of engagement used by the parent organization in the public, political, and financial spheres.</p>
+                        
+                        <p>Here is an exploration of how this decoupling function works, why it is necessary, and the mechanisms that sustain it.</p>
+                        
+                        <h3>The Incompatibility of Public and Scientific Protocols</h3>
+                        <p>The necessity for decoupling arises because the public sphere and the scientific sphere operate on fundamentally incompatible epistemic protocols:</p>
+                        <ul>
+                            <li><strong>The Public/Political Protocol (Persuasion and Power):</strong> In Washington, on social media, and in boardrooms, the goal is narrative control, persuasion, resource acquisition (capital/GPUs), and regulatory capture. Error correction in this domain is highly penalized—admitting a mistake or changing a stance is viewed as a PR disaster or political weakness. Ideas are judged by their utility to the organization's survival and dominance.</li>
+                            <li><strong>The Scientific Protocol (Criticism and Refutation):</strong> In the lab, the goal is to discover how physical systems (like neural networks) actually behave. The primary tool is refutation. Theories must be subjected to brutal criticism and compared against empirical data. If a researcher cannot freely admit they are wrong or challenge the consensus, knowledge creation halts.</li>
+                        </ul>
+                        <p>If these two environments are coupled—meaning the political dogmas of the C-suite dictate the scientific hypotheses allowed in the lab—the lab’s error-correction engine breaks. The science becomes dogmatic, politicized, and ultimately unproductive.</p>
+                        
+                        <h3>Historical Precedents: The "Protected Bubble" Model</h3>
+                        <p>Decoupled epistemic environments are not unique to AI; they have been the secret engine of almost every major technological leap in modern history:</p>
+                        <ul>
+                            <li><strong>Bell Labs (AT&T):</strong> On the outside, AT&T was a heavily regulated, plodding telecommunications monopoly engaged in intense lobbying and antitrust battles with the US government. Yet, the leadership deliberately decoupled Bell Labs from this corporate reality. Researchers like Claude Shannon and John Bardeen were given complete intellectual freedom, massive resources, and a pure truth-seeking culture, resulting in the transistor, information theory, and modern physics breakthroughs.</li>
+                            <li><strong>Los Alamos (The Manhattan Project):</strong> Externally, the project was governed by rigid, authoritarian military secrecy, high-stakes geopolitics, and top-down command under General Leslie Groves. Internally, J. Robert Oppenheimer fought intensely to keep the scientific colloquium completely open. Within the technical meetings, military rank was ignored, and junior physicists could freely tell Nobel laureates they were wrong. Oppenheimer decoupled the scientific inquiry from the military hierarchy.</li>
+                        </ul>
+                        
+                        <h3>The Mechanisms of Decoupling at Anthropic</h3>
+                        <p>How does an organization like Anthropic maintain this division practically? It employs several structural "shock absorbers":</p>
+                        
+                        <h4>The Executive "Heat Sink"</h4>
+                        <p>The executive team (e.g., the Amodei siblings) acts as a literal "heat sink" or buffer. They absorb the high-temperature friction of public hearings, safety panels, safety narratives, and investor demands, allowing the research team to work in a cool, low-friction environment.</p>
+                        
+                        <h4>The Two Dialects</h4>
+                        <p>The organization maintains two different languages for the same technical concepts:</p>
+                        <ul>
+                            <li><strong>The External Dialect (The "Safety" Narrative):</strong> Used in white papers, policy briefs, and Senate testimonies. It speaks of "existential risk," "catastrophic harm," "guardrails," and "safe deployment." This dialect is calibrated to appeal to regulators and the public.</li>
+                            <li><strong>The Internal Dialect (Mechanistic Reality):</strong> Used by researchers on the floor. They do not talk about "saving the world" when debugging a loss spike. They talk about "gradient hacking," "superposition," "steerability features," "activation patching," and "loss curves." To them, "safety" is a suite of elegant engineering constraints, not a moral crusade.</li>
+                        </ul>
+                        
+                        <h4>Institutional Firewalls</h4>
+                        <p>In highly functional research labs, there is a literal and social firewall between the "Policy/PR" team and the "Technical/Science" team. Researchers are discouraged from spending their focus on external Twitter beefs or political lobbying, and policy staff are not allowed to peer-pressure researchers into tailoring their empirical results to fit a preferred policy narrative.</p>
+                        
+                        <h3>The Fragility and Failure Modes of Decoupling</h3>
+                        <p>Crucially, a decoupled epistemic environment is an unstable thermodynamic state. It requires constant energy to maintain and is highly vulnerable to decay. There are two primary failure modes:</p>
+                        <ul>
+                            <li><strong>Epistemic Seepage (The Inside-Out Failure):</strong> This occurs when the political/PR dogmas of the C-suite start leaking through the firewall and corrupting the lab's culture. If researchers begin self-censoring their findings because those findings contradict the "doomer" or "regulatory capture" narrative of the leadership, the lab’s capacity for correction collapses.</li>
+                            <li><strong>Executive Capture (The Outside-In Failure):</strong> If the researchers become so outraged or distracted by the leadership's public posturing that they turn their creative energy toward internal political activism, unionization battles, or public whistleblowing, the "quiet sanctuary" of the lab is shattered. The external culture war swallows the research environment whole.</li>
+                        </ul>
+                        
+                        <h3>Contextual Conclusion</h3>
+                        <p>When critics ask, "How can brilliant people work for a leader who engages in doomer marketing?" they are assuming a coupled world where a researcher's identity is fully integrated with their company's corporate lobbying strategies.</p>
+                        <p>In a decoupled reality, the researcher is making a deeply rational trade-off: they are trading the minor annoyance of external corporate theater for the rarest and most valuable commodity in the world—a quiet room full of brilliant peers, backed by a multi-billion-dollar supercomputer, where they are allowed to relentlessly seek the truth about the nature of intelligence.</p>
+                    </div>
+                </article>
+            </div>
         </div>
     </div>
 
@@ -634,6 +818,33 @@ If any other disease killed 110,000 people a day, we’d call it an apocalypse a
         <p style="font-size: 0.75rem;">Optimized with Airbnb Cereal tokens via DM Sans</p>
     </footer>
     <script>
+        // Tab Switching logic
+        const tabs = document.querySelectorAll('.category-pill');
+        const tabContents = {
+            'rationalism': document.getElementById('tab-rationalism'),
+            'ai-mind': document.getElementById('tab-ai-mind')
+        };
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', (e) => {
+                const targetTab = tab.getAttribute('data-tab');
+                if (!targetTab || !tabContents[targetTab]) return; // ignore disabled/coming soon tabs
+                
+                // Remove active class from all tabs
+                tabs.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Hide all tab contents
+                Object.values(tabContents).forEach(content => {
+                    if (content) content.style.display = 'none';
+                });
+                
+                // Show target tab content
+                tabContents[targetTab].style.display = 'block';
+            });
+        });
+
         // Web Share API implementation
         const shareBtn = document.getElementById('share-trigger');
         const shareBadge = document.getElementById('share-badge');
