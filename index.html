@@ -444,6 +444,54 @@
             margin-bottom: 12px;
         }
 
+        /* Quoted Tweet Box for Reposts */
+        .quoted-tweet-box {
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 12px 16px;
+            margin-bottom: 16px;
+            background-color: #fafafa;
+        }
+        .quoted-handle {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin-bottom: 4px;
+            display: block;
+        }
+        .quoted-text {
+            font-size: 0.8rem;
+            color: var(--color-text-secondary);
+            margin: 0;
+            font-style: italic;
+        }
+
+        /* Summary & Explanation Component */
+        .summary-explanation-section {
+            background-color: #f7f7f7;
+            border-radius: 12px;
+            padding: 12px 16px;
+            margin-bottom: 16px;
+            flex-grow: 1;
+            border-left: 3px solid var(--color-brand-red);
+        }
+        .summary-explanation-tag {
+            font-size: 0.69rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--color-brand-red);
+            margin-bottom: 4px;
+            display: block;
+        }
+        .summary-explanation-text {
+            font-size: 0.88rem;
+            font-weight: 500;
+            line-height: 1.5;
+            color: var(--color-text-primary);
+            margin: 0;
+        }
+
         @media (max-width: 768px) {
             .essay-card {
                 padding: 24px;
@@ -489,10 +537,9 @@
                 <span class="category-icon">🤖</span>
                 <span>AI & Mind</span>
             </div>
-            <div class="category-pill" data-tab="libertarianism">
-                <span class="category-icon">🗽</span>
-                <span>Libertarianism</span>
-                <span class="coming-soon">Coming Soon</span>
+            <div class="category-pill" data-tab="applied-optimism">
+                <span class="category-icon">✨</span>
+                <span>Applied Optimism</span>
             </div>
             <div class="category-pill" data-tab="epistemology">
                 <span class="category-icon">🧬</span>
@@ -517,6 +564,79 @@
                 
         <div class="listing-card">
             <div class="card-profile-header">
+                <img class="profile-img" src="https://pbs.twimg.com/profile_images/1977979925635215360/G3HAlSxE_normal.jpg" alt="Arjun Khemani">
+                <div class="profile-info">
+                    <span class="profile-name">Arjun Khemani</span>
+                    <a class="profile-handle" href="https://x.com/arjunkhemani" target="_blank">@arjunkhemani</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="post-date-badge">🗓️ Published on July 01, 2026</div>
+                <p class="post-text-content">"My conversation with David D. Friedman, anarcho-capitalist, author of The Machinery of Freedom, Future Imperfect, and several other books.
+
+Timestamps:
+0:00 – The economics of longevity
+8:05 – Epigenetic reprogramming
+12:37 – Overpopulation and the “ultimate resource”
+16:33 – https://t.co/fgLdypAsq1"</p>
+                
+                <div class="takeaway-section">
+                    <span class="takeaway-tag">🔑 Key Takeaway</span>
+                    <p class="takeaway-text">Friedman's work, particularly 'Future Imperfect' and 'The Machinery of Freedom', highlights the open-ended nature of human problem-solving. Issues like aging or resource constraints are not permanent, tragic limits, but temporary deficits of knowledge. Fostering a dynamic, free-market ecosystem of trial and error is our most powerful methodology to unleash the 'ultimate resource'—human creativity.</p>
+                </div>
+                
+                <a class="cta-view-btn" href="https://x.com/arjunkhemani/status/2072299901585920287" target="_blank">View on X</a>
+            </div>
+        </div>
+        
+        <div class="listing-card">
+            <div class="card-profile-header">
+                <img class="profile-img" src="https://pbs.twimg.com/profile_images/1599154524459241472/7RQWUjkC_normal.jpg" alt="Brett Hall (ToK Teacher)">
+                <div class="profile-info">
+                    <span class="profile-name">Brett Hall (ToK Teacher)</span>
+                    <a class="profile-handle" href="https://x.com/ToKTeacher" target="_blank">@ToKTeacher</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="post-date-badge">🗓️ Published on July 01, 2026</div>
+                <p class="post-text-content">"Why would they write this?! They're supposed to be a serious outfit, aren't they?
+
+Life does not defy the second law of thermodynamics. https://t.co/GMUIb1rGgC"</p>
+                
+                <div class="takeaway-section">
+                    <span class="takeaway-tag">🔑 Key Takeaway</span>
+                    <p class="takeaway-text">Life is not a miracle that somehow 'violates' or 'defies' the second law of thermodynamics; rather, it is a physical process that uses stored knowledge to channel energy and construct highly improbable, ordered structures. Describing life as defying natural laws is an unscientific error. In reality, life is the ultimate expression of how knowledge can locally decrease entropy and create order, fully consistent with physical laws.</p>
+                </div>
+                
+                <a class="cta-view-btn" href="https://x.com/ToKTeacher/status/2072288996617810299" target="_blank">View on X</a>
+            </div>
+        </div>
+        
+        <div class="listing-card">
+            <div class="card-profile-header">
+                <img class="profile-img" src="https://pbs.twimg.com/profile_images/1599154524459241472/7RQWUjkC_normal.jpg" alt="Brett Hall (ToK Teacher)">
+                <div class="profile-info">
+                    <span class="profile-name">Brett Hall (ToK Teacher)</span>
+                    <a class="profile-handle" href="https://x.com/ToKTeacher" target="_blank">@ToKTeacher</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="post-date-badge">🗓️ Published on July 01, 2026</div>
+                <p class="post-text-content">"@ApoStructura Pure prophecy. It assumes, among much else, no other discoveries in the science of energy are made before we start putting arrays like that in orbit.
+
+Any number of technologies invented in the next few years could make that plan redundant."</p>
+                
+                <div class="takeaway-section">
+                    <span class="takeaway-tag">🔑 Key Takeaway</span>
+                    <p class="takeaway-text">Planning for the distant future based on current technological limitations is a form of 'prophecy' that ignores the growth of knowledge. We cannot predict what we will discover tomorrow, and acting as if future technology is static leads to massive, redundant, and obsolete projects. Progress is unpredictable and dynamic, and good policies must remain open to error-correction and new discoveries.</p>
+                </div>
+                
+                <a class="cta-view-btn" href="https://x.com/ToKTeacher/status/2072367757807816781" target="_blank">View on X</a>
+            </div>
+        </div>
+        
+        <div class="listing-card">
+            <div class="card-profile-header">
                 <img class="profile-img" src="https://pbs.twimg.com/profile_images/925701269041401857/ff6NE-H-_normal.jpg" alt="David Deutsch">
                 <div class="profile-info">
                     <span class="profile-name">David Deutsch</span>
@@ -524,12 +644,12 @@
                 </div>
             </div>
             <div class="card-body">
-                <div class="post-date-badge">🗓️ Published on July 1, 2026</div>
+                <div class="post-date-badge">🗓️ Published on July 01, 2026</div>
                 <p class="post-text-content">"Is this an unpopular view?: Nazi Germany had no realistic chance of conquering Britain or the Soviet Union, let alone both at once. It was doomed from the outset, absent the possibility of unnecessary capitulation."</p>
                 
                 <div class="takeaway-section">
                     <span class="takeaway-tag">🔑 Key Takeaway</span>
-                    <p class="takeaway-text">Authoritarian regimes are fundamentally fragile because they suppress the very mechanism of progress: error correction and the free creation of knowledge. Open societies, while appearing chaotic, possess an inexhaustible capacity for problem-solving and adaptation. Dictatorships are thus dynamically unstable and doomed from the outset when faced with resolute, free societies that refuse to preemptively capitulate.</p>
+                    <p class="takeaway-text">This highlights the role of optimistic agency versus determinism and historical myths. Authoritarian systems are fundamentally fragile because they lack the error-correcting mechanisms of free societies. The myth of their invincibility persists because it serves political narratives, but knowledge and open systems are inherently more resilient.</p>
                 </div>
                 
                 <a class="cta-view-btn" href="https://x.com/DavidDeutschOxf/status/2072265129471652021" target="_blank">View on X</a>
@@ -545,61 +665,17 @@
                 </div>
             </div>
             <div class="card-body">
-                <div class="post-date-badge">🗓️ Published on July 1, 2026</div>
+                <div class="post-date-badge">🗓️ Published on July 01, 2026</div>
                 <p class="post-text-content">"I am very conscious that the only authority that we have is the authority given to us by the ballot box.
 
-It has rightly been said that it is the character of a people which determines the institutions which govern them, and not the institutions which give people their character."</p>
+It has rightly been said that it is the character of a people which determines the institutions which govern them, and not the institutions which give people their character. https://t.co/klUTNDG8MJ"</p>
                 
                 <div class="takeaway-section">
                     <span class="takeaway-tag">🔑 Key Takeaway</span>
-                    <p class="takeaway-text">The stability and progress of a society do not originate from its formal institutions, but from the cultural ideas, values, and character of the individuals who inhabit it. Institutions are merely reflections of the underlying knowledge and consensus of the population. Therefore, maintaining a free society requires nurturing the philosophical and moral principles of liberty within the citizenry, rather than relying on structural governance alone to preserve them.</p>
+                    <p class="takeaway-text">Good institutions do not magically produce a functional society on their own; they are maintained and enlivened by the critical spirit, values, and problem-solving culture of the people within them. In Popperian terms, institutions are like fortresses: they must be well-designed, but they are only as good as the garrison manning them.</p>
                 </div>
                 
                 <a class="cta-view-btn" href="https://x.com/realmrsthatcher/status/2072202289977209014" target="_blank">View on X</a>
-            </div>
-        </div>
-        
-        <div class="listing-card">
-            <div class="card-profile-header">
-                <img class="profile-img" src="https://pbs.twimg.com/profile_images/1599154524459241472/7RQWUjkC_normal.jpg" alt="Brett Hall (ToK Teacher)">
-                <div class="profile-info">
-                    <span class="profile-name">Brett Hall (ToK Teacher)</span>
-                    <a class="profile-handle" href="https://x.com/ToKTeacher" target="_blank">@ToKTeacher</a>
-                </div>
-            </div>
-            <div class="card-body">
-                <div class="post-date-badge">🗓️ Published on June 30, 2026</div>
-                <p class="post-text-content">"@itsmyname591 @electriquebody @Martina Gender and sexuality are behaviours caused by ideas in the mind. Sex is a property of sexually reproducing species and is the explanation of how they propagate.
-
-The so called “trans issue” tends to conflate all of this. It’s upon the activist (either side) to explain themselves."</p>
-                
-                <div class="takeaway-section">
-                    <span class="takeaway-tag">🔑 Key Takeaway</span>
-                    <p class="takeaway-text">A fundamental distinction exists between biological properties (sex) and mental/memetic configurations (ideas in the mind, which govern behavior like gender and sexuality). Conflating the physical with the behavioral leads to category errors and bad explanations. Progress requires separating objective biological explanations from the theories, choices, and ideas held by individuals, which can be criticized, improved, and varied.</p>
-                </div>
-                
-                <a class="cta-view-btn" href="https://x.com/ToKTeacher/status/2072008660226887802" target="_blank">View on X</a>
-            </div>
-        </div>
-        
-        <div class="listing-card">
-            <div class="card-profile-header">
-                <img class="profile-img" src="https://pbs.twimg.com/profile_images/925701269041401857/ff6NE-H-_normal.jpg" alt="David Deutsch">
-                <div class="profile-info">
-                    <span class="profile-name">David Deutsch</span>
-                    <a class="profile-handle" href="https://x.com/DavidDeutschOxf" target="_blank">@DavidDeutschOxf</a>
-                </div>
-            </div>
-            <div class="card-body">
-                <div class="post-date-badge">🗓️ Published on June 30, 2026</div>
-                <p class="post-text-content">"@BishopBarron There are many sources of morality but none is authoritative. (Special case of Popper's take on knowledge.)"</p>
-                
-                <div class="takeaway-section">
-                    <span class="takeaway-tag">🔑 Key Takeaway</span>
-                    <p class="takeaway-text">Just as there are no authoritative sources of scientific knowledge, there are no authoritative sources of moral knowledge. Morality is objective, but our understanding of it is fallible and must be discovered through the active creation of explanatory conjectures, subjected to criticism and experimental living. Expecting an authoritative source of morality is a category error that leads to dogma rather than genuine moral growth.</p>
-                </div>
-                
-                <a class="cta-view-btn" href="https://x.com/DavidDeutschOxf/status/2071995956359291101" target="_blank">View on X</a>
             </div>
         </div>
         
@@ -613,102 +689,14 @@ The so called “trans issue” tends to conflate all of this. It’s upon the a
             </div>
             <div class="card-body">
                 <div class="post-date-badge">🗓️ Published on June 30, 2026</div>
-                <p class="post-text-content">"Never be bewitched by public opinion polls. They change very quickly. Set out your political principles, explain what you believe and why, the policies which flow from them, and how you're going to implement them."</p>
+                <p class="post-text-content">"Never be bewitched by public opinion polls. They change very quickly. Set out your political principles, explain what you believe and why, the policies which flow from them, and how you're going to implement them. https://t.co/EBwB4yTNRM"</p>
                 
                 <div class="takeaway-section">
                     <span class="takeaway-tag">🔑 Key Takeaway</span>
-                    <p class="takeaway-text">Effective leadership relies on offering bold explanatory theories and explicit principles rather than passively reflecting current public opinion. Progress in society occurs through proposing bold conjectures, explaining their mechanics, and subjecting them to the test of reality.</p>
+                    <p class="takeaway-text">Rather than passive trend-following (like polls), political leadership should be about articulating clear, explanatory principles and subjecting them to public debate and criticism. True progress comes from proposing bold conjectures (policies) and explaining their underlying rationale, inviting the public to judge their substance.</p>
                 </div>
                 
                 <a class="cta-view-btn" href="https://x.com/realmrsthatcher/status/2071839901943779474" target="_blank">View on X</a>
-            </div>
-        </div>
-        
-        <div class="listing-card">
-            <div class="card-profile-header">
-                <img class="profile-img" src="https://pbs.twimg.com/profile_images/1977979925635215360/G3HAlSxE_normal.jpg" alt="Arjun Khemani">
-                <div class="profile-info">
-                    <span class="profile-name">Arjun Khemani</span>
-                    <a class="profile-handle" href="https://x.com/arjunkhemani" target="_blank">@arjunkhemani</a>
-                </div>
-            </div>
-            <div class="card-body">
-                <div class="post-date-badge">🗓️ Published on June 29, 2026</div>
-                <p class="post-text-content">"People think capitalism is restrictive because it puts a price on everything.
-
-But the price system is why there is anything worth buying in the first place.
-
-Without it, you wouldn’t be broadcasting socialist propaganda across the planet from a glass brick made of silicon."</p>
-                
-                <div class="takeaway-section">
-                    <span class="takeaway-tag">🔑 Key Takeaway</span>
-                    <p class="takeaway-text">The price system is not a set of restrictive chains but a highly sophisticated, decentralized mechanism for discovering and coordinating human knowledge. It enables the collaborative creation of complex solutions that no single centralized planner could ever compute or conceptualize.</p>
-                </div>
-                
-                <a class="cta-view-btn" href="https://x.com/arjunkhemani/status/2071545311961784516" target="_blank">View on X</a>
-            </div>
-        </div>
-        
-        <div class="listing-card">
-            <div class="card-profile-header">
-                <img class="profile-img" src="https://pbs.twimg.com/profile_images/1599154524459241472/7RQWUjkC_normal.jpg" alt="Brett Hall (ToK Teacher)">
-                <div class="profile-info">
-                    <span class="profile-name">Brett Hall (ToK Teacher)</span>
-                    <a class="profile-handle" href="https://x.com/ToKTeacher" target="_blank">@ToKTeacher</a>
-                </div>
-            </div>
-            <div class="card-body">
-                <div class="post-date-badge">🗓️ Published on June 29, 2026</div>
-                <p class="post-text-content">"Can real things be made of not-real things?"</p>
-                
-                <div class="takeaway-section">
-                    <span class="takeaway-tag">🔑 Key Takeaway</span>
-                    <p class="takeaway-text">Reductionism fails because emergent, high-level phenomena are objectively real and possess unique explanatory power. A complete explanation of reality cannot reduce everything to its physical constituents without losing the true causal structure of the universe.</p>
-                </div>
-                
-                <a class="cta-view-btn" href="https://x.com/ToKTeacher/status/2071597621605724375" target="_blank">View on X</a>
-            </div>
-        </div>
-        
-        <div class="listing-card">
-            <div class="card-profile-header">
-                <img class="profile-img" src="https://pbs.twimg.com/profile_images/1256841238298292232/ycqwaMI2_normal.jpg" alt="Naval Ravikant">
-                <div class="profile-info">
-                    <span class="profile-name">Naval Ravikant</span>
-                    <a class="profile-handle" href="https://x.com/naval" target="_blank">@naval</a>
-                </div>
-            </div>
-            <div class="card-body">
-                <div class="post-date-badge">🗓️ Published on June 25, 2026</div>
-                <p class="post-text-content">"If AI is doing the writing, it should do the reading too."</p>
-                
-                <div class="takeaway-section">
-                    <span class="takeaway-tag">🔑 Key Takeaway</span>
-                    <p class="takeaway-text">Communication is a process of active conjecture and criticism. Delegating both formulation and reception to automated systems risks short-circuiting the human intellectual loops required to actually generate and understand new knowledge.</p>
-                </div>
-                
-                <a class="cta-view-btn" href="https://x.com/naval/status/2069994029593543005" target="_blank">View on X</a>
-            </div>
-        </div>
-        
-        <div class="listing-card">
-            <div class="card-profile-header">
-                <img class="profile-img" src="https://pbs.twimg.com/profile_images/1256841238298292232/ycqwaMI2_normal.jpg" alt="Naval Ravikant">
-                <div class="profile-info">
-                    <span class="profile-name">Naval Ravikant</span>
-                    <a class="profile-handle" href="https://x.com/naval" target="_blank">@naval</a>
-                </div>
-            </div>
-            <div class="card-body">
-                <div class="post-date-badge">🗓️ Published on June 24, 2026</div>
-                <p class="post-text-content">"Great products are not so much invented as discovered."</p>
-                
-                <div class="takeaway-section">
-                    <span class="takeaway-tag">🔑 Key Takeaway</span>
-                    <p class="takeaway-text">True creation is an act of uncovering objective, pre-existing structural realities, aligning solutions with deep, universal principles and constraints rather than merely imposing arbitrary designs.</p>
-                </div>
-                
-                <a class="cta-view-btn" href="https://x.com/naval/status/2069911787911495948" target="_blank">View on X</a>
             </div>
         </div>
         
@@ -772,7 +760,7 @@ Without it, you wouldn’t be broadcasting socialist propaganda across the plane
                         <p>In highly functional research labs, there is a literal and social firewall between the "Policy/PR" team and the "Technical/Science" team. Researchers are discouraged from spending their focus on external Twitter beefs or political lobbying, and policy staff are not allowed to peer-pressure researchers into tailoring their empirical results to fit a preferred policy narrative.</p>
                         
                         <h3>The Fragility and Failure Modes of Decoupling</h3>
-                        <p>Crucially, a decoupled epistemic environment is an unstable thermodynamic state. It requires constant energy to maintain and is highly vulnerable to decay. There are two primary failure modes:</p>
+                        <p>Crucially, a decoupled epistemic environment is unstable. It requires constant energy to maintain and is highly vulnerable to decay. There are two primary failure modes:</p>
                         <ul>
                             <li><strong>Epistemic Seepage (The Inside-Out Failure):</strong> This occurs when the political/PR dogmas of the C-suite start leaking through the firewall and corrupting the lab's culture. If researchers begin self-censoring their findings because those findings contradict the "doomer" or "regulatory capture" narrative of the leadership, the lab’s capacity for correction collapses.</li>
                             <li><strong>Executive Capture (The Outside-In Failure):</strong> If the researchers become so outraged or distracted by the leadership's public posturing that they turn their creative energy toward internal political activism, unionization battles, or public whistleblowing, the "quiet sanctuary" of the lab is shattered. The external culture war swallows the research environment whole.</li>
@@ -785,6 +773,280 @@ Without it, you wouldn’t be broadcasting socialist propaganda across the plane
                 </article>
             </div>
         </div>
+
+        <!-- Applied Optimism Tab Content -->
+        <div id="tab-applied-optimism" class="tab-content" style="display: none;">
+            <div class="listings-grid">
+                
+        <div class="listing-card">
+            <div class="card-profile-header">
+                <img class="profile-img" src="https://pbs.twimg.com/profile_images/1953898052135075840/NUrumvTe_normal.jpg" alt="Conjecture Institute">
+                <div class="profile-info">
+                    <span class="profile-name">Conjecture Institute</span>
+                    <a class="profile-handle" href="https://x.com/ConjectureInst" target="_blank">@ConjectureInst</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="post-date-badge">🗓️ Published on July 01, 2026</div>
+                <p class="post-text-content">"Conjecture Institute Fellow @tomhyde_'s Philosophy of Wonderism
+ 
+If beauty is objective, then we really can make progress in the arts, both theoretically and practically.
+
+Theoretically, this means that our criteria for what we think is beautiful are improvable, and that our"</p>
+                
+            <div class="quoted-tweet-box">
+                <span class="quoted-handle">@tomhyde_</span>
+                <p class="quoted-text">"Special thanks to @arjunkhemani, @ecandell, and @dylntrnr—and to @ConjectureInst—for their initial support in getting me this far.
+
+Wonderful doesn't cut it. https://t.co/DmC4Pthprw"</p>
+            </div>
+            
+                
+                <div class="summary-explanation-section">
+                    <span class="summary-explanation-tag">⚡ Summary & Explanation</span>
+                    <p class="summary-explanation-text">A beautifully optimistic exploration of 'Wonderism,' suggesting that aesthetic standards are not merely subjective whims, but are objective truths that can be discovered, criticized, and systematically improved. By aligning artistic creation with the search for objective knowledge, it posits that we can achieve genuine, unbounded progress in the arts, just as we do in science and morality.</p>
+                </div>
+                
+                <a class="cta-view-btn" href="https://x.com/ConjectureInst/status/2072409411285393625" target="_blank">View on X</a>
+            </div>
+        </div>
+        
+        <div class="listing-card">
+            <div class="card-profile-header">
+                <img class="profile-img" src="https://pbs.twimg.com/profile_images/1953898052135075840/NUrumvTe_normal.jpg" alt="Conjecture Institute">
+                <div class="profile-info">
+                    <span class="profile-name">Conjecture Institute</span>
+                    <a class="profile-handle" href="https://x.com/ConjectureInst" target="_blank">@ConjectureInst</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="post-date-badge">🗓️ Published on July 01, 2026</div>
+                <p class="post-text-content">"@tomhyde_ @arjunkhemani @ecandell @dylntrnr Donate to Tom directly here: https://t.co/K8rjSNPCef
+
+Learn more about Tom's work: 
+
+Audio/Video:
+
+https://t.co/VJMxzfnCEl
+
+https://t.co/MMbC69QxFe
+
+https://t.co/47DwHbcp0L
+
+Page 25-26 of the Conjecture Institute Handbook:
+ https://t.co/t3tnm8ekyO"</p>
+                
+            <div class="quoted-tweet-box">
+                <span class="quoted-handle">@tomhyde_</span>
+                <p class="quoted-text">"Special thanks to @arjunkhemani, @ecandell, and @dylntrnr—and to @ConjectureInst—for their initial support in getting me this far.
+
+Wonderful doesn't cut it. https://t.co/DmC4Pthprw"</p>
+            </div>
+            
+                
+                <div class="summary-explanation-section">
+                    <span class="summary-explanation-tag">⚡ Summary & Explanation</span>
+                    <p class="summary-explanation-text">A follow-up resource-sharing post supporting Tom Hyde's research on Wonderism, showcasing the active cultivation of progress-oriented creators. This highlights how decentralized, philanthropic, and institutional support systems are essential to nurture critical rationalist thinkers who actively push the boundaries of current philosophy and aesthetics.</p>
+                </div>
+                
+                <a class="cta-view-btn" href="https://x.com/ConjectureInst/status/2072366605263056909" target="_blank">View on X</a>
+            </div>
+        </div>
+        
+        <div class="listing-card">
+            <div class="card-profile-header">
+                <img class="profile-img" src="https://pbs.twimg.com/profile_images/1953898052135075840/NUrumvTe_normal.jpg" alt="Conjecture Institute">
+                <div class="profile-info">
+                    <span class="profile-name">Conjecture Institute</span>
+                    <a class="profile-handle" href="https://x.com/ConjectureInst" target="_blank">@ConjectureInst</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="post-date-badge">🗓️ Published on July 01, 2026</div>
+                <p class="post-text-content">"A Saint Said
+
+A saint said "Let the perfect city rise.
+
+Here needs no long debate on subtleties,
+
+Means, end,
+
+Let us intend
+
+That all be clothed and fed; while one remains
+
+Hungry our quarreling but mocks his pains.
+
+So all will labor to the good
+
+In one phalanx of brotherhood.""</p>
+                
+            <div class="quoted-tweet-box">
+                <span class="quoted-handle">@arjunkhemani</span>
+                <p class="quoted-text">"My conversation with David D. Friedman, anarcho-capitalist, author of The Machinery of Freedom, Future Imperfect, and several other books.
+
+Timestamps:
+0:00 – The economics of longevity
+8:05 – Epigenetic reprogramming
+12:37 – Overpopulation and the “ultimate resource”
+16:33 – https://t.co/fgLdypAsq1"</p>
+            </div>
+            
+                
+                <div class="summary-explanation-section">
+                    <span class="summary-explanation-tag">⚡ Summary & Explanation</span>
+                    <p class="summary-explanation-text">A philosophical contrast of the simplistic, authoritarian desire for instant solutions versus the messy, incremental truth of real progress. It exposes the fallacy of the 'Saint' who demands a 'perfect city' without understanding that the 'subtleties'—the mechanisms of trial and error, freedom, and decentralized knowledge—are the only tools that can actually solve human suffering.</p>
+                </div>
+                
+                <a class="cta-view-btn" href="https://x.com/ConjectureInst/status/2072318743061946535" target="_blank">View on X</a>
+            </div>
+        </div>
+        
+        <div class="listing-card">
+            <div class="card-profile-header">
+                <img class="profile-img" src="https://pbs.twimg.com/profile_images/1953898052135075840/NUrumvTe_normal.jpg" alt="Conjecture Institute">
+                <div class="profile-info">
+                    <span class="profile-name">Conjecture Institute</span>
+                    <a class="profile-handle" href="https://x.com/ConjectureInst" target="_blank">@ConjectureInst</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="post-date-badge">🗓️ Published on July 01, 2026</div>
+                <p class="post-text-content">"RT @arjunkhemani: My conversation with David D. Friedman, anarcho-capitalist, author of The Machinery of Freedom, Future Imperfect, and sev..."</p>
+                
+            <div class="quoted-tweet-box">
+                <span class="quoted-handle">@arjunkhemani</span>
+                <p class="quoted-text">"My conversation with David D. Friedman, anarcho-capitalist, author of The Machinery of Freedom, Future Imperfect, and several other books.
+
+Timestamps:
+0:00 – The economics of longevity
+8:05 – Epigenetic reprogramming
+12:37 – Overpopulation and the “ultimate resource”
+16:33 – https://t.co/fgLdypAsq1"</p>
+            </div>
+            
+                
+                <div class="summary-explanation-section">
+                    <span class="summary-explanation-tag">⚡ Summary & Explanation</span>
+                    <p class="summary-explanation-text">A retweet of Arjun Khemani's interview with David D. Friedman, focusing on the economics of longevity, epigenetic reprogramming, and resource abundance. It exemplifies active optimism by looking at longevity and overpopulation through the lens of knowledge creation, showing how humans can solve any physical constraint given the right institutions of freedom.</p>
+                </div>
+                
+                <a class="cta-view-btn" href="https://x.com/ConjectureInst/status/2072302136826741016" target="_blank">View on X</a>
+            </div>
+        </div>
+        
+        <div class="listing-card">
+            <div class="card-profile-header">
+                <img class="profile-img" src="https://pbs.twimg.com/profile_images/1953898052135075840/NUrumvTe_normal.jpg" alt="Conjecture Institute">
+                <div class="profile-info">
+                    <span class="profile-name">Conjecture Institute</span>
+                    <a class="profile-handle" href="https://x.com/ConjectureInst" target="_blank">@ConjectureInst</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="post-date-badge">🗓️ Published on June 30, 2026</div>
+                <p class="post-text-content">"RT @dela3499: “Isn’t multiculturalism nice? Separate cultures good at different things? Won’t that be lost by interacting all the time, ave..."</p>
+                
+            <div class="quoted-tweet-box">
+                <span class="quoted-handle">@dela3499</span>
+                <p class="quoted-text">"“Isn’t multiculturalism nice? Separate cultures good at different things? Won’t that be lost by interacting all the time, averaging everything out?”
+
+No. Some ideas will go global, others will gutter, but new ideas-with-subcultures are always bubbling up in a dynamic society."</p>
+            </div>
+            
+                
+                <div class="summary-explanation-section">
+                    <span class="summary-explanation-tag">⚡ Summary & Explanation</span>
+                    <p class="summary-explanation-text">A retweet critiquing the static model of multiculturalism. It highlights that the free interaction of cultures doesn't result in a gray, averaged-out mediocrity. Instead, standard-setting, highly effective ideas spread globally, while obsolete ones decay, and human creativity continuously generates vibrant new ideas and subcultures under open, dynamic conditions.</p>
+                </div>
+                
+                <a class="cta-view-btn" href="https://x.com/ConjectureInst/status/2072062206489854269" target="_blank">View on X</a>
+            </div>
+        </div>
+        
+        <div class="listing-card">
+            <div class="card-profile-header">
+                <img class="profile-img" src="https://pbs.twimg.com/profile_images/1953898052135075840/NUrumvTe_normal.jpg" alt="Conjecture Institute">
+                <div class="profile-info">
+                    <span class="profile-name">Conjecture Institute</span>
+                    <a class="profile-handle" href="https://x.com/ConjectureInst" target="_blank">@ConjectureInst</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="post-date-badge">🗓️ Published on June 30, 2026</div>
+                <p class="post-text-content">"RT @maria__violaris: My talk at the Royal Institution about "5 ways to test the multiverse" is now out on YouTube!
+
+If you've ever thought..."</p>
+                
+            <div class="quoted-tweet-box">
+                <span class="quoted-handle">@maria__violaris</span>
+                <p class="quoted-text">"My talk at the Royal Institution about "5 ways to test the multiverse" is now out on YouTube!
+
+If you've ever thought the many-worlds theory of quantum mechanics is fundamentally untestable — it's time to think again.
+
+Along the way we cover the fundamentals of quantum science https://t.co/Sji66YSCER"</p>
+            </div>
+            
+                
+                <div class="summary-explanation-section">
+                    <span class="summary-explanation-tag">⚡ Summary & Explanation</span>
+                    <p class="summary-explanation-text">This retweet features a talk explaining how to scientifically test Everettian quantum mechanics. It embodies applied optimism in science, showing that ideas once deemed purely metaphysical or untestable can, through creative ingenuity and better explanations, be subjected to empirical trial and criticism, thus expanding the boundaries of our experimental capabilities.</p>
+                </div>
+                
+                <a class="cta-view-btn" href="https://x.com/ConjectureInst/status/2072028331252297807" target="_blank">View on X</a>
+            </div>
+        </div>
+        
+        <div class="listing-card">
+            <div class="card-profile-header">
+                <img class="profile-img" src="https://pbs.twimg.com/profile_images/1953898052135075840/NUrumvTe_normal.jpg" alt="Conjecture Institute">
+                <div class="profile-info">
+                    <span class="profile-name">Conjecture Institute</span>
+                    <a class="profile-handle" href="https://x.com/ConjectureInst" target="_blank">@ConjectureInst</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="post-date-badge">🗓️ Published on June 30, 2026</div>
+                <p class="post-text-content">"I'm going to sketch out the Socratic method.
+
+It begins in wonder...
+
+~Conjecture Institute Advisor @peterboghossian https://t.co/Sy3hup8190"</p>
+                
+                
+                <div class="summary-explanation-section">
+                    <span class="summary-explanation-tag">⚡ Summary & Explanation</span>
+                    <p class="summary-explanation-text">Emphasizes the Socratic method as the prime instrument of intellectual wonder and error-correction. Rather than dogmatic teaching or hostile debate, Socratic questioning starts from a position of curiosity to help individuals discover contradictions in their thinking, facilitating voluntary, active growth and intellectual progress.</p>
+                </div>
+                
+                <a class="cta-view-btn" href="https://x.com/ConjectureInst/status/2071979818644607164" target="_blank">View on X</a>
+            </div>
+        </div>
+        
+        <div class="listing-card">
+            <div class="card-profile-header">
+                <img class="profile-img" src="https://pbs.twimg.com/profile_images/1953898052135075840/NUrumvTe_normal.jpg" alt="Conjecture Institute">
+                <div class="profile-info">
+                    <span class="profile-name">Conjecture Institute</span>
+                    <a class="profile-handle" href="https://x.com/ConjectureInst" target="_blank">@ConjectureInst</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="post-date-badge">🗓️ Published on June 30, 2026</div>
+                <p class="post-text-content">"https://t.co/a8t0AUFkNM"</p>
+                
+                
+                <div class="summary-explanation-section">
+                    <span class="summary-explanation-tag">⚡ Summary & Explanation</span>
+                    <p class="summary-explanation-text">An announcement for Conjecture Con 2026, creating a critical hub for rationalists and optimists to gather. Such physical and digital spaces are essential for cultivating communities of universal explainers who can collectively critique ideas, build new technologies, and foster long-term cultural progress.</p>
+                </div>
+                
+                <a class="cta-view-btn" href="https://x.com/ConjectureInst/status/2071927983560851750" target="_blank">View on X</a>
+            </div>
+        </div>
+        
+            </div>
+        </div>
     </div>
 
     <footer>
@@ -792,12 +1054,14 @@ Without it, you wouldn’t be broadcasting socialist propaganda across the plane
         <p>© 2026 Karl's Briefing. Built with the Beginning of Infinity as our guide.</p>
         <p style="font-size: 0.75rem;">Optimized with Airbnb Cereal tokens via DM Sans</p>
     </footer>
+
     <script>
         // Tab Switching logic
         const tabs = document.querySelectorAll('.category-pill');
         const tabContents = {
             'rationalism': document.getElementById('tab-rationalism'),
-            'ai-mind': document.getElementById('tab-ai-mind')
+            'ai-mind': document.getElementById('tab-ai-mind'),
+            'applied-optimism': document.getElementById('tab-applied-optimism')
         };
 
         tabs.forEach(tab => {
