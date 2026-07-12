@@ -19,7 +19,6 @@
             --color-bright-blue: #2997ff;
             --color-card-dark: #1c1c1e;
             --color-card-light: #ffffff;
-            --color-nav-bg: rgba(22, 22, 23, 0.8);
             --font-stack: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             --font-stack-mono: 'SF Mono (system)', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
             --shadow-card: rgba(0, 0, 0, 0.1) 0px 4px 20px 0px;
@@ -42,83 +41,9 @@
             letter-spacing: -0.015em;
         }
 
-        /* Apple Glass Navigation Bar */
-        nav.apple-nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 48px;
-            background-color: var(--color-nav-bg);
-            backdrop-filter: saturate(180%) blur(20px);
-            -webkit-backdrop-filter: saturate(180%) blur(20px);
-            z-index: 9999;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .nav-container {
-            max-width: 980px;
-            height: 100%;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 22px;
-        }
-
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-        }
-
-        .nav-logo svg {
-            width: 16px;
-            height: 16px;
-            margin-right: 8px;
-            fill: #ffffff;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 24px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            font-size: 12px;
-            font-weight: 400;
-            transition: color 0.2s ease;
-        }
-
-        .nav-links a:hover {
-            color: #ffffff;
-        }
-
-        .nav-cta {
-            background-color: var(--color-apple-blue);
-            color: #ffffff !important;
-            padding: 4px 10px;
-            border-radius: 980px;
-            font-size: 11px !important;
-            font-weight: 500;
-            text-decoration: none;
-            transition: background-color 0.2s ease;
-        }
-
-        .nav-cta:hover {
-            background-color: #0077ed;
-        }
-
         /* Layout Sections - Alternating Cinematic Pacing */
         section {
-            padding: 100px 22px;
+            padding: 80px 22px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -153,7 +78,7 @@
             font-weight: 600;
             letter-spacing: 0.12em;
             color: var(--color-apple-blue);
-            margin-bottom: 12px;
+            margin-bottom: 16px;
             text-align: center;
         }
 
@@ -162,35 +87,41 @@
         }
 
         h1.hero-title {
-            font-size: 56px;
+            font-size: 48px;
             font-weight: 600;
-            line-height: 1.07;
+            line-height: 1.1;
             letter-spacing: -0.025em;
             text-align: center;
             margin-bottom: 24px;
         }
 
         h2.section-title {
-            font-size: 40px;
+            font-size: 34px;
             font-weight: 600;
-            line-height: 1.1;
+            line-height: 1.15;
             letter-spacing: -0.015em;
             margin-bottom: 16px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding-bottom: 8px;
+        }
+
+        .theme-dark h2.section-title {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         h3.subsection-title {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 600;
-            line-height: 1.15;
+            line-height: 1.2;
             letter-spacing: -0.01em;
             margin-top: 32px;
             margin-bottom: 12px;
         }
 
         p.hero-subtitle {
-            font-size: 21px;
+            font-size: 20px;
             font-weight: 400;
-            line-height: 1.19;
+            line-height: 1.25;
             letter-spacing: 0.011em;
             color: var(--color-text-muted-dark);
             text-align: center;
@@ -200,14 +131,14 @@
 
         p.body-text {
             font-size: 17px;
-            line-height: 1.47;
+            line-height: 1.5;
             letter-spacing: -0.015em;
             margin-bottom: 24px;
-            color: rgba(29, 29, 31, 0.8);
+            color: rgba(29, 29, 31, 0.82);
         }
 
         .theme-dark p.body-text {
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.82);
         }
 
         /* Grid Comparison Spec Sheet (Apple Compare Style) */
@@ -261,13 +192,13 @@
             border-radius: 18px;
             padding: 40px;
             box-shadow: var(--shadow-apple);
-            margin: 40px 0;
+            margin: 20px 0;
         }
 
         .abstract-text {
-            font-size: 19px;
+            font-size: 18px;
             font-weight: 300;
-            line-height: 1.45;
+            line-height: 1.5;
             letter-spacing: -0.01em;
             color: #1d1d1f;
             font-style: italic;
@@ -399,9 +330,9 @@
             display: inline-block;
             background-color: var(--color-apple-blue);
             color: #ffffff;
-            font-size: 17px;
+            font-size: 16px;
             font-weight: 400;
-            padding: 12px 24px;
+            padding: 10px 20px;
             border-radius: 980px;
             text-decoration: none;
             transition: background-color 0.2s ease, transform 0.2s ease;
@@ -444,8 +375,8 @@
             font-size: 14px;
             color: var(--color-text-muted-dark);
             text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
             padding: 20px 0;
         }
 
@@ -533,8 +464,8 @@
             flex-direction: column;
             justify-content: space-between;
             height: 180px;
-            width: 30px;
-            padding-right: 8px;
+            width: 40px;
+            padding-right: 12px;
             text-align: right;
             border-right: 1px solid rgba(255, 255, 255, 0.1);
         }
@@ -607,7 +538,7 @@
         .graph-x-axis {
             display: flex;
             justify-content: space-between;
-            padding-left: 50px;
+            padding-left: 60px;
             margin-top: 10px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding-top: 8px;
@@ -647,13 +578,10 @@
         /* Responsive Breakpoints */
         @media (max-width: 768px) {
             h1.hero-title {
-                font-size: 38px;
+                font-size: 34px;
             }
             h2.section-title {
-                font-size: 28px;
-            }
-            .nav-links {
-                display: none; /* simple collapse */
+                font-size: 26px;
             }
             .abstract-card {
                 padding: 24px;
@@ -666,39 +594,17 @@
                 gap: 20px;
             }
             section {
-                padding: 60px 16px;
+                padding: 50px 16px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Apple Sticky Navigation -->
-    <nav class="apple-nav">
-        <div class="nav-container">
-            <a href="#" class="nav-logo">
-                <svg viewBox="0 0 170 170">
-                    <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.34.13-9.13-1.92-14.37-6.15-3.23-2.61-7.14-7.23-11.75-13.86-5.13-7.41-9.23-15.65-12.28-24.72-3.05-9.07-4.58-18.06-4.58-26.98 0-14.73 3.86-26.88 11.58-36.45 7.72-9.58 17.58-14.37 29.58-14.37 4.92 0 10.15 1.25 15.71 3.74 5.56 2.5 9.07 3.75 10.53 3.75 1.25 0 4.8-1.31 10.65-3.93 5.85-2.62 10.74-3.87 14.67-3.74 13.9.75 24.5 5.92 31.81 15.5-12.11 7.37-18.04 17.13-17.79 29.28.26 9.87 4.04 18.07 11.36 24.6 7.32 6.53 15.71 10.13 25.18 10.8-2.12 6.46-4.91 12.86-8.36 19.2zm-22.31-98.81c.06-11.12-3.95-20.91-12.02-29.39 8.07-1.01 15.49 2.21 22.25 9.68 6.77 7.47 9.85 15.82 9.25 25.04-8.8.44-15.88-2.12-19.48-5.33z"/>
-                </svg>
-                Hermes Labs
-            </a>
-            <ul class="nav-links">
-                <li><a href="#overview">Overview</a></li>
-                <li><a href="#architecture">Architecture</a></li>
-                <li><a href="#data">Data Pipeline</a></li>
-                <li><a href="#finetuning">Fine-Tuning</a></li>
-                <li><a href="#agentic">Agentic Pivot</a></li>
-                <li><a href="#epistemology">Epistemology</a></li>
-                <li><a href="#deployment">Deployment</a></li>
-            </ul>
-            <a href="https://github.com/gopherkarl/x-briefing-pub" class="nav-cta">GitHub</a>
-        </div>
-    </nav>
-
-    <!-- Section 1: Hero Cover (Dark Cinematic) -->
-    <section class="theme-dark" style="padding-top: 150px; min-height: 100vh; justify-content: center;" id="overview">
+    <!-- Section 1: Hero Cover (Dark Cinematic - Blog Style, no nav bar) -->
+    <section class="theme-dark" style="padding-top: 100px; padding-bottom: 60px;">
         <div class="section-container">
-            <div class="overline">Project Briefing</div>
+            <div class="overline">Project Case Study</div>
             <h1 class="hero-title">Engineering Sandeep Bot</h1>
             <p class="hero-subtitle">
                 A 48-hour sprint in bilingual style mimicry, agentic orchestration, and Popperian error correction.
@@ -722,16 +628,11 @@
                     Sandeep Bot V2
                 </div>
             </div>
-
-            <div class="button-group">
-                <a href="#architecture" class="cta-button">Explore Architecture</a>
-                <a href="#epistemology" class="cta-button secondary">Read Epistemology Matrix</a>
-            </div>
         </div>
     </section>
 
     <!-- Abstract section (Light Gray Callout) -->
-    <section class="theme-light" style="padding: 60px 22px;">
+    <section class="theme-light" style="padding: 40px 22px;">
         <div class="section-container">
             <div class="abstract-card">
                 <h3 class="subsection-title" style="margin-top: 0; margin-bottom: 20px; font-size: 21px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-light);">Abstract</h3>
@@ -809,7 +710,7 @@
     </section>
 
     <!-- Section 3: Model Evaluation (Light Theme Spec Grid) -->
-    <section class="theme-light" id="architecture">
+    <section class="theme-light">
         <div class="section-container">
             <h2 class="section-title">2. Model Evaluation & Local Architecture</h2>
             <p class="body-text">
@@ -867,7 +768,7 @@
     </section>
 
     <!-- Section 4: Data Pipeline (White Theme, custom graph progress bar) -->
-    <section class="theme-white" id="data">
+    <section class="theme-white">
         <div class="section-container">
             <h2 class="section-title">3. Data Pipeline Hurdles & Synthetic Iteration</h2>
             <p class="body-text">
@@ -1025,10 +926,10 @@
             <div class="graph-panel">
                 <div style="display: flex;">
                     <div class="graph-y-axis">
-                        <span>1.40</span>
+                        <span>1.50</span>
                         <span>1.20</span>
-                        <span>1.00</span>
-                        <span>0.80</span>
+                        <span>0.90</span>
+                        <span>0.70</span>
                     </div>
                     <div class="graph-body">
                         <div class="graph-chart-area">
@@ -1037,17 +938,16 @@
                             <div class="graph-grid-line" style="bottom: 33%;"></div>
                             <div class="graph-grid-line" style="bottom: 0%;"></div>
                             
-                            <!-- Graph line using pure SVG over content -->
+                            <!-- Correct U/V-shaped Validation Loss Curve -->
                             <svg class="graph-line-svg" viewBox="0 0 500 180" preserveAspectRatio="none">
-                                <path d="M 50 160 L 150 115 L 300 48 L 450 30" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-dasharray="4" />
-                                <path d="M 50 160 L 150 50 L 300 110 L 450 130" fill="none" stroke="#ea2261" stroke-width="3" stroke-linecap="round" />
+                                <path d="M 50 20 L 175 115 L 325 65 L 450 52" fill="none" stroke="#ea2261" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                             
-                            <!-- Points -->
-                            <div class="graph-point" style="left: 10%; bottom: 10%;" data-label="Iter 0 (Loss: 1.41)"></div>
-                            <div class="graph-point" style="left: 30%; bottom: 72%;" data-label="Iter 50 (Loss: 0.987) *Best*"></div>
-                            <div class="graph-point" style="left: 60%; bottom: 38%;" data-label="Iter 100 (Loss: 1.21)"></div>
-                            <div class="graph-point" style="left: 90%; bottom: 27%;" data-label="Iter 150 (Loss: 1.266)"></div>
+                            <!-- Corrected Points -->
+                            <div class="graph-point" style="left: 10%; bottom: 89%;" data-label="Iter 0 (Loss: 1.41)"></div>
+                            <div class="graph-point" style="left: 35%; bottom: 36%;" data-label="Iter 50 (Loss: 0.987) *Best*"></div>
+                            <div class="graph-point" style="left: 65%; bottom: 64%;" data-label="Iter 100 (Loss: 1.21)"></div>
+                            <div class="graph-point" style="left: 90%; bottom: 71%;" data-label="Iter 150 (Loss: 1.266)"></div>
                         </div>
                     </div>
                 </div>
@@ -1060,7 +960,10 @@
             </div>
 
             <p class="body-text" style="color: rgba(255,255,255,0.8);">
-                As illustrated, the validation loss reached its global minimum at <strong>Iteration 50 (0.987)</strong> and drifted upward by Iteration 100 (1.210) and Iteration 150 (1.266). This rising loss represented standard over-fitting. To preserve the model's capacity to generalize across diverse group conversations, we terminated the training run at Iteration 150 using <code>SIGTERM</code> and rolled back to the <strong>Iteration 100 checkpoint</strong>. We fused these weights back into the 4-bit base model. 
+                As illustrated, the validation loss curve is standard-conforming and U-shaped: reaching its global minimum at <strong>Iteration 50 (0.987)</strong> and drifting upward by Iteration 100 (1.210) and Iteration 150 (1.266) due to overfitting on our highly specific target style corpus. 
+            </p>
+            <p class="body-text" style="color: rgba(255,255,255,0.8);">
+                To preserve the model's capacity to generalize across diverse group conversations, we terminated the training run at Iteration 150 using <code>SIGTERM</code> and rolled back to the <strong>Iteration 100 checkpoint</strong>. We fused these weights back into the 4-bit base model. 
             </p>
         </div>
     </section>
@@ -1366,10 +1269,6 @@ client.<span class="code-function">on</span>(<span class="code-string">'message_
             <p class="body-text">
                 Through the Hermes Agent <code>/learn</code> framework, we do not modify weights; we construct <strong>executable knowledge layers</strong> that sit on top of universal models. This represents the beginning of infinity for software engineering—a future where software is not compiled, but taught.
             </p>
-
-            <div class="button-group" style="margin-top: 50px;">
-                <a href="https://github.com/gopherkarl/x-briefing-pub" class="cta-button">View Project Codebase</a>
-            </div>
         </div>
     </section>
 
