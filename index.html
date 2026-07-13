@@ -828,7 +828,7 @@
 
             <div style="display: inline-flex; align-items: center; gap: 8px; background-color: rgba(255,255,255,0.08); padding: 6px 14px; border-radius: 980px; font-size: 11px; font-family: var(--font-stack-mono); color: rgba(255,255,255,0.8);">
                 <span style="width: 8px; height: 8px; background-color: #27c93f; border-radius: 50%; display: inline-block; animation: pulse 2s infinite;"></span>
-                <span>Live Build: 2026-07-13 12:57 PM</span>
+                <span>Live Build: 2026-07-13 01:02 PM</span>
                 <span style="color: rgba(255,255,255,0.2);">|</span>
                 <span id="share-trigger" style="cursor: pointer; text-decoration: underline;">Share Feed</span>
             </div>
@@ -1913,6 +1913,12 @@ client.<span class="code-function">on</span>(<span class="code-string">'message_
                 
                 // Show target tab content
                 tabContents[targetTab].style.display = 'block';
+                
+                // Smoothly scroll the category header container into view at the top of the screen
+                const categoryRow = document.querySelector('.category-row-container');
+                if (categoryRow) {
+                    categoryRow.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
             });
         });
 
