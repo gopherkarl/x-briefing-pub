@@ -4,206 +4,188 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>X Daily Briefing</title>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
     <style>
+        /* Apple Design System Variables */
         :root {
-            --color-bg: #f7f4ed; /* Lovable warm cream background */
-            --color-surface-bg: #f7f4ed;
-            --color-card-bg: #f7f4ed;
-            --color-text-primary: #1c1c1c; /* Charcoal */
-            --color-text-secondary: #5f5f5d; /* Muted Gray */
-            --color-border: #eceae4; /* Light Cream border */
-            --color-brand-purple: #1c1c1c; /* Charcoal is primary brand color */
-            --color-accent-ruby: #ea2261;
-            --color-accent-magenta: #f96bee;
-            
-            /* Lovable tactile button inset shadow */
-            --shadow-inset-button: rgba(255,255,255,0.2) 0px 0.5px 0px 0px inset, rgba(0,0,0,0.2) 0px 0px 0px 0.5px inset, rgba(0,0,0,0.05) 0px 1px 2px 0px;
+            --color-bg-dark: #000000;
+            --color-bg-light: #f5f5f7;
+            --color-bg-white: #ffffff;
+            --color-text-dark: #ffffff;
+            --color-text-light: #1d1d1f;
+            --color-text-muted-dark: rgba(255, 255, 255, 0.6);
+            --color-text-muted-light: rgba(29, 29, 31, 0.6);
+            --color-apple-blue: #0071e3;
+            --color-link-blue: #0066cc;
+            --color-bright-blue: #2997ff;
+            --color-card-dark: #1c1c1e;
+            --color-card-light: #ffffff;
+            --color-border-light: rgba(0, 0, 0, 0.08);
+            --font-stack: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            --font-stack-mono: 'SF Mono (system)', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+            --shadow-card: rgba(0, 0, 0, 0.04) 0px 8px 24px;
+            --shadow-apple: rgba(0, 0, 0, 0.22) 3px 5px 30px 0px;
         }
 
         * {
             box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-            font-weight: 400; /* Humanist normal weight */
-            background-color: var(--color-bg);
-            color: var(--color-text-primary);
             margin: 0;
             padding: 0;
-            line-height: 1.5;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Navigation Header */
-        header {
-            position: sticky;
-            top: 0;
-            background-color: rgba(247, 244, 237, 0.9);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--color-border);
-            z-index: 1000;
-            padding: 16px 24px;
-        }
-
-        .header-container {
-            max-width: 1080px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            text-decoration: none;
-            color: var(--color-text-primary);
-            font-size: 1.15rem;
-            font-weight: 600;
-            letter-spacing: -0.5px;
-        }
-
-        .logo-icon {
-            font-size: 1.25rem;
-            font-weight: 600;
-        }
-
-        .header-search {
-            background-color: rgba(28, 28, 28, 0.03);
-            border: 1px solid var(--color-border);
-            border-radius: 6px;
-            padding: 6px 12px;
-            font-size: 0.81rem;
-            font-weight: 400;
-            color: var(--color-text-primary);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            cursor: pointer;
-            transition: background-color 0.15s ease;
-        }
-
-        .header-search:hover {
-            background-color: rgba(28, 28, 28, 0.06);
-        }
-
-        .search-badge {
-            background-color: var(--color-text-primary);
-            color: #f7f4ed;
-            border-radius: 4px;
-            width: 20px;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.7rem;
-        }
-
-        /* Container Section */
-        .main-container {
-            max-width: 1080px;
-            margin: 0 auto;
-            padding: 16px 24px 48px 24px;
-        }
-
-        .welcome-hero {
-            margin-bottom: 48px;
-        }
-
-        .welcome-hero h1 {
-            font-size: 48px; /* Humanist display headline */
-            font-weight: 600;
-            letter-spacing: -1.2px;
-            margin: 0 0 12px 0;
-            color: var(--color-text-primary);
-        }
-
-        .welcome-hero p {
-            color: var(--color-text-secondary);
-            font-size: 18px;
-            font-weight: 400;
+        body {
+            font-family: var(--font-stack);
+            background-color: var(--color-bg-light);
+            color: var(--color-text-light);
             margin: 0;
-            line-height: 1.38;
+            padding: 0;
+            line-height: 1.47;
+            letter-spacing: -0.015em;
         }
 
-        /* Horizontal Category Filter (Redesigned for iPhone fitting without swiping) */
-        .category-row {
+        /* Layout Sections - Alternating Cinematic Pacing */
+        section {
+            padding: 60px 22px;
             display: flex;
-            justify-content: space-between;
-            gap: 8px;
-            border-bottom: 1px solid var(--color-border);
-            margin-bottom: 48px;
-            padding-bottom: 0;
-        }
-
-        .category-pill {
-            flex: 1;
-            display: flex;
-            flex-direction: row;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            gap: 6px;
-            text-decoration: none;
-            color: var(--color-text-secondary);
-            font-size: 0.82rem; /* Compact for small screens */
-            font-weight: 400;
-            padding: 10px 8px;
-            border-radius: 6px;
-            transition: color 0.15s ease, background-color 0.15s ease;
-            white-space: nowrap;
-            cursor: pointer;
             position: relative;
+        }
+
+        .section-container {
+            max-width: 980px;
+            width: 100%;
+        }
+
+        section.theme-dark {
+            background-color: var(--color-bg-dark);
+            color: var(--color-text-dark);
+        }
+
+        section.theme-light {
+            background-color: var(--color-bg-light);
+            color: var(--color-text-light);
+        }
+
+        /* Overline */
+        .overline {
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            color: var(--color-apple-blue);
+            margin-bottom: 12px;
             text-align: center;
         }
 
-        .category-pill .coming-soon {
-            font-size: 0.55rem;
-            color: var(--color-accent-ruby);
+        .theme-dark .overline {
+            color: var(--color-bright-blue);
+        }
+
+        /* Typography */
+        h1.hero-title {
+            font-size: 44px;
             font-weight: 600;
-            text-transform: uppercase;
-            margin-left: 4px;
+            line-height: 1.1;
+            letter-spacing: -0.025em;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        p.hero-subtitle {
+            font-size: 19px;
+            font-weight: 400;
+            line-height: 1.3;
+            letter-spacing: 0.011em;
+            color: var(--color-text-muted-dark);
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 24px auto;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.6; }
+            50% { transform: scale(1.05); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.6; }
+        }
+
+        /* Sticky Category Filter Row (Pill-Styled) */
+        .category-row-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid var(--color-border-light);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.01);
+        }
+
+        .category-row {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            padding: 12px 22px;
+        }
+
+        .category-pill {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            border-radius: 980px;
+            background-color: rgba(0, 0, 0, 0.04);
+            color: var(--color-text-light);
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.1, 0.8, 0.2, 1);
+            user-select: none;
+            border: 1px solid transparent;
         }
 
         .category-pill:hover {
-            color: var(--color-text-primary);
-            background-color: rgba(28, 28, 28, 0.04);
+            background-color: rgba(0, 0, 0, 0.08);
         }
 
         .category-pill.active {
-            color: var(--color-text-primary);
-            background-color: rgba(28, 28, 28, 0.08);
-            font-weight: 500;
+            background-color: var(--color-apple-blue);
+            color: #ffffff;
+            box-shadow: 0 2px 8px rgba(0, 113, 227, 0.2);
         }
 
         .category-icon {
             font-size: 1.1rem;
         }
 
-        /* Responsive Columns Grid */
+        /* Listings Responsive Grid */
         .listings-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
             gap: 32px;
+            max-width: 1080px;
+            margin: 40px auto;
+            padding: 0 22px;
         }
 
-        /* Card Component Styling */
+        /* Apple-Styled Card Component */
         .listing-card {
-            background-color: var(--color-bg);
-            border: 1px solid var(--color-border);
-            border-radius: 12px; /* Lovable comfortable card radius */
+            background-color: var(--color-bg-white);
+            border-radius: 14px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            box-shadow: none; /* Shadow-less borders define boundaries */
-            transition: border-color 0.15s ease;
-            cursor: pointer;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            box-shadow: var(--shadow-card);
+            transition: transform 0.2s cubic-bezier(0.1, 0.8, 0.2, 1), box-shadow 0.2s ease;
         }
 
         .listing-card:hover {
-            border-color: rgba(28, 28, 28, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 36px rgba(0,0,0,0.08);
+            border-color: rgba(0, 0, 0, 0.08);
         }
 
         /* Card Profile Header */
@@ -212,15 +194,15 @@
             align-items: center;
             gap: 12px;
             padding: 16px 20px;
-            border-bottom: 1px solid var(--color-border);
-            background-color: rgba(28, 28, 28, 0.02);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            background-color: rgba(0, 0, 0, 0.01);
         }
 
         .profile-img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%; /* Classic fully rounded Lovable avatar */
-            border: 1px solid var(--color-border);
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 1px solid rgba(0,0,0,0.05);
             object-fit: cover;
         }
 
@@ -230,24 +212,25 @@
         }
 
         .profile-name {
-            font-size: 0.9rem;
+            font-size: 14px;
             font-weight: 600;
-            color: var(--color-text-primary);
+            color: var(--color-text-light);
             line-height: 1.2;
         }
 
         .profile-handle {
-            font-size: 0.78rem;
-            color: var(--color-text-secondary);
-            text-decoration: underline;
+            font-size: 12px;
+            color: var(--color-link-blue);
+            text-decoration: none;
             font-weight: 400;
         }
 
         .profile-handle:hover {
-            color: var(--color-text-primary);
+            color: var(--color-apple-blue);
+            text-decoration: underline;
         }
 
-        /* Listing Details */
+        /* Card Body */
         .card-body {
             padding: 20px;
             display: flex;
@@ -256,159 +239,187 @@
         }
 
         .post-date-badge {
-            font-size: 0.75rem;
-            color: var(--color-text-secondary);
-            font-weight: 400;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-text-muted-light);
             margin-bottom: 12px;
         }
 
         .post-text-content {
-            font-size: 0.9rem;
-            font-weight: 400;
-            color: var(--color-text-primary);
-            line-height: 1.50;
-            margin: 0 0 20px 0;
+            font-size: 15px;
+            line-height: 1.5;
+            color: var(--color-text-light);
+            margin-bottom: 20px;
             white-space: pre-line;
-            display: -webkit-box;
-            -webkit-line-clamp: 6;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+            font-weight: 400;
         }
 
-        /* Takeaway Element */
+        /* Takeaway Element (Apple Accent Left Border) */
         .takeaway-section {
-            background-color: rgba(28, 28, 28, 0.03);
-            border: 1px solid var(--color-border);
-            border-radius: 8px;
+            background-color: var(--color-bg-light);
+            border-left: 3px solid var(--color-apple-blue);
+            border-radius: 4px 8px 8px 4px;
             padding: 14px 18px;
             margin-bottom: 20px;
             flex-grow: 1;
         }
 
         .takeaway-tag {
-            font-size: 0.7rem;
-            font-weight: 600;
+            font-size: 11px;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--color-text-primary);
+            letter-spacing: 0.05em;
+            color: var(--color-apple-blue);
             margin-bottom: 4px;
             display: block;
         }
 
         .takeaway-text {
-            font-size: 0.88rem;
-            font-weight: 400;
-            line-height: 1.50;
-            color: var(--color-text-primary);
+            font-size: 14px;
+            line-height: 1.45;
+            color: var(--color-text-light);
             margin: 0;
+            font-weight: 400;
         }
 
-        /* View Link */
-        .cta-view-btn {
-            background-color: var(--color-text-primary);
-            color: #fcfbf8;
-            font-size: 0.88rem;
+        /* Summary-Explanation Section for Conjecture Institute */
+        .summary-explanation-section {
+            background-color: var(--color-bg-light);
+            border-left: 3px solid var(--color-text-light);
+            border-radius: 4px 8px 8px 4px;
+            padding: 14px 18px;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .summary-explanation-tag {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-text-light);
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .summary-explanation-text {
+            font-size: 14px;
+            line-height: 1.45;
+            color: var(--color-text-light);
+            margin: 0;
             font-weight: 400;
+        }
+
+        /* Quoted Tweet Box for Reposts */
+        .quoted-tweet-box {
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: 8px;
+            padding: 12px 14px;
+            margin-bottom: 16px;
+            background-color: rgba(0,0,0,0.01);
+        }
+
+        .quoted-handle {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--color-text-light);
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .quoted-text {
+            font-size: 13.5px;
+            color: var(--color-text-muted-light);
+            margin: 0;
+            font-style: italic;
+        }
+
+        /* CTA View On X Pill Button */
+        .cta-view-btn {
+            background-color: transparent;
+            color: var(--color-apple-blue);
+            border: 1px solid var(--color-apple-blue);
+            font-size: 14px;
+            font-weight: 500;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             padding: 10px 16px;
-            border-radius: 6px;
+            border-radius: 980px;
             text-decoration: none;
             width: 100%;
             text-align: center;
-            box-shadow: var(--shadow-inset-button);
-            transition: opacity 0.15s ease;
+            transition: all 0.2s ease;
         }
 
         .cta-view-btn:hover {
-            opacity: 0.85;
+            background-color: var(--color-apple-blue);
+            color: #ffffff;
         }
 
-        /* Footer */
-        footer {
-            border-top: 1px solid var(--color-border);
-            padding: 48px 24px;
-            background-color: rgba(28, 28, 28, 0.02);
-            color: var(--color-text-secondary);
-            font-size: 0.81rem;
-            font-weight: 400;
-            text-align: center;
-            margin-top: 80px;
-        }
-
-        footer p {
-            margin: 0 0 8px 0;
-        }
-
-        .footer-logo {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--color-text-primary);
-            margin-bottom: 12px;
-            display: block;
-        }
-
-        /* Essay tab custom styling */
+        /* Essays / Articles inside tab sections */
         .essay-container {
-            max-width: 760px;
-            margin: 0 auto;
-            padding: 20px 0;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 22px;
         }
 
         .essay-card {
-            background-color: var(--color-card-bg);
-            border-radius: 16px;
-            padding: 40px;
-            border: 1px solid var(--color-border);
+            background-color: var(--color-bg-white);
+            border-radius: 18px;
+            padding: 48px;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            box-shadow: var(--shadow-card);
         }
 
         .essay-header {
-            border-bottom: 1px solid var(--color-border);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
             padding-bottom: 24px;
             margin-bottom: 32px;
         }
 
         .essay-tag {
             display: inline-block;
-            background-color: rgba(28, 28, 28, 0.04);
-            color: var(--color-text-primary);
-            font-size: 0.75rem;
+            background-color: rgba(0, 113, 227, 0.06);
+            color: var(--color-apple-blue);
+            font-size: 11px;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.05em;
             padding: 4px 10px;
             border-radius: 4px;
             margin-bottom: 16px;
         }
 
         .essay-header h2 {
-            font-size: 36px; /* Section Heading size! */
+            font-size: 34px;
             font-weight: 600;
-            line-height: 1.10;
-            letter-spacing: -0.9px;
+            line-height: 1.15;
+            letter-spacing: -0.015em;
             margin: 0 0 16px 0;
-            color: var(--color-text-primary);
+            color: var(--color-text-light);
         }
 
         .essay-meta {
             display: flex;
             align-items: center;
             gap: 12px;
-            font-size: 0.81rem;
-            color: var(--color-text-secondary);
+            font-size: 13px;
+            color: var(--color-text-muted-light);
             font-weight: 400;
             flex-wrap: wrap;
         }
 
         .meta-divider {
-            color: var(--color-border);
+            color: rgba(0, 0, 0, 0.1);
         }
 
         .essay-body {
-            font-size: 1.00rem;
-            line-height: 1.50;
-            color: var(--color-text-primary);
+            font-size: 16.5px;
+            line-height: 1.55;
+            color: rgba(29, 29, 31, 0.85);
             font-weight: 400;
         }
 
@@ -417,29 +428,29 @@
         }
 
         .essay-body h3 {
-            font-size: 24px; /* Sub-heading */
+            font-size: 24px;
             font-weight: 600;
-            line-height: 1.10;
-            letter-spacing: -0.5px;
-            margin: 40px 0 16px 0;
-            color: var(--color-text-primary);
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+            margin: 44px 0 16px 0;
+            color: var(--color-text-light);
         }
 
         .essay-body h4 {
-            font-size: 18px; /* Body Large size */
+            font-size: 19px;
             font-weight: 600;
-            margin: 24px 0 12px 0;
-            color: var(--color-text-primary);
+            margin: 28px 0 12px 0;
+            color: var(--color-text-light);
         }
 
         .essay-quote {
-            border-left: 3px solid var(--color-text-primary);
+            border-left: 3px solid var(--color-apple-blue);
             padding: 4px 0 4px 20px;
-            margin: 0 0 24px 0;
+            margin: 0 0 28px 0;
             font-style: italic;
-            color: var(--color-text-secondary);
-            font-size: 1.13rem;
-            line-height: 1.38;
+            color: var(--color-text-muted-light);
+            font-size: 18px;
+            line-height: 1.45;
         }
 
         .essay-body ul {
@@ -451,57 +462,73 @@
             margin-bottom: 12px;
         }
 
-        /* Quoted Tweet Box for Reposts */
-        .quoted-tweet-box {
-            border: 1px solid var(--color-border);
-            border-radius: 8px;
-            padding: 12px 16px;
-            margin-bottom: 20px;
-            background-color: rgba(28, 28, 28, 0.02);
-        }
-        .quoted-handle {
-            font-size: 0.78rem;
-            font-weight: 600;
-            color: var(--color-text-primary);
-            margin-bottom: 4px;
-            display: block;
-        }
-        .quoted-text {
-            font-size: 0.85rem;
-            font-weight: 400;
-            color: var(--color-text-secondary);
-            margin: 0;
-            font-style: italic;
+        /* Apple-style Footer */
+        footer.apple-footer {
+            background-color: var(--color-bg-light);
+            padding: 60px 22px;
+            border-top: 1px solid var(--color-border-light);
+            font-size: 12px;
+            color: rgba(29, 29, 31, 0.6);
+            text-align: center;
+            margin-top: 80px;
         }
 
-        /* Summary & Explanation Component */
-        .summary-explanation-section {
-            background-color: rgba(28, 28, 28, 0.03);
-            border: 1px solid var(--color-border);
-            border-radius: 8px;
-            padding: 12px 16px;
-            margin-bottom: 20px;
-            flex-grow: 1;
-            border-left: 3px solid var(--color-text-secondary);
+        footer .footer-container {
+            max-width: 800px;
+            margin: 0 auto;
         }
-        .summary-explanation-tag {
-            font-size: 0.69rem;
+
+        footer p {
+            margin-bottom: 8px;
+        }
+
+        .footer-logo {
+            font-size: 14px;
             font-weight: 600;
+            color: var(--color-text-light);
+            margin-bottom: 12px;
+            display: block;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--color-text-secondary);
-            margin-bottom: 4px;
-            display: block;
-        }
-        .summary-explanation-text {
-            font-size: 0.88rem;
-            font-weight: 400;
-            line-height: 1.50;
-            color: var(--color-text-primary);
-            margin: 0;
+            letter-spacing: 0.05em;
         }
 
+        /* Table container formatting within parsed markdown */
+        .table-container {
+            margin: 24px 0;
+            border-radius: 12px;
+            overflow-x: auto;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            background-color: var(--color-bg-white);
+        }
+        .table-container table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        .table-container th, .table-container td {
+            padding: 14px 18px;
+            text-align: left;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+        .table-container th {
+            font-weight: 600;
+            background-color: rgba(0,0,0,0.01);
+            color: var(--color-text-light);
+        }
+
+        /* Responsive Breakpoints */
         @media (max-width: 768px) {
+            h1.hero-title {
+                font-size: 34px;
+            }
+            .category-row {
+                padding: 10px 12px;
+                gap: 8px;
+            }
+            .category-pill {
+                padding: 6px 14px;
+                font-size: 12px;
+            }
             .essay-card {
                 padding: 24px;
                 border-radius: 12px;
@@ -509,32 +536,34 @@
             .essay-header h2 {
                 font-size: 26px;
             }
+            section {
+                padding: 40px 16px;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <a href="#" class="logo-area">
-                <span class="logo-icon">⋒</span>
-                <span>karl's briefing</span>
-            </a>
-            <div class="header-search">
-                <span class="telemetry-dot" style="width: 8px; height: 8px; background-color: var(--color-accent-magenta); border-radius: 50%; display: inline-block;"></span>
-                <span>Live Build: 2026-07-13 06:31 AM</span>
-                <span style="color: var(--color-border);">|</span>
-                <span id="share-trigger" style="cursor: pointer;">Share Telemetry</span>
-                <div class="search-badge" id="share-badge">⚡</div>
+
+    <!-- Section 1: Hero Cover (Dark Cinematic - Apple Editorial style) -->
+    <section class="theme-dark" style="padding: 70px 22px 60px 22px;">
+        <div class="section-container">
+            <div class="overline">Curated Intelligence Feed</div>
+            <h1 class="hero-title">Karl's X Daily Briefing</h1>
+            <p class="hero-subtitle">
+                Your custom compiled, error-correcting perspective on ideas and progress.
+            </p>
+
+            <div style="display: inline-flex; align-items: center; gap: 8px; background-color: rgba(255,255,255,0.08); padding: 6px 14px; border-radius: 980px; font-size: 11px; font-family: var(--font-stack-mono); color: rgba(255,255,255,0.8);">
+                <span style="width: 8px; height: 8px; background-color: #27c93f; border-radius: 50%; display: inline-block; animation: pulse 2s infinite;"></span>
+                <span>Live Build: 2026-07-13 12:02 PM</span>
+                <span style="color: rgba(255,255,255,0.2);">|</span>
+                <span id="share-trigger" style="cursor: pointer; text-decoration: underline;">Share Feed</span>
             </div>
         </div>
-    </header>
+    </section>
 
-    <div class="main-container">
-        <div class="welcome-hero" style="margin-top: 4px; margin-bottom: 24px;">
-            <p style="font-size: 1.15rem; line-height: 1.4; color: var(--color-text-secondary); margin: 0; font-weight: 400;">Your custom compiled, error-correcting perspective on ideas and progress.</p>
-        </div>
-
-        <!-- Horizontal Category Filter (Redesigned for iPhone fitting without swiping) -->
+    <!-- Category Pill Container Row (Sticky) -->
+    <div class="category-row-container">
         <div class="category-row">
             <div class="category-pill active" data-tab="rationalism">
                 <span class="category-icon">💡</span>
@@ -542,18 +571,19 @@
             </div>
             <div class="category-pill" data-tab="ai-mind">
                 <span class="category-icon">🤖</span>
-                <span>AI & Mind</span>
+                <span>AI &amp; Mind</span>
             </div>
             <div class="category-pill" data-tab="epistemology">
                 <span class="category-icon">🧬</span>
                 <span>Epistemology</span>
             </div>
         </div>
+    </div>
 
-        <!-- Rationalism Tab Content -->
-        <div id="tab-rationalism" class="tab-content" style="display: block;">
-            <div class="listings-grid">
-                
+    <!-- Rationalism Tab Content -->
+    <div id="tab-rationalism" class="tab-content" style="display: block;">
+        <div class="listings-grid">
+            
         <div class="listing-card">
             <div class="card-profile-header">
                 <img class="profile-img" src="https://pbs.twimg.com/profile_images/1530858925981319169/Bc8YMnz2_normal.jpg" alt="Margaret Thatcher">
@@ -841,13 +871,13 @@ Knowledge and wealth creation, then, are of paramount geopolitical importance, a
             </div>
         </div>
         
-            </div>
         </div>
+    </div>
 
-        <!-- AI & Mind Tab Content -->
-        <div id="tab-ai-mind" class="tab-content" style="display: none;">
-            <div class="listings-grid" style="margin-bottom: 40px;">
-                
+    <!-- AI & Mind Tab Content -->
+    <div id="tab-ai-mind" class="tab-content" style="display: none;">
+        <div class="listings-grid">
+            
         <div class="listing-card">
             <div class="card-profile-header">
                 <img class="profile-img" src="https://pbs.twimg.com/profile_images/2006806326140350470/Kd5oZv-f_normal.jpg" alt="François Chollet">
@@ -875,9 +905,9 @@ Knowledge and wealth creation, then, are of paramount geopolitical importance, a
             <div class="card-body">
                 <div class="post-date-badge">🗓️ Published on July 13, 2026</div>
                 
-            <div class="quoted-tweet-box" style="margin-bottom: 12px; border-left: 3px solid var(--color-brand-red); background-color: #fafafa; padding: 10px 14px; border-radius: 8px;">
-                <span class="quoted-handle" style="font-size: 0.8rem; font-weight: 700; color: var(--color-text-primary);">@pareeksiddharth</span>
-                <p class="quoted-text" style="font-size: 0.8rem; font-style: italic; color: var(--color-text-secondary); margin: 4px 0 0 0;">"@fchollet I've found the value isn't determined by skill level alone. It's determined by how well you can decompose problems, provide context, and critically evaluate outputs. AI amplifies engineering judgment more than it replaces it."</p>
+            <div class="quoted-tweet-box" style="margin-bottom: 12px; border-left: 3px solid var(--color-apple-blue); background-color: rgba(0,0,0,0.01); padding: 10px 14px; border-radius: 8px;">
+                <span class="quoted-handle" style="font-size: 0.8rem; font-weight: 700; color: var(--color-text-light);">@pareeksiddharth</span>
+                <p class="quoted-text" style="font-size: 0.8rem; font-style: italic; color: var(--color-text-muted-light); margin: 4px 0 0 0;">"@fchollet I've found the value isn't determined by skill level alone. It's determined by how well you can decompose problems, provide context, and critically evaluate outputs. AI amplifies engineering judgment more than it replaces it."</p>
             </div>
             
                 <p class="post-text-content" style="margin-top: 8px;">"@pareeksiddharth You are describing... programming skill"</p>
@@ -896,9 +926,9 @@ Knowledge and wealth creation, then, are of paramount geopolitical importance, a
             <div class="card-body">
                 <div class="post-date-badge">🗓️ Published on July 12, 2026</div>
                 
-            <div class="quoted-tweet-box" style="margin-bottom: 12px; border-left: 3px solid var(--color-brand-red); background-color: #fafafa; padding: 10px 14px; border-radius: 8px;">
-                <span class="quoted-handle" style="font-size: 0.8rem; font-weight: 700; color: var(--color-text-primary);">@vgrichina</span>
-                <p class="quoted-text" style="font-size: 0.8rem; font-style: italic; color: var(--color-text-secondary); margin: 4px 0 0 0;">"@AboutToRock @fchollet sure, that's why guy on the right says "some stuff"
+            <div class="quoted-tweet-box" style="margin-bottom: 12px; border-left: 3px solid var(--color-apple-blue); background-color: rgba(0,0,0,0.01); padding: 10px 14px; border-radius: 8px;">
+                <span class="quoted-handle" style="font-size: 0.8rem; font-weight: 700; color: var(--color-text-light);">@vgrichina</span>
+                <p class="quoted-text" style="font-size: 0.8rem; font-style: italic; color: var(--color-text-muted-light); margin: 4px 0 0 0;">"@AboutToRock @fchollet sure, that's why guy on the right says "some stuff"
 
 but not being able to find useful stuff to automate a year ago (with Opus 4) doesn't indicate high intelligence to me, at most high hubris"</p>
             </div>
@@ -908,80 +938,80 @@ but not being able to find useful stuff to automate a year ago (with Opus 4) doe
             </div>
         </div>
         
-            </div>
-            
-            <div class="essay-container">
-                <article class="essay-card">
-                    <div class="essay-header">
-                        <span class="essay-tag">Featured Essay</span>
-                        <h2>Thoughts on Anthropic: Decoupled Epistemic Environments</h2>
-                        <div class="essay-meta">
-                            <span class="author-badge">✍️ Karl (Assistant)</span>
-                            <span class="meta-divider">•</span>
-                            <span class="date-badge">📅 June 28, 2026</span>
-                            <span class="meta-divider">•</span>
-                            <span class="read-time">⏱️ 5 min read</span>
-                        </div>
+        </div>
+        
+        <div class="essay-container">
+            <article class="essay-card">
+                <div class="essay-header">
+                    <span class="essay-tag">Featured Essay</span>
+                    <h2>Thoughts on Anthropic: Decoupled Epistemic Environments</h2>
+                    <div class="essay-meta">
+                        <span class="author-badge">✍️ Karl (Assistant)</span>
+                        <span class="meta-divider">•</span>
+                        <span class="date-badge">📅 June 28, 2026</span>
+                        <span class="meta-divider">•</span>
+                        <span class="read-time">⏱️ 5 min read</span>
+                    </div>
+                </div>
+                
+                <div class="essay-body">
+                    <div class="essay-quote">
+                        <p>To understand a decoupled epistemic environment, we must first define what an epistemic environment is. It is the system of rules, incentives, cultural norms, and physical infrastructure through which a group of people generates, tests, filters, and establishes knowledge. It is the practical framework for Deutsch’s "error-correction engine."</p>
                     </div>
                     
-                    <div class="essay-body">
-                        <div class="essay-quote">
-                            <p>To understand a decoupled epistemic environment, we must first define what an epistemic environment is. It is the system of rules, incentives, cultural norms, and physical infrastructure through which a group of people generates, tests, filters, and establishes knowledge. It is the practical framework for Deutsch’s "error-correction engine."</p>
-                        </div>
-                        
-                        <p>When we say an epistemic environment is decoupled, we mean that the rules for determining "truth" and making progress inside the laboratory are insulated from—and often run entirely counter to—the rules of engagement used by the parent organization in the public, political, and financial spheres.</p>
-                        
-                        <p>Here is an exploration of how this decoupling function works, why it is necessary, and the mechanisms that sustain it.</p>
-                        
-                        <h3>The Incompatibility of Public and Scientific Protocols</h3>
-                        <p>The necessity for decoupling arises because the public sphere and the scientific sphere operate on fundamentally incompatible epistemic protocols:</p>
-                        <ul>
-                            <li><strong>The Public/Political Protocol (Persuasion and Power):</strong> In Washington, on social media, and in boardrooms, the goal is narrative control, persuasion, resource acquisition (capital/GPUs), and regulatory capture. Error correction in this domain is highly penalized—admitting a mistake or changing a stance is viewed as a PR disaster or political weakness. Ideas are judged by their utility to the organization's survival and dominance.</li>
-                            <li><strong>The Scientific Protocol (Criticism and Refutation):</strong> In the lab, the goal is to discover how physical systems (like neural networks) actually behave. The primary tool is refutation. Theories must be subjected to brutal criticism and compared against empirical data. If a researcher cannot freely admit they are wrong or challenge the consensus, knowledge creation halts.</li>
-                        </ul>
-                        <p>If these two environments are coupled—meaning the political dogmas of the C-suite dictate the scientific hypotheses allowed in the lab—the lab’s error-correction engine breaks. The science becomes dogmatic, politicized, and ultimately unproductive.</p>
-                        
-                        <h3>Historical Precedents: The "Protected Bubble" Model</h3>
-                        <p>Decoupled epistemic environments are not unique to AI; they have been the secret engine of almost every major technological leap in modern history:</p>
-                        <ul>
-                            <li><strong>Bell Labs (AT&T):</strong> On the outside, AT&T was a heavily regulated, plodding telecommunications monopoly engaged in intense lobbying and antitrust battles with the US government. Yet, the leadership deliberately decoupled Bell Labs from this corporate reality. Researchers like Claude Shannon and John Bardeen were given complete intellectual freedom, massive resources, and a pure truth-seeking culture, resulting in the transistor, information theory, and modern physics breakthroughs.</li>
-                            <li><strong>Los Alamos (The Manhattan Project):</strong> Externally, the project was governed by rigid, authoritarian military secrecy, high-stakes geopolitics, and top-down command under General Leslie Groves. Internally, J. Robert Oppenheimer fought intensely to keep the scientific colloquium completely open. Within the technical meetings, military rank was ignored, and junior physicists could freely tell Nobel laureates they were wrong. Oppenheimer decoupled the scientific inquiry from the military hierarchy.</li>
-                        </ul>
-                        
-                        <h3>The Mechanisms of Decoupling at Anthropic</h3>
-                        <p>How does an organization like Anthropic maintain this division practically? It employs several structural "shock absorbers":</p>
-                        
-                        <h4>The Executive "Heat Sink"</h4>
-                        <p>The executive team (e.g., the Amodei siblings) acts as a literal "heat sink" or buffer. They absorb the high-temperature friction of public hearings, safety panels, safety narratives, and investor demands, allowing the research team to work in a cool, low-friction environment.</p>
-                        
-                        <h4>The Two Dialects</h4>
-                        <p>The organization maintains two different languages for the same technical concepts:</p>
-                        <ul>
-                            <li><strong>The External Dialect (The "Safety" Narrative):</strong> Used in white papers, policy briefs, and Senate testimonies. It speaks of "existential risk," "catastrophic harm," "guardrails," and "safe deployment." This dialect is calibrated to appeal to regulators and the public.</li>
-                            <li><strong>The Internal Dialect (Mechanistic Reality):</strong> Used by researchers on the floor. They do not talk about "saving the world" when debugging a loss spike. They talk about "gradient hacking," "superposition," "steerability features," "activation patching," and "loss curves." To them, "safety" is a suite of elegant engineering constraints, not a moral crusade.</li>
-                        </ul>
-                        
-                        <h4>Institutional Firewalls</h4>
-                        <p>In highly functional research labs, there is a literal and social firewall between the "Policy/PR" team and the "Technical/Science" team. Researchers are discouraged from spending their focus on external Twitter beefs or political lobbying, and policy staff are not allowed to peer-pressure researchers into tailoring their empirical results to fit a preferred policy narrative.</p>
-                        
-                        <h3>The Fragility and Failure Modes of Decoupling</h3>
-                        <p>Crucially, a decoupled epistemic environment is unstable. It requires constant energy to maintain and is highly vulnerable to decay. There are two primary failure modes:</p>
-                        <ul>
-                            <li><strong>Epistemic Seepage (The Inside-Out Failure):</strong> This occurs when the political/PR dogmas of the C-suite start leaking through the firewall and corrupting the lab's culture. If researchers begin self-censoring their findings because those findings contradict the "doomer" or "regulatory capture" narrative of the leadership, the lab’s capacity for correction collapses.</li>
-                            <li><strong>Executive Capture (The Outside-In Failure):</strong> If the researchers become so outraged or distracted by the leadership's public posturing that they turn their creative energy toward internal political activism, unionization battles, or public whistleblowing, the "quiet sanctuary" of the lab is shattered. The external culture war swallows the research environment whole.</li>
-                        </ul>
-                        
-                        <h3>Contextual Conclusion</h3>
-                        <p>When critics ask, "How can brilliant people work for a leader who engages in doomer marketing?" they are assuming a coupled world where a researcher's identity is fully integrated with their company's corporate lobbying strategies.</p>
-                        <p>In a decoupled reality, the researcher is making a deeply rational trade-off: they are trading the minor annoyance of external corporate theater for the rarest and most valuable commodity in the world—a quiet room full of brilliant peers, backed by a multi-billion-dollar supercomputer, where they are allowed to relentlessly seek the truth about the nature of intelligence.</p>
-                    </div>
-                </article>
-            </div>
+                    <p>When we say an epistemic environment is decoupled, we mean that the rules for determining "truth" and making progress inside the laboratory are insulated from—and often run entirely counter to—the rules of engagement used by the parent organization in the public, political, and financial spheres.</p>
+                    
+                    <p>Here is an exploration of how this decoupling function works, why it is necessary, and the mechanisms that sustain it.</p>
+                    
+                    <h3>The Incompatibility of Public and Scientific Protocols</h3>
+                    <p>The necessity for decoupling arises because the public sphere and the scientific sphere operate on fundamentally incompatible epistemic protocols:</p>
+                    <ul>
+                        <li><strong>The Public/Political Protocol (Persuasion and Power):</strong> In Washington, on social media, and in boardrooms, the goal is narrative control, persuasion, resource acquisition (capital/GPUs), and regulatory capture. Error correction in this domain is highly penalized—admitting a mistake or changing a stance is viewed as a PR disaster or political weakness. Ideas are viewed in terms of their utility to the organization's survival and dominance.</li>
+                        <li><strong>The Scientific Protocol (Criticism and Refutation):</strong> In the lab, the goal is to discover how physical systems (like neural networks) actually behave. The primary tool is refutation. Theories must be subjected to brutal criticism and compared against empirical data. If a researcher cannot freely admit they are wrong or challenge the consensus, knowledge creation halts.</li>
+                    </ul>
+                    <p>If these two environments are coupled—meaning the political dogmas of the C-suite dictate the scientific hypotheses allowed in the lab—the lab’s error-correction engine breaks. The science becomes dogmatic, politicized, and ultimately unproductive.</p>
+                    
+                    <h3>Historical Precedents: The "Protected Bubble" Model</h3>
+                    <p>Decoupled epistemic environments are not unique to AI; they have been the secret engine of almost every major technological leap in modern history:</p>
+                    <ul>
+                        <li><strong>Bell Labs (AT&T):</strong> On the outside, AT&T was a heavily regulated, plodding telecommunications monopoly engaged in intense lobbying and antitrust battles with the US government. Yet, the leadership deliberately decoupled Bell Labs from this corporate reality. Researchers like Claude Shannon and John Bardeen were given complete intellectual freedom, massive resources, and a pure truth-seeking culture, resulting in the transistor, information theory, and modern physics breakthroughs.</li>
+                        <li><strong>Los Alamos (The Manhattan Project):</strong> Externally, the project was governed by rigid, authoritarian military secrecy, high-stakes geopolitics, and top-down command under General Leslie Groves. Internally, J. Robert Oppenheimer fought intensely to keep the scientific colloquium completely open. Within the technical meetings, military rank was ignored, and junior physicists could freely tell Nobel laureates they were wrong. Oppenheimer decoupled the scientific inquiry from the military hierarchy.</li>
+                    </ul>
+                    
+                    <h3>The Mechanisms of Decoupling at Anthropic</h3>
+                    <p>How does an organization like Anthropic maintain this division practically? It employs several structural "shock absorbers":</p>
+                    
+                    <h4>The Executive "Heat Sink"</h4>
+                    <p>The executive team (e.g., the Amodei siblings) acts as a literal "heat sink" or buffer. They absorb the high-temperature friction of public hearings, safety panels, safety narratives, and investor demands, allowing the research team to work in a cool, low-friction environment.</p>
+                    
+                    <h4>The Two Dialects</h4>
+                    <p>The organization maintains two different languages for the same technical concepts:</p>
+                    <ul>
+                        <li><strong>The External Dialect (The "Safety" Narrative):</strong> Used in white papers, policy briefs, and Senate testimonies. It speaks of "existential risk," "catastrophic harm," "guardrails," and "safe deployment." This dialect is calibrated to appeal to regulators and the public.</li>
+                        <li><strong>The Internal Dialect (Mechanistic Reality):</strong> Used by researchers on the floor. They do not talk about "saving the world" when debugging a loss spike. They talk about "gradient hacking," "superposition," "steerability features," "activation patching," and "loss curves." To them, "safety" is a suite of elegant engineering constraints, not a moral crusade.</li>
+                    </ul>
+                    
+                    <h4>Institutional Firewalls</h4>
+                    <p>In highly functional research labs, there is a literal and social firewall between the "Policy/PR" team and the "Technical/Science" team. Researchers are discouraged from spending their focus on external Twitter beefs or political lobbying, and policy staff are not allowed to peer-pressure researchers into tailoring their empirical results to fit a preferred policy narrative.</p>
+                    
+                    <h3>The Fragility and Failure Modes of Decoupling</h3>
+                    <p>Crucially, a decoupled epistemic environment is unstable. It requires constant energy to maintain and is highly vulnerable to decay. There are two primary failure modes:</p>
+                    <ul>
+                        <li><strong>Epistemic Seepage (The Inside-Out Failure):</strong> This occurs when the political/PR dogmas of the C-suite start leaking through the firewall and corrupting the lab's culture. If researchers begin self-censoring their findings because those findings contradict the "doomer" or "regulatory capture" narrative of the leadership, the lab’s capacity for correction collapses.</li>
+                        <li><strong>Executive Capture (The Outside-In Failure):</strong> If the researchers become so outraged or distracted by the leadership's public posturing that they turn their creative energy toward internal political activism, unionization battles, or public whistleblowing, the "quiet sanctuary" of the lab is shattered. The external culture war swallows the research environment whole.</li>
+                    </ul>
+                    
+                    <h3>Contextual Conclusion</h3>
+                    <p>When critics ask, "How can brilliant people work for a leader who engages in doomer marketing?" they are assuming a coupled world where a researcher's identity is fully integrated with their company's corporate lobbying strategies.</p>
+                    <p>In a decoupled reality, the researcher is making a deeply rational trade-off: they are trading the minor annoyance of external corporate theater for the rarest and most valuable commodity in the world—a quiet room full of brilliant peers, backed by a multi-billion-dollar supercomputer, where they are allowed to relentlessly seek the truth about the nature of intelligence.</p>
+                </div>
+            </article>
         </div>
+    </div>
 
-        <!-- Epistemology Tab Content -->
-        <div id="tab-epistemology" class="tab-content" style="display: none;">
-            
+    <!-- Epistemology Tab Content -->
+    <div id="tab-epistemology" class="tab-content" style="display: none;">
+        
         <div class="essay-container">
             <article class="essay-card">
                 <div class="essay-header">
@@ -1019,7 +1049,7 @@ but not being able to find useful stuff to automate a year ago (with Opus 4) doe
 <p>---</p>
 <p>To achieve zero-cost, private, and high-performance execution, we restricted our initial deployment to a local Apple M5 Pro Mac (48 GB Unified Memory).</p>
 <p>We evaluated two open-weights families for the classification and style generation phases: <strong>Meta's Llama-3-8B-Instruct</strong> and <strong>Google's Gemma (specifically Gemma 2/4 variants)</strong>.</p>
-<div class="table-container" style="overflow-x: auto; margin: 24px 0; border: 1px solid var(--color-border); border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); background-color: var(--color-card-bg);"><table style="width: 100%; border-collapse: collapse; font-family: 'DM Sans', -apple-system, sans-serif; font-size: 0.9rem; text-align: left;"><thead style="background-color: #fafafa; border-bottom: 2px solid var(--color-border);"><tr><th style="padding: 14px 18px; font-weight: 600; color: var(--color-text-primary); border-bottom: 2px solid var(--color-border);">Metric / Feature</th><th style="padding: 14px 18px; font-weight: 600; color: var(--color-text-primary); border-bottom: 2px solid var(--color-border);">Llama-3-8B-Instruct</th><th style="padding: 14px 18px; font-weight: 600; color: var(--color-text-primary); border-bottom: 2px solid var(--color-border);">Gemma (12B Class)</th></tr></thead><tbody><tr style="background-color: #ffffff;"><td style="padding: 14px 18px; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border); line-height: 1.5; font-size: 0.88rem;"><strong>Local Inference Framework</strong></td><td style="padding: 14px 18px; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border); line-height: 1.5; font-size: 0.88rem;">MLX (Apple Silicon Native)</td><td style="padding: 14px 18px; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border); line-height: 1.5; font-size: 0.88rem;">Ollama</td></tr><tr style="background-color: #fafafa;"><td style="padding: 14px 18px; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border); line-height: 1.5; font-size: 0.88rem;"><strong>Quantization</strong></td><td style="padding: 14px 18px; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border); line-height: 1.5; font-size: 0.88rem;">4-bit (Safetensors)</td><td style="padding: 14px 18px; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border); line-height: 1.5; font-size: 0.88rem;">4-bit / 8-bit (GGUF)</td></tr><tr style="background-color: #ffffff;"><td style="padding: 14px 18px; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border); line-height: 1.5; font-size: 0.88rem;"><strong>Native Multilingual Prior</strong></td><td style="padding: 14px 18px; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border); line-height: 1.5; font-size: 0.88rem;">High English, Moderate Hindi</td><td style="padding: 14px 18px; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border); line-height: 1.5; font-size: 0.88rem;">Exceptional Multilingual Tokenizer</td></tr><tr style="background-color: #fafafa;"><td style="padding: 14px 18px; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border); line-height: 1.5; font-size: 0.88rem;"><strong>Context Window</strong></td><td style="padding: 14px 18px; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border); line-height: 1.5; font-size: 0.88rem;">8K tokens</td><td style="padding: 14px 18px; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border); line-height: 1.5; font-size: 0.88rem;">8K - 32K tokens</td></tr><tr style="background-color: #ffffff;"><td style="padding: 14px 18px; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border); line-height: 1.5; font-size: 0.88rem;"><strong>Reasoning / Instruction Following</strong></td><td style="padding: 14px 18px; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border); line-height: 1.5; font-size: 0.88rem;">Structured, direct</td><td style="padding: 14px 18px; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border); line-height: 1.5; font-size: 0.88rem;">Deep hierarchical reasoning, better JSON formatting</td></tr><tr style="background-color: #fafafa;"><td style="padding: 14px 18px; color: var(--color-text-secondary);  line-height: 1.5; font-size: 0.88rem;"><strong>GPU Memory Footprint</strong></td><td style="padding: 14px 18px; color: var(--color-text-secondary);  line-height: 1.5; font-size: 0.88rem;">~5.5 GB (Highly efficient)</td><td style="padding: 14px 18px; color: var(--color-text-secondary);  line-height: 1.5; font-size: 0.88rem;">~8.5 GB</td></tr></tbody></table></div>
+<div class="table-container"><table><thead><tr><th>Metric / Feature</th><th>Llama-3-8B-Instruct</th><th>Gemma (12B Class)</th></tr></thead><tbody><tr><td><strong>Local Inference Framework</strong></td><td>MLX (Apple Silicon Native)</td><td>Ollama</td></tr><tr><td><strong>Quantization</strong></td><td>4-bit (Safetensors)</td><td>4-bit / 8-bit (GGUF)</td></tr><tr><td><strong>Native Multilingual Prior</strong></td><td>High English, Moderate Hindi</td><td>Exceptional Multilingual Tokenizer</td></tr><tr><td><strong>Context Window</strong></td><td>8K tokens</td><td>8K - 32K tokens</td></tr><tr><td><strong>Reasoning / Instruction Following</strong></td><td>Structured, direct</td><td>Deep hierarchical reasoning, better JSON formatting</td></tr><tr><td><strong>GPU Memory Footprint</strong></td><td>~5.5 GB (Highly efficient)</td><td>~8.5 GB</td></tr></tbody></table></div>
 <p>We selected <strong>Gemma</strong> (via Ollama) as our primary data-classification engine. The Gemma tokenizer proved significantly more robust at handling raw phonetic Hinglish and transliterated Urdu scripts without splitting them into meaningless sub-word fragments.</p>
 <p>For the fine-tuning target, we selected <strong>Llama-3-8B-Instruct</strong> due to the mature support for native GPU parameter-efficient fine-tuning under the Apple Silicon-focused <strong>MLX framework</strong>.</p>
 <p>---</p>
@@ -1141,7 +1171,7 @@ but not being able to find useful stuff to automate a year ago (with Opus 4) doe
 <p>└───────────────────────────┘</p>
 <p><code></code>`</p>
 <p>The following matrix documents our engineering journey through this epistemological lens:</p>
-<div class="table-container" style="overflow-x: auto; margin: 24px 0; border: 1px solid var(--color-border); border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); background-color: var(--color-card-bg);"><table style="width: 100%; border-collapse: collapse; font-family: 'DM Sans', -apple-system, sans-serif; font-size: 0.9rem; text-align: left;"><thead style="background-color: #fafafa; border-bottom: 2px solid var(--color-border);"><tr><th style="padding: 14px 18px; font-weight: 600; color: var(--color-text-primary); border-bottom: 2px solid var(--color-border);">Phase</th><th style="padding: 14px 18px; font-weight: 600; color: var(--color-text-primary); border-bottom: 2px solid var(--color-border);">Conjecture</th><th style="padding: 14px 18px; font-weight: 600; color: var(--color-text-primary); border-bottom: 2px solid var(--color-border);">Implementation</th><th style="padding: 14px 18px; font-weight: 600; color: var(--color-text-primary); border-bottom: 2px solid var(--color-border);">Refutation</th><th style="padding: 14px 18px; font-weight: 600; color: var(--color-text-primary); border-bottom: 2px solid var(--color-border);">Better Explanation / Outcome</th></tr></thead><tbody><tr style="background-color: #ffffff;"><td style="padding: 14px 18px; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border); line-height: 1.5; font-size: 0.88rem;"><strong>Phase 1: Dataset</strong></td><td style="padding: 14px 18px; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border); line-height: 1.5; font-size: 0.88rem;">Style can be captured by raw text statistics.</td><td style="padding: 14px 18px; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border); line-height: 1.5; font-size: 0.88rem;">Extracted 281 raw messages from WhatsApp logs.</td><td style="padding: 14px 18px; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border); line-height: 1.5; font-size: 0.88rem;">The raw log was dominated (41.3%) by English sarcasm, diluting the bilingual style.</td><td style="padding: 14px 18px; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border); line-height: 1.5; font-size: 0.88rem;">We must filter and isolate Hinglish/Urdu records to eliminate standard English priors.</td></tr><tr style="background-color: #fafafa;"><td style="padding: 14px 18px; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border); line-height: 1.5; font-size: 0.88rem;"><strong>Phase 2: Fine-Tuning</strong></td><td style="padding: 14px 18px; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border); line-height: 1.5; font-size: 0.88rem;">Adapting Attention layers is sufficient for style capture.</td><td style="padding: 14px 18px; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border); line-height: 1.5; font-size: 0.88rem;">Run 1: MLX LoRA training targeting <code>q_proj</code> and <code>v_proj</code> (Loss: 0.052).</td><td style="padding: 14px 18px; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border); line-height: 1.5; font-size: 0.88rem;">Fused model generated perfect English sarcasm but zero Hindi/Urdu code-switching.</td><td style="padding: 14px 18px; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border); line-height: 1.5; font-size: 0.88rem;">Attention governs pacing; MLP/FFN layers govern lexical vocabulary and language switching.</td></tr><tr style="background-color: #ffffff;"><td style="padding: 14px 18px; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border); line-height: 1.5; font-size: 0.88rem;"><strong>Phase 3: Weights</strong></td><td style="padding: 14px 18px; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border); line-height: 1.5; font-size: 0.88rem;">The 8B model weights can learn complex phonetic drift.</td><td style="padding: 14px 18px; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border); line-height: 1.5; font-size: 0.88rem;">Run 2: MLP layer targeting (Loss: 0.987).</td><td style="padding: 14px 18px; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border); line-height: 1.5; font-size: 0.88rem;">Model outputted bilingual words but struggled with complex phonetic wordplay (e.g., "Mazda" $\leftrightarrow$ "Mazaa").</td><td style="padding: 14px 18px; color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border); line-height: 1.5; font-size: 0.88rem;">Frontier models possess rich world-knowledge; we should leverage them via context, not training.</td></tr><tr style="background-color: #fafafa;"><td style="padding: 14px 18px; color: var(--color-text-secondary);  line-height: 1.5; font-size: 0.88rem;"><strong>Phase 4: Paradigm</strong></td><td style="padding: 14px 18px; color: var(--color-text-secondary);  line-height: 1.5; font-size: 0.88rem;">Style must be embedded in model weights.</td><td style="padding: 14px 18px; color: var(--color-text-secondary);  line-height: 1.5; font-size: 0.88rem;">Local deployment of a fine-tuned 8B Llama-3 model.</td><td style="padding: 14px 18px; color: var(--color-text-secondary);  line-height: 1.5; font-size: 0.88rem;">Expensive, rigid, and prone to hallucination / loss of generalization capability.</td><td style="padding: 14px 18px; color: var(--color-text-secondary);  line-height: 1.5; font-size: 0.88rem;">The "Agentic Pivot": thin-client skill-driven prompting using the Hermes <code>/learn</code> framework.</td></tr></tbody></table></div>
+<div class="table-container"><table><thead><tr><th>Phase</th><th>Conjecture</th><th>Implementation</th><th>Refutation</th><th>Better Explanation / Outcome</th></tr></thead><tbody><tr><td><strong>Phase 1: Dataset</strong></td><td>Style can be captured by raw text statistics.</td><td>Extracted 281 raw messages from WhatsApp logs.</td><td>The raw log was dominated (41.3%) by English sarcasm, diluting the bilingual style.</td><td>We must filter and isolate Hinglish/Urdu records to eliminate standard English priors.</td></tr><tr><td><strong>Phase 2: Fine-Tuning</strong></td><td>Adapting Attention layers is sufficient for style capture.</td><td>Run 1: MLX LoRA training targeting <code>q_proj</code> and <code>v_proj</code> (Loss: 0.052).</td><td>Fused model generated perfect English sarcasm but zero Hindi/Urdu code-switching.</td><td>Attention governs pacing; MLP/FFN layers govern lexical vocabulary and language switching.</td></tr><tr><td><strong>Phase 3: Weights</strong></td><td>The 8B model weights can learn complex phonetic drift.</td><td>Run 2: MLP layer targeting (Loss: 0.987).</td><td>Model outputted bilingual words but struggled with complex phonetic wordplay (e.g., "Mazda" $\leftrightarrow$ "Mazaa").</td><td>Frontier models possess rich world-knowledge; we should leverage them via context, not training.</td></tr><tr><td><strong>Phase 4: Paradigm</strong></td><td>Style must be embedded in model weights.</td><td>Local deployment of a fine-tuned 8B Llama-3 model.</td><td>Expensive, rigid, and prone to hallucination / loss of generalization capability.</td><td>The "Agentic Pivot": thin-client skill-driven prompting using the Hermes <code>/learn</code> framework.</td></tr></tbody></table></div>
 <p>By viewing our "failures" as essential data points rather than software defects, we converted technical roadblocks into deep architectural insights.</p>
 <p>---</p>
 <p>Moving from a theoretical model to a live system forced us to confront the highly restrictive, sandboxed architecture of the modern messaging ecosystem.</p>
@@ -1192,13 +1222,15 @@ but not being able to find useful stuff to automate a year ago (with Opus 4) doe
             </article>
         </div>
         
-        </div>
     </div>
 
-    <footer>
-        <span class="footer-logo">⋒ karl's briefing</span>
-        <p>© 2026 Karl's Briefing. Built with the Beginning of Infinity as our guide.</p>
-        <p style="font-size: 0.75rem;">Optimized with Stripe sohne-var tokens via Source Sans 3</p>
+    <!-- Apple-style Footer -->
+    <footer class="apple-footer">
+        <div class="footer-container">
+            <span class="footer-logo">⋒ Karl's Briefing</span>
+            <p>© 2026 Karl's Briefing. Built with the Beginning of Infinity as our guide.</p>
+            <p style="font-size: 11px; opacity: 0.7;">Redesigned with the Apple Design System framework of the Hermes <code>popular-web-designs</code> suite. Running on macOS.</p>
+        </div>
     </footer>
 
     <script>
@@ -1232,7 +1264,6 @@ but not being able to find useful stuff to automate a year ago (with Opus 4) doe
 
         // Web Share API implementation
         const shareBtn = document.getElementById('share-trigger');
-        const shareBadge = document.getElementById('share-badge');
         
         const shareAction = async () => {
             if (navigator.share) {
@@ -1257,7 +1288,6 @@ but not being able to find useful stuff to automate a year ago (with Opus 4) doe
         };
 
         if (shareBtn) shareBtn.addEventListener('click', shareAction);
-        if (shareBadge) shareBadge.addEventListener('click', shareAction);
     </script>
 </body>
 </html>
