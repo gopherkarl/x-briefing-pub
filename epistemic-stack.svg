@@ -86,7 +86,7 @@
         <text x="50" y="29" fill="#3B82F6" font-family="system-ui" font-size="9" font-weight="700" text-anchor="middle">PILLAR 1</text>
         
         <!-- Header Text -->
-        <text x="96" y="29" fill="#ffffff" font-family="system-ui" font-size="14" font-weight="600">CONTEXT &amp; PROCEDURAL MEMORY (Software)</text>
+        <text x="96" y="29" fill="#ffffff" font-family="system-ui" font-size="14" font-weight="600">CONTEXT &amp; PROCEDURAL MEMORY ("Software")</text>
         <text x="96" y="44" fill="rgba(255,255,255,0.5)" font-family="system-ui" font-size="10.5">Structuring and compiling localized reality, interlinked notes, and execution skills.</text>
         
         <!-- Nodes/Features inside Layer -->
