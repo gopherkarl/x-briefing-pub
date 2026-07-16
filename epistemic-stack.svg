@@ -85,38 +85,8 @@
         </g>
     </g>
 
-    <!-- ================= PILLAR 1 (LAYER 2): SOFTWARE ================= -->
+    <!-- ================= PILLAR 4 (LAYER 2 - SWAPPED IN): HUMAN ENGINE ================= -->
     <g transform="translate(100, 195)">
-        <rect width="520" height="85" rx="12" fill="url(#card-grad)" stroke="#3B82F6" stroke-width="1.5" filter="url(#card-shadow)" />
-        <!-- Badge -->
-        <rect x="18" y="16" width="64" height="18" rx="4" fill="rgba(59,130,246,0.1)" stroke="rgba(59,130,246,0.3)" stroke-width="1"/>
-        <text x="50" y="29" fill="#3B82F6" font-family="system-ui" font-size="9" font-weight="700" text-anchor="middle">PILLAR 1</text>
-        
-        <!-- Header Text -->
-        <text x="96" y="29" fill="#ffffff" font-family="system-ui" font-size="14" font-weight="600">CONTEXT &amp; PROCEDURAL MEMORY</text>
-        <text x="96" y="44" fill="rgba(255,255,255,0.5)" font-family="system-ui" font-size="10.5">Structuring and compiling localized reality, interlinked notes, and execution skills.</text>
-        
-        <!-- Nodes/Features inside Layer -->
-        <g transform="translate(18, 54)">
-            <!-- Item 1 -->
-            <rect x="0" y="0" width="150" height="20" rx="4" fill="#14141d" stroke="rgba(255,255,255,0.06)" />
-            <circle cx="10" cy="10" r="3" fill="#3B82F6" filter="url(#glow-blue)" />
-            <text x="22" y="13" fill="rgba(255,255,255,0.8)" font-family="system-ui" font-size="9.5">Obsidian Vault Index</text>
-
-            <!-- Item 2 -->
-            <rect x="166" y="0" width="150" height="20" rx="4" fill="#14141d" stroke="rgba(255,255,255,0.06)" />
-            <circle cx="176" cy="10" r="3" fill="#3B82F6" filter="url(#glow-blue)" />
-            <text x="188" y="13" fill="rgba(255,255,255,0.8)" font-family="system-ui" font-size="9.5">Semantic Context Assembly</text>
-
-            <!-- Item 3 -->
-            <rect x="332" y="0" width="150" height="20" rx="4" fill="#14141d" stroke="rgba(255,255,255,0.06)" />
-            <circle cx="342" cy="10" r="3" fill="#3B82F6" filter="url(#glow-blue)" />
-            <text x="354" y="13" fill="rgba(255,255,255,0.8)" font-family="system-ui" font-size="9.5">Hermes Action Skills</text>
-        </g>
-    </g>
-
-    <!-- ================= PILLAR 4 (LAYER 3 - INSERTED): HUMAN ENGINE ================= -->
-    <g transform="translate(100, 310)">
         <rect width="520" height="85" rx="12" fill="url(#card-grad)" stroke="#F59E0B" stroke-width="1.5" filter="url(#card-shadow)" />
         <!-- Badge -->
         <rect x="18" y="16" width="64" height="18" rx="4" fill="rgba(245,158,11,0.1)" stroke="rgba(245,158,11,0.3)" stroke-width="1"/>
@@ -142,6 +112,36 @@
             <rect x="332" y="0" width="150" height="20" rx="4" fill="#14141d" stroke="rgba(255,255,255,0.06)" />
             <circle cx="342" cy="10" r="3" fill="#F59E0B" filter="url(#glow-amber)" />
             <text x="354" y="13" fill="rgba(255,255,255,0.8)" font-family="system-ui" font-size="9.5">Creative Optimism</text>
+        </g>
+    </g>
+
+    <!-- ================= PILLAR 1 (LAYER 3 - SWAPPED IN): SOFTWARE ================= -->
+    <g transform="translate(100, 310)">
+        <rect width="520" height="85" rx="12" fill="url(#card-grad)" stroke="#3B82F6" stroke-width="1.5" filter="url(#card-shadow)" />
+        <!-- Badge -->
+        <rect x="18" y="16" width="64" height="18" rx="4" fill="rgba(59,130,246,0.1)" stroke="rgba(59,130,246,0.3)" stroke-width="1"/>
+        <text x="50" y="29" fill="#3B82F6" font-family="system-ui" font-size="9" font-weight="700" text-anchor="middle">PILLAR 1</text>
+        
+        <!-- Header Text -->
+        <text x="96" y="29" fill="#ffffff" font-family="system-ui" font-size="14" font-weight="600">CONTEXT &amp; PROCEDURAL MEMORY</text>
+        <text x="96" y="44" fill="rgba(255,255,255,0.5)" font-family="system-ui" font-size="10.5">Structuring and compiling localized reality, interlinked notes, and execution skills.</text>
+        
+        <!-- Nodes/Features inside Layer -->
+        <g transform="translate(18, 54)">
+            <!-- Item 1 -->
+            <rect x="0" y="0" width="150" height="20" rx="4" fill="#14141d" stroke="rgba(255,255,255,0.06)" />
+            <circle cx="10" cy="10" r="3" fill="#3B82F6" filter="url(#glow-blue)" />
+            <text x="22" y="13" fill="rgba(255,255,255,0.8)" font-family="system-ui" font-size="9.5">Obsidian Vault Index</text>
+
+            <!-- Item 2 -->
+            <rect x="166" y="0" width="150" height="20" rx="4" fill="#14141d" stroke="rgba(255,255,255,0.06)" />
+            <circle cx="176" cy="10" r="3" fill="#3B82F6" filter="url(#glow-blue)" />
+            <text x="188" y="13" fill="rgba(255,255,255,0.8)" font-family="system-ui" font-size="9.5">Semantic Context Assembly</text>
+
+            <!-- Item 3 -->
+            <rect x="332" y="0" width="150" height="20" rx="4" fill="#14141d" stroke="rgba(255,255,255,0.06)" />
+            <circle cx="342" cy="10" r="3" fill="#3B82F6" filter="url(#glow-blue)" />
+            <text x="354" y="13" fill="rgba(255,255,255,0.8)" font-family="system-ui" font-size="9.5">Hermes Action Skills</text>
         </g>
     </g>
 
@@ -176,22 +176,22 @@
     </g>
 
     <!-- ================= FLOW ARROWS (Secure Local Loop) ================= -->
-    <!-- Downward context flow on the left: Pillar 1 (Memory) -> Pillar 3 (Model) -->
-    <path d="M 80 237 C 30 237, 30 467, 100 467" fill="none" stroke="#3B82F6" stroke-width="1.5" stroke-dasharray="4" marker-end="url(#arrow-blue)" />
-    <text x="22" y="352" fill="#3B82F6" font-family="system-ui" font-size="9.5" text-anchor="middle" transform="rotate(-90 22 352)">Context Injection</text>
+    <!-- Downward context flow on the left: Pillar 1 (Memory, Layer 3) -> Pillar 3 (Model, Layer 4) -->
+    <path d="M 80 352 C 30 352, 30 467, 100 467" fill="none" stroke="#3B82F6" stroke-width="1.5" stroke-dasharray="4" marker-end="url(#arrow-blue)" />
+    <text x="22" y="410" fill="#3B82F6" font-family="system-ui" font-size="9.5" text-anchor="middle" transform="rotate(-90 22 410)">Context Injection</text>
 
-    <!-- Upward conjecture flow on the right: Pillar 3 (Compute) -> Pillar 2 (Evals) -->
+    <!-- Upward conjecture flow on the right: Pillar 3 (Compute, Layer 4) -> Pillar 2 (Evals, Layer 1) -->
     <path d="M 620 467 C 685 467, 685 122, 606 122" fill="none" stroke="#10B981" stroke-width="1.5" stroke-dasharray="4" marker-end="url(#arrow-green)" />
     <text x="696" y="295" fill="#10B981" font-family="system-ui" font-size="9.5" text-anchor="middle" transform="rotate(90 696 295)">Model Conjectures</text>
 
-    <!-- Feedback / correction loop: Pillar 2 (Evals) -> Pillar 1 (Memory) -->
+    <!-- Feedback / correction loop: Pillar 2 (Evals, Layer 1) -> Pillar 4 (Human Engine, Layer 2) -->
     <path d="M 360 165 L 360 187" fill="none" stroke="#F43F5E" stroke-width="1.5" marker-end="url(#arrow-red)" />
     <rect x="303" y="167" width="114" height="15" rx="3" fill="#181822" stroke="rgba(244,63,94,0.2)" stroke-width="1" />
-    <text x="360" y="177" fill="#F43F5E" font-family="system-ui" font-size="8.5" font-weight="600" text-anchor="middle">Error Correction Loop</text>
+    <text x="360" y="177" fill="#F43F5E" font-family="system-ui" font-size="8.5" font-weight="600" text-anchor="middle">Error Notification</text>
 
-    <!-- Human Guidance Arrow: Pillar 4 (Human Engine) -> Pillar 3 (Compute) -->
-    <path d="M 360 395 L 360 417" fill="none" stroke="#F59E0B" stroke-width="1.5" marker-end="url(#arrow-amber)" />
-    <rect x="296" y="397" width="128" height="15" rx="3" fill="#181822" stroke="rgba(245,158,11,0.2)" stroke-width="1" />
-    <text x="360" y="407" fill="#F59E0B" font-family="system-ui" font-size="8.5" font-weight="600" text-anchor="middle">Active Human Criticism</text>
+    <!-- Epistemic Correction Loop: Pillar 4 (Human Engine, Layer 2) -> Pillar 1 (Memory, Layer 3) -->
+    <path d="M 360 280 L 360 302" fill="none" stroke="#F59E0B" stroke-width="1.5" marker-end="url(#arrow-amber)" />
+    <rect x="296" y="282" width="128" height="15" rx="3" fill="#181822" stroke="rgba(245,158,11,0.2)" stroke-width="1" />
+    <text x="360" y="292" fill="#F59E0B" font-family="system-ui" font-size="8.5" font-weight="600" text-anchor="middle">Error Correction Loop</text>
 
 </svg>
