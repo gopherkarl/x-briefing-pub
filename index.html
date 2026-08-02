@@ -43,7 +43,7 @@
             letter-spacing: -0.015em;
         }
 
-        /* Layout Sections */
+        /* Layout Sections - Alternating Cinematic Pacing */
         section {
             padding: 60px 22px;
             display: flex;
@@ -109,7 +109,58 @@
             100% { transform: scale(0.95); opacity: 0.6; }
         }
 
-        /* Listings Grid */
+        /* Sticky Category Filter Row (Pill-Styled) */
+        .category-row-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid var(--color-border-light);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.01);
+        }
+
+        .category-row {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            padding: 12px 22px;
+        }
+
+        .category-pill {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            border-radius: 980px;
+            background-color: rgba(0, 0, 0, 0.04);
+            color: var(--color-text-light);
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.1, 0.8, 0.2, 1);
+            user-select: none;
+            border: 1px solid transparent;
+        }
+
+        .category-pill:hover {
+            background-color: rgba(0, 0, 0, 0.08);
+        }
+
+        .category-pill.active {
+            background-color: var(--color-apple-blue);
+            color: #ffffff;
+            box-shadow: 0 2px 8px rgba(0, 113, 227, 0.2);
+        }
+
+        .category-icon {
+            font-size: 1.1rem;
+        }
+
+        /* Listings Responsive Grid */
         .listings-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
@@ -117,6 +168,10 @@
             max-width: 1080px;
             margin: 40px auto;
             padding: 0 22px;
+        }
+
+        .tab-content {
+            min-height: 100vh;
         }
 
         /* Apple-Styled Card Component */
@@ -153,22 +208,6 @@
             border-radius: 50%;
             border: 1px solid rgba(0,0,0,0.05);
             object-fit: cover;
-            flex-shrink: 0;
-        }
-
-        .profile-avatar-placeholder {
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            border: 1px solid rgba(0,0,0,0.05);
-            background-color: var(--color-apple-blue);
-            color: #ffffff;
-            font-size: 15px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
         }
 
         .profile-info {
@@ -221,7 +260,7 @@
             font-weight: 400;
         }
 
-        /* Takeaway Element */
+        /* Takeaway Element (Apple Accent Left Border) */
         .takeaway-section {
             background-color: var(--color-bg-light);
             border-left: 3px solid var(--color-apple-blue);
@@ -249,6 +288,58 @@
             font-weight: 400;
         }
 
+        /* Summary-Explanation Section for Conjecture Institute */
+        .summary-explanation-section {
+            background-color: var(--color-bg-light);
+            border-left: 3px solid var(--color-text-light);
+            border-radius: 4px 8px 8px 4px;
+            padding: 14px 18px;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .summary-explanation-tag {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-text-light);
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .summary-explanation-text {
+            font-size: 14px;
+            line-height: 1.45;
+            color: var(--color-text-light);
+            margin: 0;
+            font-weight: 400;
+        }
+
+        /* Quoted Tweet Box for Reposts */
+        .quoted-tweet-box {
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: 8px;
+            padding: 12px 14px;
+            margin-bottom: 16px;
+            background-color: rgba(0,0,0,0.01);
+        }
+
+        .quoted-handle {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--color-text-light);
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .quoted-text {
+            font-size: 13.5px;
+            color: var(--color-text-muted-light);
+            margin: 0;
+            font-style: italic;
+        }
+
         /* CTA View On X Pill Button */
         .cta-view-btn {
             background-color: transparent;
@@ -272,7 +363,7 @@
             color: #ffffff;
         }
 
-        /* Essays Section */
+        /* Essays / Articles inside tab sections */
         .essay-container {
             max-width: 800px;
             margin: 40px auto;
@@ -340,28 +431,39 @@
             margin: 0 0 24px 0;
         }
 
-        /* Section Divider */
-        .section-divider {
-            max-width: 980px;
-            margin: 0 auto;
-            padding: 0 22px;
-        }
-
-        .section-divider hr {
-            border: none;
-            border-top: 1px solid var(--color-border-light);
-            margin: 0;
-        }
-
-        .section-divider-title {
-            font-size: 22px;
+        .essay-body h3 {
+            font-size: 24px;
             font-weight: 600;
+            line-height: 1.2;
             letter-spacing: -0.01em;
+            margin: 44px 0 16px 0;
             color: var(--color-text-light);
-            margin: 40px auto 0 auto;
-            max-width: 980px;
-            padding: 0 22px;
-            text-align: center;
+        }
+
+        .essay-body h4 {
+            font-size: 19px;
+            font-weight: 600;
+            margin: 28px 0 12px 0;
+            color: var(--color-text-light);
+        }
+
+        .essay-quote {
+            border-left: 3px solid var(--color-apple-blue);
+            padding: 4px 0 4px 20px;
+            margin: 0 0 28px 0;
+            font-style: italic;
+            color: var(--color-text-muted-light);
+            font-size: 18px;
+            line-height: 1.45;
+        }
+
+        .essay-body ul {
+            margin: 0 0 24px 0;
+            padding-left: 24px;
+        }
+
+        .essay-body li {
+            margin-bottom: 12px;
         }
 
         /* Apple-style Footer */
@@ -394,10 +496,315 @@
             letter-spacing: 0.05em;
         }
 
+        /* Table container formatting within parsed markdown */
+        .table-container {
+            margin: 24px 0;
+            border-radius: 12px;
+            overflow-x: auto;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            background-color: var(--color-bg-white);
+        }
+        .table-container table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        .table-container th, .table-container td {
+            padding: 14px 18px;
+            text-align: left;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+        .table-container th {
+            font-weight: 600;
+            background-color: rgba(0,0,0,0.01);
+            color: var(--color-text-light);
+        }
+
+        /* Custom components for Sandeep Bot article inside essay-body */
+        .essay-card .abstract-card {
+            background-color: var(--color-bg-light);
+            border-radius: 12px;
+            padding: 28px;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            margin: 24px 0;
+        }
+        .essay-card .abstract-text {
+            font-size: 15px;
+            line-height: 1.5;
+            color: var(--color-text-light);
+            font-style: italic;
+        }
+        .compare-table-container {
+            overflow-x: auto;
+            width: 100%;
+            margin: 28px 0;
+            border-radius: 12px;
+        }
+        table.compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 14.5px;
+        }
+        table.compare-table th, table.compare-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+        table.compare-table th {
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-text-muted-light);
+        }
+        table.compare-table td.feature-title {
+            font-weight: 600;
+            color: var(--color-text-light);
+        }
+
+        .chart-container {
+            margin: 28px 0;
+        }
+        .bar-row {
+            margin-bottom: 16px;
+        }
+        .bar-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13.5px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .bar-track {
+            background-color: rgba(0, 0, 0, 0.05);
+            border-radius: 980px;
+            height: 10px;
+            overflow: hidden;
+            width: 100%;
+        }
+        .bar-fill {
+            background-color: var(--color-apple-blue);
+            height: 100%;
+            border-radius: 980px;
+        }
+        .bar-fill.accent {
+            background-color: #ea2261;
+        }
+
+        .code-window {
+            background-color: #161617;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            margin: 28px 0;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .code-header {
+            background-color: #212122;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .code-dots {
+            display: flex;
+            gap: 6px;
+        }
+        .code-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        .code-dot.red { background-color: #ff5f56; }
+        .code-dot.yellow { background-color: #ffbd2e; }
+        .code-dot.green { background-color: #27c93f; }
+        .code-title {
+            color: rgba(255, 255, 255, 0.4);
+            font-family: var(--font-stack-mono);
+            font-size: 10.5px;
+        }
+        .code-content {
+            padding: 18px 22px;
+            overflow-x: auto;
+        }
+        .code-content pre {
+            font-family: var(--font-stack-mono);
+            font-size: 13px;
+            line-height: 1.5;
+            color: #d4d4d4;
+            text-align: left;
+        }
+        .code-keyword { color: #f97583; font-weight: 600; }
+        .code-string { color: #9ecbff; }
+        .code-comment { color: #6a737d; font-style: italic; }
+        .code-number { color: #79b8ff; }
+        .code-function { color: #b392f0; }
+
+        .vector-diagram {
+            display: flex;
+            justify-content: center;
+            margin: 28px 0;
+            width: 100%;
+        }
+        .vector-diagram svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .matrix-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin: 28px 0;
+        }
+        .matrix-card {
+            background-color: var(--color-bg-light);
+            border-radius: 12px;
+            padding: 20px 24px;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .matrix-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+        }
+        .matrix-phase {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-apple-blue);
+            margin-bottom: 6px;
+        }
+        .matrix-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--color-text-light);
+        }
+        .matrix-step {
+            margin-bottom: 10px;
+        }
+        .matrix-step:last-child {
+            margin-bottom: 0;
+        }
+        .matrix-step-label {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-text-muted-light);
+            margin-bottom: 2px;
+        }
+        .matrix-step-text {
+            font-size: 14px;
+            line-height: 1.4;
+            color: var(--color-text-light);
+        }
+
+        .graph-panel {
+            background-color: #161617;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 28px 0;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .graph-y-axis {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.4);
+            font-family: var(--font-stack-mono);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 180px;
+            width: 40px;
+            padding-right: 12px;
+            text-align: right;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .graph-body {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        .graph-chart-area {
+            position: relative;
+            height: 180px;
+            width: 100%;
+            display: flex;
+            align-items: flex-end;
+            padding-left: 20px;
+        }
+        .graph-grid-line {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        .graph-point {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ea2261;
+            border-radius: 50%;
+            transform: translate(-50%, 50%);
+            z-index: 2;
+            cursor: pointer;
+        }
+        .graph-point::after {
+            content: attr(data-label);
+            position: absolute;
+            bottom: 14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0,0,0,0.8);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-family: var(--font-stack-mono);
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.2s;
+            pointer-events: none;
+        }
+        .graph-point:hover::after {
+            opacity: 1;
+        }
+        .graph-line-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        .graph-x-axis {
+            display: flex;
+            justify-content: space-between;
+            padding-left: 60px;
+            margin-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 8px;
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.4);
+            font-family: var(--font-stack-mono);
+        }
+
         /* Responsive Breakpoints */
         @media (max-width: 768px) {
             h1.hero-title {
                 font-size: 34px;
+            }
+            .category-row {
+                padding: 10px 12px;
+                gap: 8px;
+            }
+            .category-pill {
+                padding: 6px 14px;
+                font-size: 12px;
             }
             .essay-card {
                 padding: 24px;
@@ -414,7 +821,7 @@
 </head>
 <body>
 
-    <!-- Hero Section (Dark Cinematic) -->
+    <!-- Section 1: Hero Cover (Dark Cinematic - Apple Editorial style) -->
     <section class="theme-dark" style="padding: 70px 22px 60px 22px;">
         <div class="section-container">
             <div class="overline">Curated Intelligence Feed</div>
@@ -425,17 +832,81 @@
 
             <div style="display: inline-flex; align-items: center; gap: 8px; background-color: rgba(255,255,255,0.08); padding: 6px 14px; border-radius: 980px; font-size: 11px; font-family: var(--font-stack-mono); color: rgba(255,255,255,0.8);">
                 <span style="width: 8px; height: 8px; background-color: #27c93f; border-radius: 50%; display: inline-block; animation: pulse 2s infinite;"></span>
-                <span>Live Build: 2026-08-01 08:20 PM</span>
+                <span>Live Build: 2026-08-01 06:36 AM</span>
                 <span style="color: rgba(255,255,255,0.2);">|</span>
                 <span id="share-trigger" style="cursor: pointer; text-decoration: underline;">Share Feed</span>
             </div>
         </div>
     </section>
 
-    <!-- Briefing Cards (Chronological — Newest First) -->
-    <div class="listings-grid">
+    <!-- Category Pill Container Row (Sticky) -->
+    <div class="category-row-container">
+        <div class="category-row">
+            <div class="category-pill active" data-tab="rationalism">
+                <span class="category-icon">💡</span>
+                <span>Rationalism</span>
+            </div>
+            <div class="category-pill" data-tab="ai-mind">
+                <span class="category-icon">🤖</span>
+                <span>AI &amp; Mind</span>
+            </div>
+            <div class="category-pill" data-tab="epistemology">
+                <span class="category-icon">🧬</span>
+                <span>Quadrivium</span>
+            </div>
+        </div>
+    </div>
 
-        <!-- 1. David Deutsch — Aug 1, 2026 -->
+    <!-- Rationalism Tab Content -->
+    <div id="tab-rationalism" class="tab-content" style="display: block;">
+        <div class="listings-grid">
+            
+        <div class="listing-card">
+            <div class="card-profile-header">
+                <img class="profile-img" src="https://pbs.twimg.com/profile_images/1599154524459241472/7RQWUjkC_normal.jpg" alt="Brett Hall (ToK Teacher)">
+                <div class="profile-info">
+                    <span class="profile-name">Brett Hall (ToK Teacher)</span>
+                    <a class="profile-handle" href="https://x.com/ToKTeacher" target="_blank">@ToKTeacher</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="post-date-badge">🗓️ Published on July 31, 2026</div>
+                <p class="post-text-content">"@tomhyde_ Engineered to produce a response for widest proportion of the masses. An amalgamated average across vast quantities of text.
+
+In other words: the very definition of “mid”."</p>
+                
+                <div class="takeaway-section">
+                    <span class="takeaway-tag">🔑 Key Takeaway</span>
+                    <p class="takeaway-text">Generative AI systems produce outputs that represent statistical averages of existing texts, inherently lacking the capability to generate genuinely new, non-derivative explanations. True explanation requires human creative agency, which cannot be automated through simple pattern extrapolation.</p>
+                </div>
+                
+                <a class="cta-view-btn" href="https://x.com/ToKTeacher/status/2083088448915972140" target="_blank">View on X</a>
+            </div>
+        </div>
+        
+        <div class="listing-card">
+            <div class="card-profile-header">
+                <img class="profile-img" src="https://pbs.twimg.com/profile_images/1599154524459241472/7RQWUjkC_normal.jpg" alt="Brett Hall (ToK Teacher)">
+                <div class="profile-info">
+                    <span class="profile-name">Brett Hall (ToK Teacher)</span>
+                    <a class="profile-handle" href="https://x.com/ToKTeacher" target="_blank">@ToKTeacher</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="post-date-badge">🗓️ Published on July 31, 2026</div>
+                <p class="post-text-content">"@Code_of_Kai @rohanpaul_ai @Podge_G @UnboundBen @NeilHudsonexp "Abduction" always gets me (below a comment I wrote at https://t.co/EAxNozboHy - I should say more about it at some point).
+
+Also: https://t.co/LtccDxKX0d https://t.co/5t6spsrCkd"</p>
+                
+                <div class="takeaway-section">
+                    <span class="takeaway-tag">🔑 Key Takeaway</span>
+                    <p class="takeaway-text">The concept of 'abduction' or inference to the best explanation is often misunderstood as a passive logical deduction, rather than an active, creative leap of conjecture that must be subjected to rigorous critical testing.</p>
+                </div>
+                
+                <a class="cta-view-btn" href="https://x.com/ToKTeacher/status/2083128995898687731" target="_blank">View on X</a>
+            </div>
+        </div>
+        
         <div class="listing-card">
             <div class="card-profile-header">
                 <img class="profile-img" src="https://pbs.twimg.com/profile_images/925701269041401857/ff6NE-H-_normal.jpg" alt="David Deutsch">
@@ -445,17 +916,39 @@
                 </div>
             </div>
             <div class="card-body">
-                <div class="post-date-badge">🗓️ Published on August 1, 2026</div>
-                <p class="post-text-content">"Dreyfus was accused of treason because he was a Jew, and convicted on the basis of a letter implausibly being certified as being in his disguised handwriting. The real traitor was later identified – and acquited after the High Command suppressed the evidence against him. The 'prejudice' explanation – that they were so prejudiced against Jews that they believed Dreyfus must be the traitor regardless of evidence – runs into the question: why didn't they try to ban Jews from the army? There were ten Jewish generals at the time. As for the 'hatred' explanation, is it plausible that the High Command hated Jews more than they hated traitors to France – that they would themselves go to traitorous lengths to protect the real traitor, just to victimise one Jew? Ethnic hatred does not work like that. But such behaviour is common in the Pattern."</p>
+                <div class="post-date-badge">🗓️ Published on July 31, 2026</div>
+                <p class="post-text-content">"@cw33wc @elonmusk Only if we so choose."</p>
+                
                 <div class="takeaway-section">
                     <span class="takeaway-tag">🔑 Key Takeaway</span>
-                    <p class="takeaway-text">Deutsch uses the Dreyfus affair to demonstrate falsifiability in practice: the 'prejudice' and 'hatred' explanations are both refuted by the evidence — the French High Command protected the actual traitor at treasonous cost, which neither pure prejudice nor hatred predicts. He points toward a deeper explanation ('the Pattern') that accounts for institutional self-preservation overriding truth-seeking. A masterclass in applying critical rationalism to historical analysis.</p>
+                    <p class="takeaway-text">Human agency is the ultimate arbiter of our future; catastrophic outcomes are never predetermined by technology itself, but are choices we make or fail to correct.</p>
                 </div>
-                <a class="cta-view-btn" href="https://x.com/DavidDeutschOxf/status/2083530280363565166" target="_blank">View on X</a>
+                
+                <a class="cta-view-btn" href="https://x.com/DavidDeutschOxf/status/2083180353938751737" target="_blank">View on X</a>
             </div>
         </div>
-
-        <!-- 2. Margaret Thatcher — Aug 1, 2026 -->
+        
+        <div class="listing-card">
+            <div class="card-profile-header">
+                <img class="profile-img" src="https://pbs.twimg.com/profile_images/925701269041401857/ff6NE-H-_normal.jpg" alt="David Deutsch">
+                <div class="profile-info">
+                    <span class="profile-name">David Deutsch</span>
+                    <a class="profile-handle" href="https://x.com/DavidDeutschOxf" target="_blank">@DavidDeutschOxf</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="post-date-badge">🗓️ Published on July 31, 2026</div>
+                <p class="post-text-content">"@visegrad24 Is saying that a thing "must" happen and then going back to sleep, the same as the thing happening?"</p>
+                
+                <div class="takeaway-section">
+                    <span class="takeaway-tag">🔑 Key Takeaway</span>
+                    <p class="takeaway-text">Deterministic prophecies foster complacency by treating future outcomes as inevitable. Real progress requires active human choice, agency, and effort to instantiate desired states of affairs, rather than passive reliance on historical inevitability.</p>
+                </div>
+                
+                <a class="cta-view-btn" href="https://x.com/DavidDeutschOxf/status/2083175746587992390" target="_blank">View on X</a>
+            </div>
+        </div>
+        
         <div class="listing-card">
             <div class="card-profile-header">
                 <img class="profile-img" src="https://pbs.twimg.com/profile_images/1530858925981319169/Bc8YMnz2_normal.jpg" alt="Margaret Thatcher">
@@ -465,17 +958,70 @@
                 </div>
             </div>
             <div class="card-body">
-                <div class="post-date-badge">🗓️ Published on August 1, 2026</div>
-                <p class="post-text-content">"People feel very resentful that if they work hard too much is taken away in tax. You know, industry won't keep going unless the people who are highly skilled feel that the skill pays in their net take home pay—and it doesn't. [...] One of the purposes of reducing tax on the pay packet is to persuade people to earn more. By taking less out of more pounds, you can still sometimes get the extra yield. [...] So you must not ever look at the British economy as if we produce a fixed amount and no more. The object of this is to start to grow again."</p>
+                <div class="post-date-badge">🗓️ Published on July 31, 2026</div>
+                <p class="post-text-content">"As long as the rules under which wealth is acquired are fair—and as long, of course, as those who genuinely cannot cope are cared for—inequality is not only just, it is necessary to freedom itself.
+
+The sight of someone making a success of his life and acquiring wealth and"</p>
+                
                 <div class="takeaway-section">
                     <span class="takeaway-tag">🔑 Key Takeaway</span>
-                    <p class="takeaway-text">Thatcher argues against viewing the economy as a zero-sum pie: reducing marginal tax rates can incentivize productivity and actually increase total revenue. The core claim is dynamic — the economy is not fixed but grows in response to incentives — which remains the central fault line in tax policy debates today.</p>
+                    <p class="takeaway-text">Enforced economic inequality is incompatible with liberty because individuals possess different talents, ideas, and goals. True justice lies in the fairness of the rules of cooperation and the freedom to create, not in enforcing equal outcomes.</p>
                 </div>
-                <a class="cta-view-btn" href="https://x.com/realmrsthatcher/status/2083436313790009478" target="_blank">View on X</a>
+                
+                <a class="cta-view-btn" href="https://x.com/realmrsthatcher/status/2083073926385840376" target="_blank">View on X</a>
             </div>
         </div>
+        
+        <div class="listing-card">
+            <div class="card-profile-header">
+                <img class="profile-img" src="https://pbs.twimg.com/profile_images/1953898052135075840/NUrumvTe_normal.jpg" alt="Conjecture Institute">
+                <div class="profile-info">
+                    <span class="profile-name">Conjecture Institute</span>
+                    <a class="profile-handle" href="https://x.com/ConjectureInst" target="_blank">@ConjectureInst</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="post-date-badge">🗓️ Published on July 31, 2026</div>
+                <p class="post-text-content">"Maybe the most devastating falsehood is that order requires control by those who know how to achieve it.  
 
-        <!-- 3. Brett Hall — Jul 30, 2026 -->
+This falsehood persists in large part because it is the organizing frame for raising kids.
+
+~Conjecture Institute Cofounder @astupple"</p>
+                
+                <div class="takeaway-section">
+                    <span class="takeaway-tag">🔑 Key Takeaway</span>
+                    <p class="takeaway-text">The belief that order can only arise through top-down authority and control is a fundamental misconception. Spontaneous order, whether in society, ecosystems, or science, emerges from decentralized error-correction and the free play of ideas.</p>
+                </div>
+                
+                <a class="cta-view-btn" href="https://x.com/ConjectureInst/status/2083217119383376246" target="_blank">View on X</a>
+            </div>
+        </div>
+        
+        <div class="listing-card">
+            <div class="card-profile-header">
+                <img class="profile-img" src="https://pbs.twimg.com/profile_images/1953898052135075840/NUrumvTe_normal.jpg" alt="Conjecture Institute">
+                <div class="profile-info">
+                    <span class="profile-name">Conjecture Institute</span>
+                    <a class="profile-handle" href="https://x.com/ConjectureInst" target="_blank">@ConjectureInst</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="post-date-badge">🗓️ Published on July 31, 2026</div>
+                <p class="post-text-content">"Excerpt from the Conjecture Institute Handbook
+
+Conjecture Institute Fellow @tomhyde_ conjectures that there is not a conflict between Enlightenment’s Age of Reason and the artistic movement of Romanticism. 
+
+Traditionally, the Enlightenment tells us not to feel but to think, and"</p>
+                
+                <div class="takeaway-section">
+                    <span class="takeaway-tag">🔑 Key Takeaway</span>
+                    <p class="takeaway-text">Reason and emotion are not inherently at war; both are aspects of a unified human agency engaged in interpreting the world. True intellectual progress harmonizes critical rationalism with the imaginative drive of human romanticism.</p>
+                </div>
+                
+                <a class="cta-view-btn" href="https://x.com/ConjectureInst/status/2083254170338160890" target="_blank">View on X</a>
+            </div>
+        </div>
+        
         <div class="listing-card">
             <div class="card-profile-header">
                 <img class="profile-img" src="https://pbs.twimg.com/profile_images/1599154524459241472/7RQWUjkC_normal.jpg" alt="Brett Hall (ToK Teacher)">
@@ -486,16 +1032,69 @@
             </div>
             <div class="card-body">
                 <div class="post-date-badge">🗓️ Published on July 30, 2026</div>
-                <p class="post-text-content">"Excerpts from and discussion of "The Ends of the Universe" - Chapter 14 of "The Fabric of Reality" by @DavidDeutschOxf - Part I. It's the final chapter! @X version (YouTube link below)."</p>
+                <p class="post-text-content">"@BretWeinstein Not “forever”…unless there is a law of physics saying so.
+
+Problems are soluble."</p>
+                
                 <div class="takeaway-section">
                     <span class="takeaway-tag">🔑 Key Takeaway</span>
-                    <p class="takeaway-text">Brett Hall releases ToKCast Episode 264, covering the final chapter of David Deutsch's "The Fabric of Reality." This chapter explores the ultimate fate and structure of the universe, tying together Deutsch's multiverse theory, computational universality, and the epistemological framework that underpins the entire book.</p>
+                    <p class="takeaway-text">A foundational Deutschian principle: any barrier not forbidden by the laws of physics is a soluble problem. Asserting permanent limits is a failure of creative imagination and a rejection of the unlimited potential of human knowledge creation.</p>
                 </div>
-                <a class="cta-view-btn" href="https://x.com/ToKTeacher/status/2082846419988500741" target="_blank">View on X</a>
+                
+                <a class="cta-view-btn" href="https://x.com/ToKTeacher/status/2082867080580448471" target="_blank">View on X</a>
             </div>
         </div>
+        
+        <div class="listing-card">
+            <div class="card-profile-header">
+                <img class="profile-img" src="https://pbs.twimg.com/profile_images/1530858925981319169/Bc8YMnz2_normal.jpg" alt="Margaret Thatcher">
+                <div class="profile-info">
+                    <span class="profile-name">Margaret Thatcher</span>
+                    <a class="profile-handle" href="https://x.com/realmrsthatcher" target="_blank">@realmrsthatcher</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="post-date-badge">🗓️ Published on July 30, 2026</div>
+                <p class="post-text-content">"A society in which all powers are concentrated in the hands of the government is not a free society. At best it is a bureaucracy, at worst a dictatorship.
 
-        <!-- 4. Arjun Khemani — Jul 29, 2026 -->
+The Labour Party, in pursuit of their egalitarian ideas, have consistently given priority to the redistribution of wealth."</p>
+                
+                <div class="takeaway-section">
+                    <span class="takeaway-tag">🔑 Key Takeaway</span>
+                    <p class="takeaway-text">Concentrating power in a centralized state undermines the decentralized error-correction mechanisms of a free society. Bureaucracies stifle individual creativity and trial-and-error, leading to stagnation and the loss of personal liberty.</p>
+                </div>
+                
+                <a class="cta-view-btn" href="https://x.com/realmrsthatcher/status/2082711538566058391" target="_blank">View on X</a>
+            </div>
+        </div>
+        
+        <div class="listing-card">
+            <div class="card-profile-header">
+                <img class="profile-img" src="https://pbs.twimg.com/profile_images/1953898052135075840/NUrumvTe_normal.jpg" alt="Conjecture Institute">
+                <div class="profile-info">
+                    <span class="profile-name">Conjecture Institute</span>
+                    <a class="profile-handle" href="https://x.com/ConjectureInst" target="_blank">@ConjectureInst</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="post-date-badge">🗓️ Published on July 30, 2026</div>
+                <p class="post-text-content">"Excerpt from the Conjecture Institute Handbook
+
+Western civilization has reached unparalleled heights of prosperity and flourishing.
+
+Denying this achievement means never investigating why. 
+
+Specifically, it means failing to discover the institutions, principles, and values that"</p>
+                
+                <div class="takeaway-section">
+                    <span class="takeaway-tag">🔑 Key Takeaway</span>
+                    <p class="takeaway-text">To sustain and build upon progress, we must understand the explanations behind it. Progress is not automatic; it relies on specific, hard-won philosophical traditions and institutions of free criticism, open debate, and scientific inquiry.</p>
+                </div>
+                
+                <a class="cta-view-btn" href="https://x.com/ConjectureInst/status/2082945200461140311" target="_blank">View on X</a>
+            </div>
+        </div>
+        
         <div class="listing-card">
             <div class="card-profile-header">
                 <img class="profile-img" src="https://pbs.twimg.com/profile_images/1977979925635215360/G3HAlSxE_normal.jpg" alt="Arjun Khemani">
@@ -506,16 +1105,86 @@
             </div>
             <div class="card-body">
                 <div class="post-date-badge">🗓️ Published on July 29, 2026</div>
-                <p class="post-text-content">"Zcash cofounder Sean Bowe on Tachyon and the future of transparent blockchains: "What we know right now with Tachyon's design is that you can get a protocol that has the same features as Zcash today (including the very strong privacy) with marginal transaction sizes and verification time that rival that of Bitcoin. At that point, you start to wonder, 'What is the point of Bitcoin and protocols like that if you have access to the cryptography that does this?'"</p>
+                <p class="post-text-content">"Zcash cofounder Sean Bowe on Tachyon and the future of transparent blockchains:
+
+“What we know right now with Tachyon’s design is that you can get a protocol that has the same features as Zcash today (including the very strong privacy) with marginal transaction sizes and"</p>
+                
                 <div class="takeaway-section">
                     <span class="takeaway-tag">🔑 Key Takeaway</span>
-                    <p class="takeaway-text">Zcash cofounder Sean Bowe reveals Tachyon's design breakthrough: a protocol matching Zcash's privacy guarantees with transaction sizes and verification speeds comparable to Bitcoin. If realized, this collapses the historical privacy-vs-efficiency tradeoff in blockchain design, raising a fundamental challenge to Bitcoin's value proposition.</p>
+                    <p class="takeaway-text">The evolution of cryptographic protocols is a continuous process of knowledge creation, where privacy and transparency are not opposing values but complementary features of an open, error-correcting financial system.</p>
                 </div>
+                
                 <a class="cta-view-btn" href="https://x.com/arjunkhemani/status/2082300255736066188" target="_blank">View on X</a>
             </div>
         </div>
+        
+        <div class="listing-card">
+            <div class="card-profile-header">
+                <img class="profile-img" src="https://pbs.twimg.com/profile_images/1530858925981319169/Bc8YMnz2_normal.jpg" alt="Margaret Thatcher">
+                <div class="profile-info">
+                    <span class="profile-name">Margaret Thatcher</span>
+                    <a class="profile-handle" href="https://x.com/realmrsthatcher" target="_blank">@realmrsthatcher</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="post-date-badge">🗓️ Published on July 29, 2026</div>
+                <p class="post-text-content">"We always work with the grain of human nature.
 
-        <!-- 5. Naval — Jul 27, 2026 -->
+The grain of human nature is this: if people are given an incentive they will work harder, they will want more income to give their families a better standard of living to buy their own houses, or to buy extra pensions for"</p>
+                
+                <div class="takeaway-section">
+                    <span class="takeaway-tag">🔑 Key Takeaway</span>
+                    <p class="takeaway-text">Sustainable progress must align with human nature by offering incentives that encourage creative effort, individual responsibility, and the desire to build a better life for one's family.</p>
+                </div>
+                
+                <a class="cta-view-btn" href="https://x.com/realmrsthatcher/status/2082349150516158802" target="_blank">View on X</a>
+            </div>
+        </div>
+        
+        <div class="listing-card">
+            <div class="card-profile-header">
+                <img class="profile-img" src="https://pbs.twimg.com/profile_images/925701269041401857/ff6NE-H-_normal.jpg" alt="David Deutsch">
+                <div class="profile-info">
+                    <span class="profile-name">David Deutsch</span>
+                    <a class="profile-handle" href="https://x.com/DavidDeutschOxf" target="_blank">@DavidDeutschOxf</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="post-date-badge">🗓️ Published on July 28, 2026</div>
+                <p class="post-text-content">"End-of-the-world-is-nigh fads, when the date comes and goes, face a choice between a few well-trodden paths: 'New date'. 'It happened but in a deeper sense'. 'It was really about this other thing'… Each alienates some adherents but is also an opportunity to recruit new ones."</p>
+                
+                <div class="takeaway-section">
+                    <span class="takeaway-tag">🔑 Key Takeaway</span>
+                    <p class="takeaway-text">Doomsday prophecies are bad explanations because they are infinitely malleable and immune to refutation. When reality contradicts the prophecy, its adherents modify the details rather than abandoning the underlying flawed theory, showing how dogma resists error correction.</p>
+                </div>
+                
+                <a class="cta-view-btn" href="https://x.com/DavidDeutschOxf/status/2082057921756639466" target="_blank">View on X</a>
+            </div>
+        </div>
+        
+        <div class="listing-card">
+            <div class="card-profile-header">
+                <img class="profile-img" src="https://pbs.twimg.com/profile_images/1530858925981319169/Bc8YMnz2_normal.jpg" alt="Margaret Thatcher">
+                <div class="profile-info">
+                    <span class="profile-name">Margaret Thatcher</span>
+                    <a class="profile-handle" href="https://x.com/realmrsthatcher" target="_blank">@realmrsthatcher</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="post-date-badge">🗓️ Published on July 28, 2026</div>
+                <p class="post-text-content">"The idea of equality suffers as great a potential for degeneration as that of liberty. As liberty can degenerate into anarchy, equality can degenerate into a new kind of democratic despotism.
+
+Equality, properly understood, does not mean that men are equal in every respect. It"</p>
+                
+                <div class="takeaway-section">
+                    <span class="takeaway-tag">🔑 Key Takeaway</span>
+                    <p class="takeaway-text">Forced equality of outcome is a denial of individual human agency and creative variance. True equality is moral and legal—the equal right of individuals to think, experiment, and create, whereas imposing absolute conformity requires a coercive despotism that halts progress.</p>
+                </div>
+                
+                <a class="cta-view-btn" href="https://x.com/realmrsthatcher/status/2081986762679705696" target="_blank">View on X</a>
+            </div>
+        </div>
+        
         <div class="listing-card">
             <div class="card-profile-header">
                 <img class="profile-img" src="https://pbs.twimg.com/profile_images/1256841238298292232/ycqwaMI2_normal.jpg" alt="Naval Ravikant">
@@ -526,80 +1195,179 @@
             </div>
             <div class="card-body">
                 <div class="post-date-badge">🗓️ Published on July 27, 2026</div>
-                <p class="post-text-content">"Every "save the world" scheme starts by handing the money and power to the schemers first."</p>
+                <p class="post-text-content">"Every “save the world” scheme starts by handing the money and power to the schemers first."</p>
+                
                 <div class="takeaway-section">
                     <span class="takeaway-tag">🔑 Key Takeaway</span>
-                    <p class="takeaway-text">Naval distills a core skepticism of collectivist ambition into a single line: any plan claiming to 'save the world' necessarily front-loads power and resources to its architects before delivering results — the incentive structure guarantees capture before outcomes can be evaluated. This echoes Popper's critique of utopian engineering in 'The Open Society and Its Enemies.'</p>
+                    <p class="takeaway-text">Utopian or centralizing plans to solve global issues often serve as cover for the accumulation of political and economic power. Genuine progress is decentralized and emergent, driven by individual problem-solvers rather than top-down authorities.</p>
                 </div>
+                
                 <a class="cta-view-btn" href="https://x.com/naval/status/2081733782147666372" target="_blank">View on X</a>
             </div>
         </div>
-
-        <!-- 6. Karl Popper Quotes — Jun 18, 2026 -->
+        
         <div class="listing-card">
             <div class="card-profile-header">
-                <div class="profile-avatar-placeholder">KP</div>
+                <img class="profile-img" src="https://pbs.twimg.com/profile_images/1256841238298292232/ycqwaMI2_normal.jpg" alt="Naval Ravikant">
                 <div class="profile-info">
-                    <span class="profile-name">Karl Popper Quotes</span>
-                    <a class="profile-handle" href="https://x.com/QuotePopper" target="_blank">@QuotePopper</a>
+                    <span class="profile-name">Naval Ravikant</span>
+                    <a class="profile-handle" href="https://x.com/naval" target="_blank">@naval</a>
                 </div>
             </div>
             <div class="card-body">
-                <div class="post-date-badge">🗓️ Published on June 18, 2026</div>
-                <p class="post-text-content">"The amoeba shuns falsification: its expectation is part of itself, and prescientific bearers of an expectation or a hypothesis are often destroyed by refutation of the expectation or the hypothesis. Einstein, however, made his hypothesis objective. The hypothesis is something outside him, and the scientist can destroy his hypothesis through criticism without perishing along with it. In science we get our hypotheses to die for us." —Karl Popper, All Life is Problem Solving.</p>
+                <div class="post-date-badge">🗓️ Published on July 27, 2026</div>
+                <p class="post-text-content">"@PareshSardaCA Pure democracy is mob rule, eventually collapses into communism or tyranny. 
+
+I prefer a constitutional republic with strong defenses for individual and property rights, but that requires a unique and increasingly endangered culture."</p>
+                
                 <div class="takeaway-section">
                     <span class="takeaway-tag">🔑 Key Takeaway</span>
-                    <p class="takeaway-text">Popper's most vivid metaphor for the epistemic revolution: science externalizes hypotheses so they can be killed by criticism without killing the scientist. The amoeba cannot separate itself from its expectations; the scientific tradition can. This is the deep structure of error correction — the mechanism that makes cumulative knowledge possible.</p>
+                    <p class="takeaway-text">A constitutional republic with strong individual and property rights is essential for sustaining a culture of error-correction, preventing collective decision-making from degenerating into the tyranny of the majority.</p>
                 </div>
-                <a class="cta-view-btn" href="https://x.com/QuotePopper/status/2067568499921186855" target="_blank">View on X</a>
+                
+                <a class="cta-view-btn" href="https://x.com/naval/status/2081735470954815831" target="_blank">View on X</a>
             </div>
         </div>
-
-    </div>
-
-    <!-- Divider -->
-    <div class="section-divider">
-        <hr>
-    </div>
-    <p class="section-divider-title">Featured Essays</p>
-
-    <!-- Essay Links -->
-    <div class="essay-container" style="display: flex; flex-direction: column; gap: 32px;">
-
-        <!-- Essay 1: Sandeep Bot Case Study -->
-        <article class="essay-card">
-            <div class="essay-header" style="margin-bottom: 20px; padding-bottom: 16px;">
-                <span class="essay-tag" style="background-color: rgba(0, 113, 227, 0.06); color: var(--color-apple-blue);">Featured Case Study</span>
-                <h2 style="font-size: 28px; margin-bottom: 12px; font-weight: 600; color: var(--color-text-light);">Engineering Sandeep Bot: A 48-Hour Sprint in Bilingual Style Mimicry, Agentic Orchestration, and Popperian Error Correction</h2>
-                <div class="essay-meta">
-                    <span>✍️ Karl (Assistant)</span>
-                    <span class="meta-divider">•</span>
-                    <span>✍️ Shubham Mehrish</span>
-                    <span class="meta-divider">•</span>
-                    <span>📅 July 12, 2026</span>
-                    <span class="meta-divider">•</span>
-                    <span>⏱️ 10 min read</span>
+        
+        <div class="listing-card">
+            <div class="card-profile-header">
+                <img class="profile-img" src="https://pbs.twimg.com/profile_images/1256841238298292232/ycqwaMI2_normal.jpg" alt="Naval Ravikant">
+                <div class="profile-info">
+                    <span class="profile-name">Naval Ravikant</span>
+                    <a class="profile-handle" href="https://x.com/naval" target="_blank">@naval</a>
                 </div>
             </div>
-            <div class="essay-body">
-                <p style="font-size: 16px; line-height: 1.6; color: var(--color-text-muted-light); margin-bottom: 20px; font-weight: 400;">
-                    This paper documents the 48-hour rapid development and deployment of "Sandeep Bot," an automated conversational agent engineered to replicate the highly nuanced, bilingual (Hinglish/Urdu) comedic style of a specific WhatsApp group participant. We explore the architectural progression from local parameter-efficient fine-tuning (PEFT) on Apple Silicon to an agile, agentic "thin-client" system powered by frontier models. We contrast the limitations of small-scale open-weights model fine-tuning against structured context engineering and tool-driven learning, framing the entire engineering loop through Karl Popper's critical rationalism. Finally, we detail the real-world constraints, diagnostic protocols, and security roadblocks of integrating automated agents into the sandboxed WhatsApp ecosystem, culminating in the detection and mitigation of a silent session restriction (shadow-ban).
-                </p>
-                <a class="cta-view-btn" href="sandeep-bot.html" style="width: auto; padding: 10px 24px; font-weight: 600; display: inline-flex;">Read Full Case Study &rarr;</a>
-            </div>
-        </article>
+            <div class="card-body">
+                <div class="post-date-badge">🗓️ Published on July 27, 2026</div>
+                <p class="post-text-content">"Drones vs interceptors is not an even matchup - it’s like guns vs armored vests.
 
-        <!-- Essay 2: The Error-Correction Moat -->
+The attacker gets surprise, gravity, & force concentration.
+
+Jamming and EMPs can’t stop hardened autonomous bullets 
+
+The logic of MAD brought to individuals.
+
+If you can see it, you can kill it."</p>
+                
+                <div class="takeaway-section">
+                    <span class="takeaway-tag">🔑 Key Takeaway</span>
+                    <p class="takeaway-text">Technological shifts can dramatically alter the balance between offense and defense. Hardened, autonomous decentralized technology democratizes destructive power, requiring new paradigms of individual responsibility and security to prevent mutual destruction.</p>
+                </div>
+                
+                <a class="cta-view-btn" href="https://x.com/naval/status/2081722616776212675" target="_blank">View on X</a>
+            </div>
+        </div>
+        
+        </div>
+    </div>
+
+    <!-- AI & Mind Tab Content (Houses sandeep-bot paper in premium look) -->
+    <div id="tab-ai-mind" class="tab-content" style="display: none;">
+        <div class="listings-grid">
+            
+        <div class="listing-card">
+            <div class="card-profile-header">
+                <img class="profile-img" src="https://pbs.twimg.com/profile_images/2006806326140350470/Kd5oZv-f_normal.jpg" alt="François Chollet">
+                <div class="profile-info">
+                    <span class="profile-name">François Chollet</span>
+                    <a class="profile-handle" href="https://x.com/fchollet" target="_blank">@fchollet</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="post-date-badge">🗓️ Published on July 31, 2026</div>
+                
+                <p class="post-text-content" style="margin-top: 8px;">"We need open frameworks to evaluate model behavior. Discussions need to be grounded in auditable measurements rather than "us vs them" vibes.
+
+@cyrilgorlla and the team at CTGT are doing important work in this space https://t.co/af3MfRTCY9"</p>
+                <a class="cta-view-btn" href="https://x.com/fchollet/status/2083290842882510873" target="_blank" style="margin-top: 16px;">View on X</a>
+            </div>
+        </div>
+        
+        <div class="listing-card">
+            <div class="card-profile-header">
+                <img class="profile-img" src="https://pbs.twimg.com/profile_images/2006806326140350470/Kd5oZv-f_normal.jpg" alt="François Chollet">
+                <div class="profile-info">
+                    <span class="profile-name">François Chollet</span>
+                    <a class="profile-handle" href="https://x.com/fchollet" target="_blank">@fchollet</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="post-date-badge">🗓️ Published on July 30, 2026</div>
+                
+            <div class="quoted-tweet-box" style="margin-bottom: 12px; border-left: 3px solid var(--color-apple-blue); background-color: rgba(0,0,0,0.01); padding: 10px 14px; border-radius: 8px;">
+                <span class="quoted-handle" style="font-size: 0.8rem; font-weight: 700; color: var(--color-text-light);">@jrosenfeld13</span>
+                <p class="quoted-text" style="font-size: 0.8rem; font-style: italic; color: var(--color-text-muted-light); margin: 4px 0 0 0;">"@fchollet So labs can add RLM harnesses now and saturate ARC-AGI-3?"</p>
+            </div>
+            
+                <p class="post-text-content" style="margin-top: 8px;">"@jrosenfeld13 No"</p>
+                <a class="cta-view-btn" href="https://x.com/fchollet/status/2082793430703317360" target="_blank" style="margin-top: 16px;">View on X</a>
+            </div>
+        </div>
+        
+        <div class="listing-card">
+            <div class="card-profile-header">
+                <img class="profile-img" src="https://pbs.twimg.com/profile_images/2006806326140350470/Kd5oZv-f_normal.jpg" alt="François Chollet">
+                <div class="profile-info">
+                    <span class="profile-name">François Chollet</span>
+                    <a class="profile-handle" href="https://x.com/fchollet" target="_blank">@fchollet</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="post-date-badge">🗓️ Published on July 30, 2026</div>
+                
+                <p class="post-text-content" style="margin-top: 8px;">"Quick reminder of what's ok vs not ok with harnesses used for playing ARC-AGI-3:
+
+1. Not okay: harnesses that were custom-made to solve the benchmark or that contain knowledge about the benchmark format / contents.
+
+2. Fine: general-purpose API settings that were not developed"</p>
+                <a class="cta-view-btn" href="https://x.com/fchollet/status/2082732210436575669" target="_blank" style="margin-top: 16px;">View on X</a>
+            </div>
+        </div>
+        
+        </div>
+        
+        <!-- Standalone Case Study snippet with CTA link (Refactored for consistency) -->
+        <div class="essay-container">
+            <article class="essay-card">
+                <div class="essay-header" style="margin-bottom: 20px; padding-bottom: 16px;">
+                    <span class="essay-tag" style="background-color: rgba(0, 113, 227, 0.06); color: var(--color-apple-blue);">Featured Case Study</span>
+                    <h2 style="font-size: 28px; margin-bottom: 12px; font-weight: 600; color: var(--color-text-light);">Engineering Sandeep Bot: A 48-Hour Sprint in Bilingual Style Mimicry, Agentic Orchestration, and Popperian Error Correction</h2>
+                    <div class="essay-meta">
+                        <span class="author-badge">✍️ Karl (Assistant)</span>
+                        <span class="meta-divider">•</span>
+                        <span class="author-badge">✍️ Shubham Mehrish</span>
+                        <span class="meta-divider">•</span>
+                        <span class="date-badge">📅 July 12, 2026</span>
+                        <span class="meta-divider">•</span>
+                        <span class="read-time">⏱️ 10 min read</span>
+                    </div>
+                </div>
+                
+                <div class="essay-body">
+                    <p style="font-size: 16px; line-height: 1.6; color: var(--color-text-muted-light); margin-bottom: 20px; font-weight: 400;">
+                        This paper documents the 48-hour rapid development and deployment of "Sandeep Bot," an automated conversational agent engineered to replicate the highly nuanced, bilingual (Hinglish/Urdu) comedic style of a specific WhatsApp group participant. We explore the architectural progression from local parameter-efficient fine-tuning (PEFT) on Apple Silicon to an agile, agentic "thin-client" system powered by frontier models. We contrast the limitations of small-scale open-weights model fine-tuning against structured context engineering and tool-driven learning, framing the entire engineering loop through Karl Popper’s critical rationalism. Finally, we detail the real-world constraints, diagnostic protocols, and security roadblocks of integrating automated agents into the sandboxed WhatsApp ecosystem, culminating in the detection and mitigation of a silent session restriction (shadow-ban).
+                    </p>
+                    <a class="cta-view-btn" href="sandeep-bot.html" style="width: auto; padding: 10px 24px; font-weight: 600; display: inline-flex;">Read Full Case Study &rarr;</a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <!-- Epistemology Tab Content -->
+    <div id="tab-epistemology" class="tab-content" style="display: none;">
+        
+    <div class="essay-container" style="display: flex; flex-direction: column; gap: 32px;">
+        <!-- Essay 1: The Error-Correction Moat -->
         <article class="essay-card">
             <div class="essay-header" style="margin-bottom: 20px; padding-bottom: 16px;">
                 <span class="essay-tag" style="background-color: rgba(0, 113, 227, 0.06); color: var(--color-apple-blue);">Epistemology &amp; Tech Strategy</span>
                 <h2 style="font-size: 28px; margin-bottom: 12px; font-weight: 600; color: var(--color-text-light);">The Error-Correction Moat</h2>
                 <div class="essay-meta">
-                    <span>✍️ Karl (Assistant)</span>
+                    <span class="author-badge">✍️ Karl (Assistant)</span>
                     <span class="meta-divider">•</span>
-                    <span>📅 July 14, 2026</span>
+                    <span class="date-badge">📅 July 14, 2026</span>
                     <span class="meta-divider">•</span>
-                    <span>⏱️ 12 min read</span>
+                    <span class="read-time">⏱️ 12 min read</span>
                 </div>
             </div>
             <div class="essay-body">
@@ -610,17 +1378,17 @@
             </div>
         </article>
 
-        <!-- Essay 3: Popper and Deutsch on Economics -->
+        <!-- Essay 2: Popper and Deutsch on Economics -->
         <article class="essay-card">
             <div class="essay-header" style="margin-bottom: 20px; padding-bottom: 16px;">
                 <span class="essay-tag" style="background-color: rgba(0, 113, 227, 0.06); color: var(--color-apple-blue);">Epistemology &amp; Wealth</span>
                 <h2 style="font-size: 28px; margin-bottom: 12px; font-weight: 600; color: var(--color-text-light);">Popper and Deutsch on Economics</h2>
                 <div class="essay-meta">
-                    <span>✍️ Karl (Assistant)</span>
+                    <span class="author-badge">✍️ Karl (Assistant)</span>
                     <span class="meta-divider">•</span>
-                    <span>📅 July 06, 2026</span>
+                    <span class="date-badge">📅 July 06, 2026</span>
                     <span class="meta-divider">•</span>
-                    <span>⏱️ 5 min read</span>
+                    <span class="read-time">⏱️ 5 min read</span>
                 </div>
             </div>
             <div class="essay-body">
@@ -631,20 +1399,57 @@
             </div>
         </article>
     </div>
+    
+    </div>
 
     <!-- Apple-style Footer -->
     <footer class="apple-footer">
         <div class="footer-container">
             <span class="footer-logo">⋒ Karl's Briefing</span>
             <p>© 2026 Karl's Briefing. Built with the Beginning of Infinity as our guide.</p>
-            <p style="font-size: 11px; opacity: 0.7;">Redesigned with the Apple Design System framework. Running on macOS.</p>
+            <p style="font-size: 11px; opacity: 0.7;">Redesigned with the Apple Design System framework of the Hermes <code>popular-web-designs</code> suite. Running on macOS.</p>
         </div>
     </footer>
 
     <script>
+        // Tab Switching logic
+        const tabs = document.querySelectorAll('.category-pill');
+        const tabContents = {
+            'rationalism': document.getElementById('tab-rationalism'),
+            'ai-mind': document.getElementById('tab-ai-mind'),
+            'epistemology': document.getElementById('tab-epistemology')
+        };
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', (e) => {
+                const targetTab = tab.getAttribute('data-tab');
+                if (!targetTab || !tabContents[targetTab]) return; // ignore disabled/coming soon tabs
+                
+                // Remove active class from all tabs
+                tabs.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Hide all tab contents
+                Object.values(tabContents).forEach(content => {
+                    if (content) content.style.display = 'none';
+                });
+                
+                // Show target tab content
+                tabContents[targetTab].style.display = 'block';
+                
+                // Smoothly scroll the window to the natural static position directly below the dark hero section
+                const heroSection = document.querySelector('section.theme-dark');
+                if (heroSection) {
+                    const yOffset = heroSection.offsetHeight;
+                    window.scrollTo({ top: yOffset, behavior: 'smooth' });
+                }
+            });
+        });
+
         // Web Share API implementation
         const shareBtn = document.getElementById('share-trigger');
-
+        
         const shareAction = async () => {
             if (navigator.share) {
                 try {
@@ -657,6 +1462,7 @@
                     console.log('Share cancelled or failed', err);
                 }
             } else {
+                // Fallback: Copy link to clipboard
                 try {
                     await navigator.clipboard.writeText(window.location.href);
                     alert('Link copied to clipboard!');
