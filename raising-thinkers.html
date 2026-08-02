@@ -1,0 +1,458 @@
+
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Raising Thinkers — A Deutschian Response to Maslow</title>
+    <style>
+        /* Apple Design System Variables */
+        :root {
+            --color-bg-dark: #000000;
+            --color-bg-light: #f5f5f7;
+            --color-bg-white: #ffffff;
+            --color-text-dark: #ffffff;
+            --color-text-light: #1d1d1f;
+            --color-text-muted-dark: rgba(255, 255, 255, 0.6);
+            --color-text-muted-light: rgba(29, 29, 31, 0.6);
+            --color-apple-blue: #0071e3;
+            --color-link-blue: #0066cc;
+            --color-bright-blue: #2997ff;
+            --color-card-dark: #1c1c1e;
+            --color-card-light: #ffffff;
+            --color-border-light: rgba(0, 0, 0, 0.08);
+            --color-accent-purple: #bf5af2;
+            --color-accent-orange: #ff9f0a;
+            --color-accent-green: #30d158;
+            --color-accent-red: #ff3b30;
+            --font-stack: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            --font-stack-mono: 'SF Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+            --shadow-card: rgba(0, 0, 0, 0.04) 0px 8px 24px;
+            --shadow-apple: rgba(0, 0, 0, 0.22) 3px 5px 30px 0px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: var(--font-stack);
+            background-color: var(--color-bg-light);
+            color: var(--color-text-light);
+            line-height: 1.6;
+            letter-spacing: -0.015em;
+        }
+
+        /* Layout Sections - Alternating Cinematic Pacing */
+        section {
+            padding: 80px 22px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .section-container {
+            max-width: 740px;
+            width: 100%;
+        }
+
+        section.theme-dark {
+            background-color: var(--color-bg-dark);
+            color: var(--color-text-dark);
+        }
+
+        section.theme-light {
+            background-color: var(--color-bg-light);
+            color: var(--color-text-light);
+        }
+
+        /* Overline */
+        .overline {
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            color: var(--color-apple-blue);
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .theme-dark .overline {
+            color: var(--color-bright-blue);
+        }
+
+        /* Typography */
+        h1.hero-title {
+            font-size: 48px;
+            font-weight: 600;
+            line-height: 1.1;
+            letter-spacing: -0.025em;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        p.hero-subtitle {
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 1.4;
+            letter-spacing: 0.011em;
+            color: var(--color-text-muted-dark);
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 24px auto;
+        }
+
+        .theme-light .hero-subtitle {
+            color: var(--color-text-muted-light);
+        }
+
+        h2.section-title {
+            font-size: 32px;
+            font-weight: 600;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+        }
+
+        h3.subsection-title {
+            font-size: 22px;
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.015em;
+            margin-top: 32px;
+            margin-bottom: 14px;
+        }
+
+        p.body-text {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.6;
+            letter-spacing: -0.01em;
+            margin-bottom: 18px;
+        }
+
+        .theme-dark p.body-text {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        /* Blockquote / Pull Quote */
+        .pull-quote {
+            font-size: 24px;
+            font-weight: 500;
+            line-height: 1.4;
+            letter-spacing: -0.015em;
+            border-left: 3px solid var(--color-apple-blue);
+            padding-left: 24px;
+            margin: 28px 0;
+            color: var(--color-text-light);
+        }
+
+        .theme-dark .pull-quote {
+            color: var(--color-text-dark);
+            border-left-color: var(--color-bright-blue);
+        }
+
+        /* Emphasis */
+        strong {
+            font-weight: 600;
+        }
+
+        em {
+            font-style: italic;
+        }
+
+        /* SVG Figure */
+        .figure-container {
+            margin: 40px auto;
+            max-width: 740px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .figure-caption {
+            font-size: 14px;
+            color: var(--color-text-muted-light);
+            text-align: center;
+            margin-top: 16px;
+            line-height: 1.5;
+        }
+
+        .theme-dark .figure-caption {
+            color: var(--color-text-muted-dark);
+        }
+
+        .pyramid-svg {
+            width: 100%;
+            height: auto;
+            max-width: 740px;
+        }
+
+        /* Card */
+        .card {
+            background-color: var(--color-card-light);
+            border-radius: 14px;
+            padding: 32px;
+            margin: 24px 0;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: var(--shadow-card);
+        }
+
+        .theme-dark .card {
+            background-color: var(--color-card-dark);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Divider */
+        .divider {
+            width: 40px;
+            height: 4px;
+            border-radius: 2px;
+            background-color: var(--color-apple-blue);
+            margin: 32px auto;
+        }
+
+        .theme-dark .divider {
+            background-color: var(--color-bright-blue);
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 22px;
+            text-align: center;
+            font-size: 14px;
+            color: var(--color-text-muted-light);
+            background-color: var(--color-bg-light);
+        }
+
+        /* List styling */
+        .principle-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .principle-list li {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 16px;
+            padding-left: 28px;
+            position: relative;
+        }
+
+        .principle-list li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--color-apple-blue);
+            font-weight: 600;
+        }
+
+        .theme-dark .principle-list li::before {
+            color: var(--color-bright-blue);
+        }
+
+        /* Responsive */
+        @media (max-width: 734px) {
+            h1.hero-title { font-size: 36px; }
+            h2.section-title { font-size: 26px; }
+            p.body-text { font-size: 16px; }
+            p.hero-subtitle { font-size: 17px; }
+            .pull-quote { font-size: 20px; }
+            section { padding: 60px 16px; }
+            .pyramid-svg { font-size: 10px; }
+        }
+    </style>
+
+
+
+<!-- HERO -->
+<section class="theme-dark">
+    <div class="section-container">
+        <div class="overline">A Friendly Provocation</div>
+        <h1 class="hero-title" data-sync-id="sync-0">Raising Thinkers</h1>
+        <p class="hero-subtitle" data-sync-id="sync-1">A response to the argument that only the comfortable can afford to raise children in the spirit of Popper and Deutsch.</p>
+        <div class="divider"></div>
+    </div>
+</section>
+
+<!-- OPENING -->
+<section class="theme-light">
+    <div class="section-container">
+        <h2 class="section-title" data-sync-id="sync-2">Where We Agree</h2>
+        <p class="body-text" data-sync-id="sync-3">A friend recently pushed back on the idea that Popperian and Deutschian principles — treating children as rational agents, engaging their conjectures, explaining rather than commanding — could be a universal approach in <i>all</i> parenting situations. His provocation is fair and worth taking seriously:</p>
+        <div class="pull-quote">Only people at the higher levels of Maslow's hierarchy can afford to let their children explore and pursue their interests.</div>
+        <p class="body-text" data-sync-id="sync-4">He's pointing at something real. There is neuroscience behind it — Mullainathan and Shafir's work on the "scarcity mindset" shows that poverty imposes a cognitive tax equivalent to roughly 13 IQ points. Stressed parents have less bandwidth for Socratic dialogue. That part is true, and it should be conceded honestly.</p>
+        <p class="body-text" data-sync-id="sync-5">But the argument contains two deep errors — one about Maslow, and one about what it means to treat a child as a person.</p>
+    </div>
+</section>
+
+<!-- MASLOW CRITIQUE + SVG -->
+<section class="theme-dark">
+    <div class="section-container">
+        <h2 class="section-title" data-sync-id="sync-6">The Maslow Error: A Ladder You Must Climb Before You May Think</h2>
+        <p class="body-text" data-sync-id="sync-7">Maslow's hierarchy is routinely read as a <em>gating sequence</em>: solve level 1, then you're <em>permitted</em> to address level 2, and only at the top can you afford self-actualization. This is a misreading — and Maslow himself spent the back half of his career walking it back.</p>
+        <p class="body-text" data-sync-id="sync-8">The empirical record is unambiguous: people create art, pursue meaning, and engage in critical thought under conditions of extreme deprivation. Viktor Frankl records it in the camps. Ghettos and refugee camps produce scientists and poets. The hierarchy describes a <em>statistical tendency in post-war American psychology</em>, not a universal law of human cognition.</p>
+        <p class="body-text" data-sync-id="sync-9">More importantly, treating it as a gate produces a <strong>category error</strong>. Self-actualization — which in this context just means "the exercise of creativity and critical reason" — is not a <em>reward</em> you earn after survival is secured. It is the <em>engine</em> by which survival gets secured in the first place!</p>
+
+        <!-- SVG: Maslow vs Inverted -->
+        <div class="figure-container">
+            <svg class="pyramid-svg" width="680" height="420" viewBox="0 0 680 420" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <marker id="arrow-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#0071e3"></path>
+                    </marker>
+                </defs>
+
+                <!-- Left Panel: Maslow's Hierarchy (Dark) -->
+                <rect x="20" y="20" width="290" height="360" rx="12" fill="#1d1d1f" stroke="rgba(255,255,255,0.05)" stroke-width="1"></rect>
+                <text x="165" y="45" fill="#ffffff" font-family="system-ui" font-size="14" font-weight="600" text-anchor="middle">Maslow's Hierarchy</text>
+                <text x="165" y="63" fill="rgba(255,255,255,0.6)" font-family="system-ui" font-size="11" text-anchor="middle">Comfort first, then thought</text>
+
+                <!-- Triangle: apex up — 5 horizontal bands -->
+                <!-- Band 1: Physiological (bottom, widest) -->
+                <polygon points="55,330 275,330 253,282 77,282" fill="#ff3b30" opacity="0.85"></polygon>
+                <text x="165" y="312" fill="#ffffff" font-family="system-ui" font-size="11" font-weight="600" text-anchor="middle">Physiological</text>
+
+                <!-- Band 2: Safety -->
+                <polygon points="77,282 253,282 231,234 99,234" fill="#ff9f0a" opacity="0.85"></polygon>
+                <text x="165" y="264" fill="#ffffff" font-family="system-ui" font-size="11" font-weight="600" text-anchor="middle">Safety</text>
+
+                <!-- Band 3: Belonging -->
+                <polygon points="99,234 231,234 209,186 121,186" fill="#30d158" opacity="0.85"></polygon>
+                <text x="165" y="216" fill="#ffffff" font-family="system-ui" font-size="10" font-weight="600" text-anchor="middle">Belonging</text>
+
+                <!-- Band 4: Esteem -->
+                <polygon points="121,186 209,186 187,138 143,138" fill="#0071e3" opacity="0.85"></polygon>
+                <text x="165" y="168" fill="#ffffff" font-family="system-ui" font-size="10" font-weight="600" text-anchor="middle">Esteem</text>
+
+                <!-- Band 5: Self-Actualization (apex, narrow) -->
+                <polygon points="143,138 187,138 165,90" fill="#bf5af2" opacity="0.9"></polygon>
+                <line x1="176" y1="114" x2="218" y2="114" stroke="#bf5af2" stroke-width="1" stroke-dasharray="2"></line>
+                <text x="223" y="117" fill="rgba(255,255,255,0.85)" font-family="system-ui" font-size="9" font-weight="600" text-anchor="start">Self-Actualization</text>
+
+                <!-- Caption -->
+                <text x="165" y="358" fill="rgba(255,255,255,0.6)" font-family="system-ui" font-size="11" font-weight="500" text-anchor="middle">"Survive first. Think later."</text>
+
+                <!-- Arrow between panels -->
+                <line x1="310" y1="200" x2="370" y2="200" stroke="#0071e3" stroke-width="2" marker-end="url(#arrow-blue)"></line>
+
+                <!-- Right Panel: Deutschian Inversion (Light) -->
+                <rect x="370" y="20" width="290" height="360" rx="12" fill="#f5f5f7" stroke="rgba(0,0,0,0.06)" stroke-width="1"></rect>
+                <text x="515" y="45" fill="#1d1d1f" font-family="system-ui" font-size="14" font-weight="600" text-anchor="middle">The Deutschian Inversion</text>
+                <text x="515" y="63" fill="rgba(29,29,31,0.6)" font-family="system-ui" font-size="11" text-anchor="middle">Thought first, then comfort</text>
+
+                <!-- Inverted Triangle: apex down — 5 horizontal bands -->
+                <!-- Band 1: Knowledge Creation (top, widest — the foundation) -->
+                <polygon points="405,90 625,90 603,138 427,138" fill="#bf5af2" opacity="0.9"></polygon>
+                <text x="515" y="118" fill="#ffffff" font-family="system-ui" font-size="11" font-weight="600" text-anchor="middle">Knowledge Creation</text>
+
+                <!-- Band 2: Esteem -->
+                <polygon points="427,138 603,138 581,186 449,186" fill="#0071e3" opacity="0.85"></polygon>
+                <text x="515" y="168" fill="#ffffff" font-family="system-ui" font-size="10" font-weight="600" text-anchor="middle">Esteem</text>
+
+                <!-- Band 3: Belonging -->
+                <polygon points="449,186 581,186 559,234 471,234" fill="#30d158" opacity="0.85"></polygon>
+                <text x="515" y="216" fill="#ffffff" font-family="system-ui" font-size="10" font-weight="600" text-anchor="middle">Belonging</text>
+
+                <!-- Band 4: Safety -->
+                <polygon points="471,234 559,234 537,282 493,282" fill="#ff9f0a" opacity="0.85"></polygon>
+                <text x="515" y="264" fill="#ffffff" font-family="system-ui" font-size="10" font-weight="600" text-anchor="middle">Safety</text>
+
+                <!-- Band 5: Comfort (apex, narrow — a byproduct) -->
+                <polygon points="493,282 537,282 515,330" fill="#ff3b30" opacity="0.85"></polygon>
+                <line x1="526" y1="306" x2="565" y2="306" stroke="#ff3b30" stroke-width="1" stroke-dasharray="2"></line>
+                <text x="570" y="309" fill="rgba(29,29,31,0.85)" font-family="system-ui" font-size="9" font-weight="600" text-anchor="start">Comfort</text>
+
+                <!-- Caption -->
+                <text x="515" y="358" fill="rgba(29,29,31,0.6)" font-family="system-ui" font-size="11" font-weight="500" text-anchor="middle">"Think first. Survival follows."</text>
+
+                <!-- Bottom annotation -->
+                <text x="340" y="395" fill="#86868b" font-family="system-ui" font-size="13" font-weight="600" text-anchor="middle">The causality runs the opposite direction.</text>
+                <text x="340" y="413" fill="#86868b" font-family="system-ui" font-size="11" text-anchor="middle">Knowledge creation is the engine that produces the surplus, not a luxury purchased by it.</text>
+            </svg>
+            <p class="figure-caption" data-sync-id="sync-10">
+                Left: Maslow's hierarchy as commonly read — a ladder you climb before you're <em>allowed</em> to think.<br>
+                Right: The Deutschian inversion — knowledge creation is the foundation. Everything else rests on it.
+            </p>
+        </div>
+
+        <p class="body-text" data-sync-id="sync-11">The conventional story says: <em>wealth enables leisure, leisure enables creativity, creativity is a top-of-the-pyramid activity.</em> The Deutschian story says: <em>creativity (knowledge creation) produces wealth.</em> The Industrial Revolution, the scientific revolution, the agricultural revolution — none of these were luxuries purchased by pre-existing surplus. They were the means by which the surplus was created in the first place.</p>
+    </div>
+</section>
+
+<!-- TREATING CHILDREN AS PEOPLE -->
+<section class="theme-light">
+    <div class="section-container">
+        <h2 class="section-title" data-sync-id="sync-12">What It Actually Means to Treat a Child as a Person</h2>
+        <p class="body-text" data-sync-id="sync-13">This is where the conversation typically gets stuck — because "let children explore and pursue their interests" sounds like <em>permissive indulgence</em>. It isn't. The Deutschian (and Popperian) approach to child-rearing has nothing to do with following a child's every whim. It, however, has everything to do with recognizing what a child actually <em>is</em>.</p>
+
+        <h3 class="subsection-title" data-sync-id="sync-14">A child is a universal explainer</h3>
+        <p class="body-text" data-sync-id="sync-15">A person is not defined by biology, age, or maturity. A person is defined by a software capability: <strong>the capacity to create new explanatory knowledge</strong>. A child, from the moment they begin, forms conjectures about the world — which is far earlier than the age most adults assume as the age when that threshold is crossed. They are not a limited intellect waiting to be "upgraded" to full personhood. They are already there.</p>
+        <p class="body-text" data-sync-id="sync-16">This means a child's questions deserve <em>real</em> answers, not "because I said so." A child's objections to a rule are <em>evidence</em> to be weighed, not insubordination to be punished. Authority is always provisional. The parent may know more <em>today</em>, but the parent is also fallible, and the child may one day see something the parent cannot.</p>
+
+        <h3 class="subsection-title" data-sync-id="sync-17">Disobedience is not a bug — it's a feature</h3>
+        <p class="body-text" data-sync-id="sync-18">Here's the uncomfortable part. A universal explainer cannot be perfectly obedient and still function as a universal explainer. Creativity <em>requires</em> the capacity to reject instruction, question assumptions, and correct errors — including the parent's errors. If a child never pushes back, never questions a rule, never says "but <em>why</em>?", that is not a sign of good parenting. It is a sign that the child's explanatory machinery has been suppressed.</p>
+        <p class="body-text" data-sync-id="sync-19">This does not mean letting a child run into traffic. It means understanding that when a child resists, the resistance is not noise to be silenced — it is a conjecture to be engaged. The parent's job is not to produce an obedient machine. It is to help the child's conjectures collide with reality, including the reality of the parent's own fallibility.</p>
+
+        <h3 class="subsection-title" data-sync-id="sync-20">The obedient-machine fallacy</h3>
+        <p class="body-text" data-sync-id="sync-21">We have a name for systems that follow instructions perfectly without ever questioning them: <em>machinery</em>. A calculator is perfectly obedient. An algorithm is perfectly obedient. A child who is trained to comply without explanation is being trained as machinery — and the tragedy is that the very capacity that makes them human (the capacity to create new explanations) is the thing being suppressed.</p>
+        <p class="body-text" data-sync-id="sync-22">The friend's argument, taken to an extreme, prescribes: the affluent get to raise innovators; the poor must raise obedient labor. But obedience and creativity are not points on a spectrum you can dial. You cannot suppress a child's explanatory creativity and expect to switch it back on when circumstances improve. The mind that learns not to question at five will struggle to question at twenty-five.</p>
+
+        <h3 class="subsection-title" data-sync-id="sync-23">It costs nothing financially</h3>
+        <p class="body-text" data-sync-id="sync-24">None of this requires wealth. It requires a <em>stance</em>:</p>
+        <ul class="principle-list">
+            <li data-sync-id="sync-25">Explanations, not commands, are the default. Commands are a fallback, justified only when time genuinely forbids explanation — and even then, the explanation is owed retroactively.</li>
+            <li data-sync-id="sync-26">A child's "wrong" idea is not a failure to be corrected by authority; it is a conjecture to be tested against reality.</li>
+            <li data-sync-id="sync-27">The question "why?" is never insolence. It is the engine of knowledge creation running at full throttle.</li>
+            <li data-sync-id="sync-28">The parent's authority is earned through better explanations, not asserted through power.</li>
+        </ul>
+        <p class="body-text" data-sync-id="sync-29">It costs nothing to answer "why must we save water?" with an actual explanation of the drought, rather than "shut up and do as you're told." The latter is not <em>cheaper</em> in any meaningful sense — it merely outsources the cost to the child's future capacity to reason.</p>
+    </div>
+</section>
+
+<!-- THE DEUTSCHIAN REVERSAL -->
+<section class="theme-dark">
+    <div class="section-container">
+        <h2 class="section-title" data-sync-id="sync-30">The Reversal: Knowledge Creates Wealth, Not the Other Way Around</h2>
+        <p class="body-text" data-sync-id="sync-31">Apply this to the family. The family that treats its children as rational agents — even, <em>especially</em>, under scarcity — is building the capacity that lifts the family up the hierarchy. The family that says "we can't afford to raise thinkers until we're comfortable" has guaranteed it will never be comfortable, because it has disabled the only mechanism that produces comfort: better knowledge.</p>
+        <p class="body-text" data-sync-id="sync-32">When resources are scarce, this matters <em>more</em>, not less. A family that cannot afford waste needs <em>more</em> creativity, more problem-solving, more critical thinking from every member — including the children — to navigate scarcity. Suppressing that capacity "because we can't afford luxuries" suppresses the very instrument that would create the surplus to escape scarcity. <strong>It is a poverty trap disguised as pragmatism.</strong></p>
+        <div class="pull-quote">To tell poor parents they cannot afford to raise thinkers is to prescribe the very condition that keeps them poor.</div>
+    </div>
+</section>
+
+<!-- THE CONCESSION -->
+<section class="theme-light">
+    <div class="section-container">
+        <h2 class="section-title" data-sync-id="sync-33">Where He's Right (And Why It Strengthens the Case)</h2>
+        <p class="body-text" data-sync-id="sync-34">Here is what should be granted, because granting it makes the rest airtight:</p>
+        <p class="body-text" data-sync-id="sync-35"><em>Extreme</em> deprivation — starvation, violence, the trauma of war — genuinely impairs cognitive development. This is real. A starving child has a harder time reasoning. A parent in flight from danger cannot run a seminar.</p>
+        <p class="body-text" data-sync-id="sync-36">The Deutschian model has <em>degrees</em>. It is not all-or-nothing. A parent with five minutes of calm can engage one question honestly. A parent with five hours can do far more. The principle scales; the <em>intensity</em> of its application varies with circumstance.</p>
+        <p class="body-text" data-sync-id="sync-37">But notice what follows: <strong>these are constraints on implementation, not arguments against the principle.</strong> The correct response to "scarce parents have less bandwidth" is "so we should work to reduce the scarcity" — through the very knowledge-creation the principle celebrates — <em>not</em> "so scarce parents should abandon the principle and raise conformists."</p>
+        <p class="body-text" data-sync-id="sync-38">The friend is pointing at a real implementation difficulty and mistaking it for a refutation of the underlying theory. If anything, it is an argument for the <em>urgency</em> of the idea: the families that most need to escape scarcity are the ones that most need to cultivate the capacity that escapes it.</p>
+        <p class="body-text" data-sync-id="sync-39">And this is where the conversation opens up rather than closing down. The right response to "scarce parents have less bandwidth" is not "so they should lower their ambitions for their children." It is: <em>so we should build the institutions, traditions, and cultures that loosen the constraints on implementation</em> — schools that treat students as universal explainers rather than obedient machinery, communities that honour the question "why?" rather than punishing it, economic ideas that don't force parents to choose between feeding their children and engaging their minds. The capacity to create new knowledge is innate in every child. What varies is not the capacity but the conditions under which it is permitted to operate.</p>
+        <p class="body-text" data-sync-id="sync-40">That, perhaps, is the real work — not of any one parent, but of a civilization that has still not fully grasped what its children are.</p>
+    </div>
+</section>
+
+<!-- CLOSING -->
+<section class="theme-dark">
+    <div class="section-container">
+        <h2 class="section-title" data-sync-id="sync-41">The Line to Leave With</h2>
+        <div class="pull-quote">The hierarchy does not say "achieve comfort, then you may think." History says the precise opposite: think, and comfort follows. The families that most need to escape poverty are the ones that most need to raise thinkers — because the capacity to create knowledge is the only thing that has ever lifted anyone out of poverty.</div>
+        <div class="divider"></div>
+        <p class="body-text" style="text-align: center; color: var(--color-text-muted-dark); font-size: 16px;" data-sync-id="sync-42">
+            Written in the spirit of Karl Popper, David Deutsch, and Brett Hall.<br>
+            Problems are inevitable. Problems are solvable.
+        </p>
+    </div>
+</section>
+
+<footer>
+    Raising Thinkers · A Deutschian response to Maslow · Draft
+</footer>
+
+
+
