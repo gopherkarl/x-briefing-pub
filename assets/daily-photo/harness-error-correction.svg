@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+  <title id="title">The crop harness: conjecture and refutation</title>
+  <desc id="desc">A dark editorial diagram showing neural perception proposing meaning, symbolic geometry testing it, and a quality gate deciding whether the crop can be published.</desc>
+  <defs>
+    <marker id="arrow-blue" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 Z" fill="#2997ff"/></marker>
+    <marker id="arrow-muted" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 Z" fill="#86868b"/></marker>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#000" flood-opacity=".28"/></filter>
+  </defs>
+  <rect width="1200" height="520" rx="20" fill="#000"/>
+  <text x="64" y="62" fill="#2997ff" font-family="system-ui,-apple-system,sans-serif" font-size="14" font-weight="700" letter-spacing="2.2">THE HARNESS</text>
+  <text x="64" y="101" fill="#fff" font-family="system-ui,-apple-system,sans-serif" font-size="28" font-weight="650">A crop decision becomes knowledge only after criticism.</text>
+  <g filter="url(#soft)">
+    <rect x="64" y="160" width="300" height="178" rx="14" fill="#1c1c1e" stroke="#af52de" stroke-width="2"/>
+    <text x="94" y="208" fill="#af52de" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="700" letter-spacing="1.2">NEURAL PROPOSAL</text>
+    <text x="94" y="253" fill="#fff" font-family="system-ui,-apple-system,sans-serif" font-size="24" font-weight="650">What might matter?</text>
+    <text x="94" y="286" fill="#b8b8bd" font-family="system-ui,-apple-system,sans-serif" font-size="15">Meaning, subjects, roles, story</text>
+    <text x="94" y="310" fill="#86868b" font-family="ui-monospace,monospace" font-size="13">anchor · context · anomaly</text>
+    <rect x="450" y="160" width="300" height="178" rx="14" fill="#1c1c1e" stroke="#0071e3" stroke-width="2"/>
+    <text x="480" y="208" fill="#2997ff" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="700" letter-spacing="1.2">SYMBOLIC TEST</text>
+    <text x="480" y="253" fill="#fff" font-family="system-ui,-apple-system,sans-serif" font-size="24" font-weight="650">Does it really fit?</text>
+    <text x="480" y="286" fill="#b8b8bd" font-family="system-ui,-apple-system,sans-serif" font-size="15">Boxes, windows, overlap, geometry</text>
+    <text x="480" y="310" fill="#86868b" font-family="ui-monospace,monospace" font-size="13">measure · score · reject</text>
+    <rect x="836" y="160" width="300" height="178" rx="14" fill="#1c1c1e" stroke="#34c759" stroke-width="2"/>
+    <text x="866" y="208" fill="#34c759" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="700" letter-spacing="1.2">QUALITY GATE</text>
+    <text x="866" y="253" fill="#fff" font-family="system-ui,-apple-system,sans-serif" font-size="24" font-weight="650">Publish with evidence</text>
+    <text x="866" y="286" fill="#b8b8bd" font-family="system-ui,-apple-system,sans-serif" font-size="15">Anchor preserved? Candidate valid?</text>
+    <text x="866" y="310" fill="#86868b" font-family="ui-monospace,monospace" font-size="13">pass · fallback · fail loudly</text>
+  </g>
+  <path d="M368 249 H438" stroke="#2997ff" stroke-width="3" marker-end="url(#arrow-blue)"/>
+  <path d="M754 249 H824" stroke="#2997ff" stroke-width="3" marker-end="url(#arrow-blue)"/>
+  <path d="M986 360 C986 455 214 455 214 360" fill="none" stroke="#86868b" stroke-width="3" stroke-dasharray="8 10" marker-end="url(#arrow-muted)"/>
+  <circle cx="986" cy="360" r="5" fill="#86868b"/>
+  <text x="600" y="442" fill="#86868b" font-family="system-ui,-apple-system,sans-serif" font-size="14" text-anchor="middle">Failure feeds criticism back into the next conjecture.</text>
+</svg>
