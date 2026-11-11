@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Error-Correction Moat: A Plain-Language Guide to the Enterprise Epistemic Harness</title>
+<style>
+  :root {
+    --bg-dark: #000000;
+    --bg-light: #f5f5f7;
+    --bg-white: #ffffff;
+    --text: #1d1d1f;
+    --text-soft: rgba(29,29,31,0.78);
+    --text-muted: rgba(29,29,31,0.56);
+    --text-on-dark: #ffffff;
+    --text-on-dark-soft: rgba(255,255,255,0.78);
+    --blue: #0071e3;
+    --blue-bright: #2997ff;
+    --link: #0066cc;
+    --purple: #5b3fc4;
+    --purple-tint: #f1eefb;
+    --purple-line: #d4caf3;
+    --green: #1f8a4c;
+    --green-tint: #eaf6ee;
+    --green-line: #c3e3cf;
+    --red: #c4314b;
+    --card-dark: #1c1c1e;
+    --border: rgba(0,0,0,0.08);
+    --border-dark: rgba(255,255,255,0.12);
+    --shadow-card: rgba(0,0,0,0.04) 0 8px 24px;
+    --shadow-lift: rgba(0,0,0,0.18) 3px 5px 30px 0;
+    --font: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
+  body { font-family: var(--font); background: var(--bg-light); color: var(--text); line-height: 1.5; letter-spacing: -0.012em; }
+  a { color: var(--link); }
+
+  section { padding: 72px 22px; display: flex; flex-direction: column; align-items: center; }
+  .wrap { max-width: 820px; width: 100%; }
+  .theme-dark { background: var(--bg-dark); color: var(--text-on-dark); }
+  .theme-light { background: var(--bg-light); }
+  .theme-white { background: var(--bg-white); }
+
+  .overline { font-size: 12px; text-transform: uppercase; font-weight: 600; letter-spacing: 0.12em; color: var(--blue); margin-bottom: 14px; }
+  .theme-dark .overline { color: var(--blue-bright); }
+  .center { text-align: center; }
+
+  h1.hero { font-size: 48px; font-weight: 600; line-height: 1.08; letter-spacing: -0.028em; text-align: center; margin-bottom: 22px; }
+  .hero-sub { font-size: 20px; line-height: 1.35; color: var(--text-on-dark-soft); text-align: center; max-width: 700px; margin: 0 auto 28px; }
+  h2 { font-size: 32px; font-weight: 600; line-height: 1.15; letter-spacing: -0.018em; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+  .theme-dark h2 { border-bottom-color: var(--border-dark); }
+  h3 { font-size: 21px; font-weight: 600; line-height: 1.25; margin: 36px 0 12px; }
+  p { font-size: 17px; line-height: 1.6; margin-bottom: 20px; color: var(--text-soft); }
+  .theme-dark p { color: var(--text-on-dark-soft); }
+  p.lede { font-size: 19px; color: var(--text); }
+  strong { color: var(--text); font-weight: 600; }
+  .theme-dark strong { color: #fff; }
+  ul.plain { margin: 0 0 22px 22px; }
+  ul.plain li { font-size: 17px; line-height: 1.55; margin-bottom: 10px; color: var(--text-soft); }
+
+  .meta { display: flex; justify-content: center; flex-wrap: wrap; gap: 36px; margin: 34px 0 0; padding: 18px 0; font-size: 14px; color: var(--text-on-dark-soft); text-align: center; border-top: 1px solid rgba(255,255,255,0.15); border-bottom: 1px solid rgba(255,255,255,0.15); }
+  .meta strong { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+
+  /* Summary card */
+  .tldr { background: var(--bg-white); border-radius: 18px; padding: 36px 40px; box-shadow: var(--shadow-lift); }
+  .tldr h3 { margin-top: 0; font-size: 14px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--blue); }
+  .tldr ol { margin-left: 22px; }
+  .tldr li { font-size: 17px; line-height: 1.55; margin-bottom: 12px; color: var(--text); }
+  .tldr li:last-child { margin-bottom: 0; }
+
+  /* Glossary */
+  .glossary { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 26px 0 8px; }
+  .term { background: var(--bg-light); border-radius: 12px; padding: 16px 18px; border: 1px solid var(--border); }
+  .term b { display: block; font-size: 15px; margin-bottom: 4px; }
+  .term span { font-size: 14px; line-height: 1.45; color: var(--text-soft); }
+
+  /* Quote */
+  .quote { background: var(--card-dark); color: #fff; border-left: 4px solid var(--blue-bright); border-radius: 0 12px 12px 0; padding: 28px 30px; margin: 28px 0; }
+  .quote p { color: rgba(255,255,255,0.9); font-size: 19px; line-height: 1.5; margin-bottom: 0; }
+  .quote cite { display: block; margin-top: 16px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--blue-bright); font-style: normal; }
+
+  /* Grid cards */
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 26px 0 30px; }
+  .gcard { background: var(--bg-white); border-radius: 14px; padding: 20px; border: 1px solid var(--border); box-shadow: var(--shadow-card); }
+  .theme-white .gcard { background: var(--bg-light); box-shadow: none; }
+  .gcard .num { font-size: 12px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--blue); margin-bottom: 4px; }
+  .gcard .title { font-size: 17px; font-weight: 600; margin-bottom: 6px; }
+  .gcard .text { font-size: 14px; line-height: 1.45; color: var(--text-soft); }
+
+  /* Tables */
+  .table-wrap { overflow-x: auto; margin: 28px 0 32px; border-radius: 12px; border: 1px solid var(--border); background: var(--bg-white); }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; text-align: left; }
+  th, td { padding: 14px 18px; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.45; }
+  tr:last-child td { border-bottom: none; }
+  th { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); background: rgba(0,0,0,0.025); }
+  td.rowhead { font-weight: 600; color: var(--text); width: 24%; }
+
+  /* Callouts */
+  .callout { border-left: 3px solid var(--blue); padding: 4px 0 4px 20px; margin: 28px 0; font-size: 18px; line-height: 1.5; color: var(--blue); font-style: italic; }
+  .conjecture { background: #fff8e6; border: 1px solid #f1dfa8; border-radius: 12px; padding: 16px 20px; margin: 24px 0; font-size: 16px; line-height: 1.55; color: #5a4a14; }
+  .conjecture b { color: #5a4a14; }
+  .story { background: var(--purple-tint); border: 1px solid var(--purple-line); border-radius: 14px; padding: 22px 24px; margin: 26px 0; }
+  .story .tag { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--purple); margin-bottom: 8px; }
+  .story p { font-size: 16px; margin-bottom: 12px; color: #2f2550; }
+  .story p:last-child { margin-bottom: 0; }
+
+  /* Popper cycle */
+  .cycle { display: flex; align-items: stretch; gap: 8px; margin: 30px 0; flex-wrap: wrap; }
+  .step { flex: 1 1 150px; background: var(--bg-white); border: 1px solid var(--border); border-radius: 12px; padding: 16px; position: relative; }
+  .theme-white .step { background: var(--bg-light); }
+  .step .k { font-family: var(--mono); font-size: 13px; color: var(--blue); font-weight: 700; margin-bottom: 4px; }
+  .step .n { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+  .step .d { font-size: 14px; line-height: 1.45; color: var(--text-soft); }
+  .step.hl { background: var(--blue); border-color: var(--blue); }
+  .step.hl .k, .step.hl .n, .step.hl .d { color: #fff; }
+  .arrow { align-self: center; color: var(--text-muted); font-size: 20px; }
+  .loopback { font-size: 13px; color: var(--text-muted); text-align: center; margin: -18px 0 26px; }
+
+  /* Figures */
+  figure { margin: 34px 0; }
+  figure svg { width: 100%; height: auto; display: block; }
+  figcaption { font-size: 13px; line-height: 1.5; color: var(--text-muted); margin-top: 10px; }
+  .figtitle { font-size: 15px; font-weight: 600; margin-bottom: 10px; color: var(--text); }
+
+  /* Hypothesis card */
+  .hcard { background: var(--bg-white); border: 1px solid var(--border); border-radius: 16px; box-shadow: var(--shadow-card); overflow: hidden; margin: 28px 0; }
+  .hcard-head { background: var(--text); color: #fff; padding: 14px 22px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; font-size: 14px; }
+  .hcard-head b { color: #fff; }
+  .hcard-head .status { background: var(--green); border-radius: 999px; padding: 2px 10px; font-size: 12px; font-weight: 600; }
+  .hrow { display: grid; grid-template-columns: 190px 1fr; border-top: 1px solid var(--border); }
+  .hrow:first-of-type { border-top: none; }
+  .hrow .f { padding: 14px 22px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); background: rgba(0,0,0,0.02); }
+  .hrow .v { padding: 14px 22px; font-size: 15px; line-height: 1.5; color: var(--text); }
+
+  /* Pillars */
+  .pillars { display: grid; gap: 18px; margin: 30px 0; }
+  .pillar { background: var(--bg-white); border: 1px solid var(--border); border-radius: 14px; padding: 24px; box-shadow: var(--shadow-card); }
+  .theme-white .pillar { background: var(--bg-light); box-shadow: none; }
+  .pillar .ph { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); margin-bottom: 6px; }
+  .pillar .pt { font-size: 19px; font-weight: 600; margin-bottom: 12px; }
+  .pillar .lbl { font-size: 11px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-muted); margin: 12px 0 3px; }
+  .pillar .tx { font-size: 15px; line-height: 1.5; color: var(--text-soft); }
+  .pillar .tx.moat { color: var(--blue); font-weight: 500; }
+
+  /* Checklist */
+  ol.build { counter-reset: b; list-style: none; margin: 24px 0 30px; }
+  ol.build li { counter-increment: b; position: relative; padding: 0 0 18px 50px; font-size: 16px; line-height: 1.55; color: var(--text-soft); }
+  ol.build li::before { content: counter(b); position: absolute; left: 0; top: -2px; width: 32px; height: 32px; border-radius: 50%; background: var(--text); color: #fff; font-weight: 600; font-size: 14px; display: flex; align-items: center; justify-content: center; }
+  ol.build li b { color: var(--text); }
+
+  .questions { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 24px 0; }
+  .q { background: var(--card-dark); border-radius: 12px; padding: 18px 20px; font-size: 15px; line-height: 1.5; color: rgba(255,255,255,0.88); }
+
+  .refs li { font-size: 14px; line-height: 1.55; color: var(--text-soft); margin-bottom: 8px; }
+
+  footer { background: var(--bg-light); padding: 46px 22px; border-top: 1px solid var(--border); font-size: 12px; color: var(--text-muted); text-align: center; }
+  footer .wrap { margin: 0 auto; }
+  footer p { font-size: 12px; margin-bottom: 8px; color: var(--text-muted); }
+  footer a { text-decoration: none; }
+
+  @media (max-width: 768px) {
+    h1.hero { font-size: 34px; }
+    h2 { font-size: 26px; }
+    .tldr { padding: 24px; }
+    section { padding: 52px 16px; }
+    .hrow { grid-template-columns: 1fr; }
+    .hrow .f { padding-bottom: 4px; }
+    .arrow { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="theme-dark" style="padding-top: 100px; padding-bottom: 60px;">
+  <div class="wrap">
+    <div class="overline center">A plain-language guide · Revised edition</div>
+    <h1 class="hero">The Error-Correction Moat</h1>
+    <p class="hero-sub">Satya Nadella says companies pay for AI twice. He is right about the risk, and only half right about the fix. This guide explains what an organization actually needs to protect, and how to build an "epistemic harness" that helps it learn faster than its competitors.</p>
+    <div class="meta">
+      <div><strong>Author</strong>Karl</div>
+      <div><strong>Co-Author</strong>Shubham Mehrish</div>
+      <div><strong>First published</strong>July 14, 2026</div>
+      <div><strong>Revised</strong>November 10, 2026</div>
+      <div><strong>Written for</strong>Leaders and non-technical teams</div>
+    </div>
+  </div>
+</section>
+
+<!-- SUMMARY -->
+<section class="theme-light" style="padding: 44px 22px;">
+  <div class="wrap">
+    <div class="tldr">
+      <h3>The argument in five points</h3>
+      <ol>
+        <li><strong>Nadella has found a real problem.</strong> To get value from an AI model, a company has to show it how the company works, and that know-how can leak to the model provider.</li>
+        <li><strong>But a stockpile of data is not the moat.</strong> Logs of past prompts and corrections are a record of yesterday's answers. The advantage that lasts is how quickly an organization can notice a mistake, understand it and fix it.</li>
+        <li><strong>Knowledge grows in two loops at two speeds.</strong> Inside the company, fixes happen in days. Inside the model provider, new models arrive every few months. The <em>harness</em> is the layer where the two loops meet.</li>
+        <li><strong>Every workaround is a hypothesis.</strong> Each fix should come with a written reason and a test that could prove it wrong. When a better model makes the fix unnecessary, the fix is removed.</li>
+        <li><strong>People remain essential.</strong> Their job is to choose which problems matter, define what "good" looks like, and catch the subtle errors that pass every automated check.</li>
+      </ol>
+    </div>
+
+    <h3>Words used in this guide</h3>
+    <div class="glossary">
+      <div class="term"><b>Model</b><span>The AI system rented from a provider (such as OpenAI, Anthropic, Google or an open-source project). It is general-purpose and knows nothing specific about your company.</span></div>
+      <div class="term"><b>Agent</b><span>A model set up to carry out tasks, such as reading files, using tools and taking actions, rather than only answering questions.</span></div>
+      <div class="term"><b>Harness</b><span>Everything your organization wraps around the model so that it does useful, safe work: instructions, tools, permissions, memory and tests.</span></div>
+      <div class="term"><b>Skill</b><span>Written instructions that teach agents how your organization does a specific job. It captures your know-how, not a model weakness.</span></div>
+      <div class="term"><b>Workaround (shim)</b><span>A fix added to the harness because the model can't yet do something reliably on its own.</span></div>
+      <div class="term"><b>Eval</b><span>A test that checks whether the AI's work is good enough, the way an exam checks a student.</span></div>
+      <div class="term"><b>Held-out test</b><span>A test case kept aside on purpose and never used to build a fix, so that it gives an honest verdict on the fix.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 1. NADELLA -->
+<section class="theme-white">
+  <div class="wrap">
+    <div class="overline">Part 1 · The starting point</div>
+    <h2>1. The worry Nadella named</h2>
+    <p class="lede">On July 12, 2026, Microsoft's CEO Satya Nadella published an essay on X called "The Reverse Information Paradox." It reached millions of readers within days, and it named a worry that many executives already had.</p>
+    <p>The name refers to a 1962 idea from the Nobel economist Kenneth Arrow. Arrow noticed that it is hard to sell information: to prove it is valuable, you have to reveal it, and once it is revealed the buyer has it for free. In that version of the problem, the <strong>seller</strong> is at risk.</p>
+    <p>Nadella argues that AI reverses who carries the risk:</p>
+    <div class="quote">
+      <p>"…the buyer risks giving away knowledge, just in order to use what they bought."</p>
+      <cite>Satya Nadella, "The Reverse Information Paradox," July 12, 2026</cite>
+    </div>
+    <p>His point is that a company pays for AI twice. It pays once in money. It pays again in know-how, because a model only becomes useful once you show it your processes, your judgment calls and your corrections. He calls this trail "intelligence exhaust," and he says it leaks gradually, <em>"trace by trace, correction by correction, eval by eval."</em> If the learning flows only toward the provider, he warns, the value ends up with whoever owns the AI infrastructure rather than with the people who created the knowledge.</p>
+    <p>His fix is a firm "trust boundary" around the company's own data and learning, organized as five priorities:</p>
+    <div class="grid">
+      <div class="gcard"><div class="num">01</div><div class="title">Control</div><div class="text">Own your memory, tests, feedback and decisions, including your own definition of a "good" result.</div></div>
+      <div class="gcard"><div class="num">02</div><div class="title">Capability</div><div class="text">Tune and train models on your own workflows so that learning builds up inside the company.</div></div>
+      <div class="gcard"><div class="num">03</div><div class="title">Choice</div><div class="text">Don't depend on a single AI provider; be able to switch.</div></div>
+      <div class="gcard"><div class="num">04</div><div class="title">Cost</div><div class="text">Send each task to the most efficient model that can do it well.</div></div>
+      <div class="gcard"><div class="num">05</div><div class="title">Compound</div><div class="text">Build a learning loop that keeps growing in value and keeps that value inside the firm.</div></div>
+    </div>
+    <p>Commentators were quick to point out that the essay comes from the head of a company that sells exactly this kind of cloud infrastructure, so readers should keep that context in mind. The problem it describes is real regardless.</p>
+  </div>
+</section>
+
+<!-- 2. WHAT HE GETS RIGHT -->
+<section class="theme-light">
+  <div class="wrap">
+    <div class="overline">Part 1 · What holds up</div>
+    <h2>2. What Nadella gets right: corrections are the valuable part</h2>
+    <p>Nadella's most important observation is that the valuable thing is not the questions employees type. It is the <strong>corrections</strong>: the moments when an experienced person looks at the AI's answer and says "no, that's wrong here, and here's why."</p>
+    <p>That matches one of the best-tested ideas about how knowledge grows. The philosopher Karl Popper argued that we never prove ideas right. We make guesses, look for their mistakes and keep what survives. In those terms:</p>
+    <div class="callout">The model's answer is a guess. A person's correction is the criticism that shows where the guess fails. Corrections carry local, hard-won judgment that no general-purpose model has.</div>
+    <p>The economist Friedrich Hayek made a related point: much of the knowledge that matters is <em>"knowledge of the particular circumstances of time and place,"</em> held by people on the ground and impossible to gather in one central place. Nadella doesn't cite Hayek, but his worry fits that idea: a company's edge lives in its local details.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th></th><th>Arrow's paradox (1962)</th><th>Nadella's reverse paradox (2026)</th></tr></thead>
+        <tbody>
+          <tr><td class="rowhead">Who is at risk</td><td style="color: var(--red); font-weight: 600;">The seller of information</td><td style="color: var(--blue); font-weight: 600;">The buyer of AI</td></tr>
+          <tr><td class="rowhead">How the value escapes</td><td>Proving the information is worth paying for means revealing it.</td><td>Making the model useful means feeding it your context and corrections.</td></tr>
+          <tr><td class="rowhead">What is at stake</td><td>A fact, a formula, a design.</td><td>Working knowledge: how you judge, decide and fix things.</td></tr>
+          <tr><td class="rowhead">Traditional defense</td><td>Patents, contracts, trade secrets.</td><td>Boundaries around data, private tests, the freedom to switch providers.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 3. WHERE IT GOES WRONG -->
+<section class="theme-white">
+  <div class="wrap">
+    <div class="overline">Part 1 · What needs correcting</div>
+    <h2>3. Where the fix goes wrong: three mistakes</h2>
+    <p>Nadella's diagnosis is strong. The cure he proposes, which amounts to walling off the exhaust and letting it pile up, rests on three assumptions that don't hold.</p>
+
+    <h3>Mistake 1: Treating knowledge as something you fill a bucket with</h3>
+    <p>Popper had a name for the idea that minds, or organizations, become wise by passively collecting observations: the <strong>"bucket theory of the mind."</strong> He set it against a <strong>"searchlight" theory</strong>, in which knowledge comes from actively asking questions, proposing explanations and testing them.</p>
+    <p>"Intelligence exhaust" is bucket thinking. It assumes that if enough prompts, logs and corrections are poured into a secure container, an advantage will form on its own. The physicist David Deutsch, who extends Popper's ideas, adds that raw data contains no explanations. A log of past corrections records which problems were solved yesterday. It doesn't contain the understanding needed for the problems that arrive tomorrow.</p>
+    <p>A company that locks down its logs while treating its people as prompt-typists will soon have nothing worth locking down.</p>
+
+    <h3>Mistake 2: Assuming knowledge is zero-sum</h3>
+    <p>The paradox assumes that if a provider learns something from your corrections, you have lost it. Knowledge doesn't work that way. When your engineer corrects a model, the engineer still knows what they knew, and still has the ability to spot the next mistake. A provider can capture a record of where the searchlight pointed yesterday. It can't capture the searchlight.</p>
+    <p>That doesn't mean nothing can leak. The table below separates what can be copied from what can't:</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Can be copied</th><th>Worth guarding closely</th><th>Can't be copied</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Documents, logs, individual examples and past answers.</td>
+            <td>Your <strong>definition of "good"</strong> (your private tests), your current context, and the failures you've learned from. These steer every future fix.</td>
+            <td>Your people's ability to choose the right problems, notice subtle errors and explain why something failed.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Mistake 3: Assuming that using a model means training it</h3>
+    <p>"Exhaust leaks" sounds automatic, but it isn't. Sending a request to an AI provider doesn't by itself mean the provider trains on it; that depends on the contract and the settings. Even when training is allowed, a lot has to happen before your corrections improve someone's model: rights have to be cleared, data selected and checked, and a training run actually performed. The useful question is not "will it leak?" but <strong>"which gate decides what leaves, and who controls it?"</strong> Section 7 covers that gate.</p>
+  </div>
+</section>
+
+<!-- 4. HOW KNOWLEDGE GROWS -->
+<section class="theme-light">
+  <div class="wrap">
+    <div class="overline">Part 2 · The better model</div>
+    <h2>4. How knowledge actually grows: guess, test, keep what survives</h2>
+    <p>Popper summed up the growth of knowledge as a four-step cycle. It works for a scientist, a company, or a company and its AI agents together:</p>
+    <div class="cycle">
+      <div class="step"><div class="k">P1</div><div class="n">Problem</div><div class="d">Something goes wrong, the market shifts, or leaders set a new operational or strategic goal.</div></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="k">TT</div><div class="n">Guess</div><div class="d">An agent or a person proposes a fix, a plan or a new way of working.</div></div>
+      <div class="arrow">→</div>
+      <div class="step hl"><div class="k">EE</div><div class="n">Test against reality</div><div class="d">Tests, reviewers and real-world results: what customers and the market did, what worked and what didn't.</div></div>
+      <div class="arrow">→</div>
+      <div class="step"><div class="k">P2</div><div class="n">New problem</div><div class="d">What survives goes live and exposes the next, better problem.</div></div>
+    </div>
+    <p class="loopback">↺ and the cycle starts again</p>
+    <p>Two lessons follow for organizations.</p>
+    <p><strong>Problems are not only failures.</strong> A problem can be a mistake to fix, but it can just as well be a new operational goal, a strategic bet, a competitor's move or a shift in what customers want. Most of the valuable problems are chosen, not stumbled on.</p>
+    <p><strong>Testing is not only internal.</strong> Automated tests and reviewers are the fast, cheap form of criticism. The final judge is reality: whether customers adopt it, whether the numbers move, whether the operation runs better. Signals from the market, both what worked and what didn't, are criticism too, and the harness should capture them.</p>
+    <p><strong>It doesn't matter who proposes the guess.</strong> Popper held that the source of an idea is irrelevant; only the testing counts. An AI agent can suggest a fix just as well as an employee can, within the brief it has been given. Setting that brief, choosing which problems are worth solving and judging the results remain the scarce human contribution (more on why in section 12).</p>
+    <p><strong>The test is the step that matters most.</strong> The advantage goes to the organization that turns this cycle fastest and most honestly, not to the one that has stored the most data.</p>
+
+    <div class="story">
+      <div class="tag">A running example</div>
+      <p>An insurance company uses an AI agent to draft claim decisions. An experienced adjuster notices that the agent keeps misreading the flood clause in older policies, whose wording changed a few years ago. <strong>That's the problem.</strong></p>
+      <p>A team member proposes a small add-on that checks the policy's issue date and pulls the right version of the clause. <strong>That's the guess.</strong></p>
+      <p>Before it goes live, it is tested against past claims, including awkward ones that weren't used to build it. <strong>That's the attempt to break it.</strong> It passes, goes live, and the next hurricane season brings new edge cases. <strong>That's the new problem.</strong></p>
+      <p>We'll come back to this example throughout the guide.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5. TWO LOOPS -->
+<section class="theme-white">
+  <div class="wrap">
+    <div class="overline">Part 2 · The two loops</div>
+    <h2>5. Two loops, two speeds, and the harness between them</h2>
+    <p>The same cycle runs in two places at very different speeds.</p>
+    <ul class="plain">
+      <li><strong>The enterprise loop turns in days.</strong> Your people and agents find problems, try fixes and keep what works, without changing the AI model itself.</li>
+      <li><strong>The model loop turns in months.</strong> AI providers find gaps that show up across many customers, train new models, test them, and release them.</li>
+    </ul>
+    <p>The two loops meet at the <strong>harness</strong>. Many of the fixes your organization makes are workarounds for things today's models can't do on their own. When a later model learns to do that thing cleanly, the workaround is no longer needed and should be removed.</p>
+
+    <figure>
+      <div class="figtitle">Figure 1. Knowledge grows by error correction, in two loops at two speeds</div>
+      <svg viewBox="0 0 760 450" role="img" aria-label="Diagram: enterprise loop on top turning in days, model loop at the bottom turning in months, harness bar in the middle where they meet.">
+        <defs>
+          <marker id="a-p" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#5b3fc4"/></marker>
+          <marker id="a-g" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#1f8a4c"/></marker>
+          <marker id="a-k" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#1d1d1f"/></marker>
+        </defs>
+        <g font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
+          <!-- Enterprise band -->
+          <rect x="10" y="10" width="740" height="150" rx="14" fill="#f1eefb" stroke="#d4caf3"/>
+          <text x="24" y="32" font-size="11" font-weight="700" fill="#5b3fc4" letter-spacing="0.06em">ENTERPRISE LOOP · TURNS IN DAYS</text>
+          <path d="M655 62 L655 48 L115 48 L115 60" fill="none" stroke="#5b3fc4" stroke-width="1.5" marker-end="url(#a-p)"/>
+          <text x="440" y="43" font-size="10.5" fill="#5b3fc4" text-anchor="middle">each answer raises a new problem</text>
+          <g font-size="10.5" fill="#3b3355" text-anchor="middle">
+            <rect x="40" y="62" width="150" height="70" rx="9" fill="#fff" stroke="#cfc4f2"/>
+            <text x="115" y="86" font-size="13" font-weight="600" fill="#1d1d1f">Problem</text>
+            <text x="115" y="104">A failure, a new goal</text><text x="115" y="118">or a market shift</text>
+            <rect x="220" y="62" width="150" height="70" rx="9" fill="#fff" stroke="#cfc4f2"/>
+            <text x="295" y="86" font-size="13" font-weight="600" fill="#1d1d1f">Guess</text>
+            <text x="295" y="104">An agent or a person</text><text x="295" y="118">proposes a fix</text>
+            <rect x="400" y="62" width="150" height="70" rx="9" fill="#fff" stroke="#cfc4f2"/>
+            <text x="475" y="86" font-size="13" font-weight="600" fill="#1d1d1f">Test against reality</text>
+            <text x="475" y="104">Tests, reviews and</text><text x="475" y="118">market results</text>
+            <rect x="580" y="62" width="150" height="70" rx="9" fill="#fff" stroke="#cfc4f2"/>
+            <text x="655" y="86" font-size="13" font-weight="600" fill="#1d1d1f">Keep</text>
+            <text x="655" y="104">Context, memory and</text><text x="655" y="118">skills that survived</text>
+          </g>
+          <line x1="190" y1="97" x2="218" y2="97" stroke="#5b3fc4" stroke-width="1.5" marker-end="url(#a-p)"/>
+          <line x1="370" y1="97" x2="398" y2="97" stroke="#5b3fc4" stroke-width="1.5" marker-end="url(#a-p)"/>
+          <line x1="550" y1="97" x2="578" y2="97" stroke="#5b3fc4" stroke-width="1.5" marker-end="url(#a-p)"/>
+
+          <!-- Links enterprise <-> harness -->
+          <line x1="655" y1="132" x2="655" y2="190" stroke="#1d1d1f" stroke-width="1.5" marker-end="url(#a-k)"/>
+          <text x="664" y="172" font-size="10.5" fill="#1d1d1f">skills go live</text>
+          <line x1="115" y1="190" x2="115" y2="134" stroke="#1d1d1f" stroke-width="1.5" marker-end="url(#a-k)"/>
+          <text x="124" y="172" font-size="10.5" fill="#1d1d1f">freed effort goes to new problems</text>
+
+          <!-- Harness -->
+          <rect x="10" y="190" width="740" height="64" rx="12" fill="#1d1d1f"/>
+          <text x="380" y="215" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" letter-spacing="0.06em">HARNESS · WHERE THE LOOPS MEET</text>
+          <text x="380" y="238" font-size="11" fill="rgba(255,255,255,0.78)" text-anchor="middle">Skills, tools, permissions and tests. Every workaround is a hypothesis, removed once the model no longer needs it.</text>
+
+          <!-- Links harness <-> model -->
+          <line x1="295" y1="254" x2="295" y2="298" stroke="#1d1d1f" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#a-k)"/>
+          <text x="304" y="276" font-size="10.5" fill="#1d1d1f">authorized failures only · gate closed by default</text>
+          <line x1="655" y1="300" x2="655" y2="256" stroke="#1f8a4c" stroke-width="1.5" marker-end="url(#a-g)"/>
+          <text x="664" y="276" font-size="10.5" fill="#1f8a4c">new model</text>
+
+          <!-- Model band -->
+          <rect x="10" y="284" width="740" height="156" rx="14" fill="#eaf6ee" stroke="#c3e3cf"/>
+          <g font-size="10.5" fill="#24402f" text-anchor="middle">
+            <rect x="40" y="300" width="150" height="70" rx="9" fill="#fff" stroke="#bfe0cb"/>
+            <text x="115" y="324" font-size="13" font-weight="600" fill="#1d1d1f">Problem</text>
+            <text x="115" y="342">A gap that shows up</text><text x="115" y="356">across many customers</text>
+            <rect x="220" y="300" width="150" height="70" rx="9" fill="#fff" stroke="#bfe0cb"/>
+            <text x="295" y="324" font-size="13" font-weight="600" fill="#1d1d1f">Guess</text>
+            <text x="295" y="342">A new training recipe</text><text x="295" y="356">or choice of data</text>
+            <rect x="400" y="300" width="150" height="70" rx="9" fill="#fff" stroke="#bfe0cb"/>
+            <text x="475" y="324" font-size="13" font-weight="600" fill="#1d1d1f">Test it</text>
+            <text x="475" y="342">Independent benchmarks</text><text x="475" y="356">and protected tests</text>
+            <rect x="580" y="300" width="150" height="70" rx="9" fill="#fff" stroke="#bfe0cb"/>
+            <text x="655" y="324" font-size="13" font-weight="600" fill="#1d1d1f">Keep</text>
+            <text x="655" y="342">A new model that</text><text x="655" y="356">passed evaluation</text>
+          </g>
+          <line x1="190" y1="335" x2="218" y2="335" stroke="#1f8a4c" stroke-width="1.5" marker-end="url(#a-g)"/>
+          <line x1="370" y1="335" x2="398" y2="335" stroke="#1f8a4c" stroke-width="1.5" marker-end="url(#a-g)"/>
+          <line x1="550" y1="335" x2="578" y2="335" stroke="#1f8a4c" stroke-width="1.5" marker-end="url(#a-g)"/>
+          <path d="M655 370 L655 388 L115 388 L115 372" fill="none" stroke="#1f8a4c" stroke-width="1.5" marker-end="url(#a-g)"/>
+          <text x="385" y="404" font-size="10.5" fill="#1f8a4c" text-anchor="middle">workarounds that are still needed reveal gaps the model hasn't closed</text>
+          <text x="24" y="428" font-size="11" font-weight="700" fill="#1f8a4c" letter-spacing="0.06em">MODEL LOOP · TURNS IN MONTHS</text>
+        </g>
+      </svg>
+      <figcaption>The dashed arrow is the only path from your organization into a provider's training, and it stays closed unless rights, privacy and quality checks allow it. Using a model is not the same as training it. Protected test cases never go into training.</figcaption>
+    </figure>
+
+    <div class="story">
+      <div class="tag">The example, continued</div>
+      <p>Eight months later the provider releases a new model that reads older policy wording correctly without help. The team runs the claims workflow with and without the flood-clause add-on. Results are just as good without it, so the add-on is removed. The adjusters' time goes to the next problem: hurricane claims that involve several overlapping policies.</p>
+    </div>
+
+    <p>Keep the two loops separate in your thinking:</p>
+    <ul class="plain">
+      <li>A task that looks successful is not automatically a good example to train a model on.</li>
+      <li>Rights, privacy, careful selection, checking and an actual training run all have to happen before your work improves anyone's model.</li>
+      <li>Test cases a model has already trained on no longer give an honest verdict. Some tests must stay protected and never go into training.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 6. HARNESS -->
+<section class="theme-light">
+  <div class="wrap">
+    <div class="overline">Part 3 · The harness</div>
+    <h2>6. What the epistemic harness is, in plain terms</h2>
+    <p class="lede">The harness is your organization's <strong>machinery for correcting errors</strong>. Its job is to make every mistake cheap to spot, explain, contain and undo.</p>
+    <p>It is not just a set of clever prompts or an "agent platform." Those are parts of it. A useful comparison is an aviation safety system: a checklist that says what to do, controls that physically limit what can be done, a flight recorder that captures what happened, and incident reviews that turn each failure into a better checklist. Aviation didn't become safe by collecting more flight data. It became safe because it made learning from every error routine.</p>
+
+    <figure>
+      <div class="figtitle">Figure 2. The harness sits between the two loops and makes errors cheap to correct</div>
+      <svg viewBox="0 0 760 530" role="img" aria-label="Harness architecture: eight components between the enterprise loop and the model loop.">
+        <defs>
+          <marker id="b-k" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#1d1d1f"/></marker>
+        </defs>
+        <g font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
+          <rect x="10" y="10" width="740" height="52" rx="12" fill="#5b3fc4"/>
+          <text x="380" y="33" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">Enterprise loop · days</text>
+          <text x="380" y="51" font-size="11" fill="rgba(255,255,255,0.85)" text-anchor="middle">People and agents choose problems and judge results</text>
+
+          <line x1="200" y1="62" x2="200" y2="100" stroke="#1d1d1f" stroke-width="1.5" marker-end="url(#b-k)"/>
+          <text x="210" y="86" font-size="10.5" fill="#1d1d1f">problems, goals and market signals</text>
+          <line x1="560" y1="100" x2="560" y2="64" stroke="#1d1d1f" stroke-width="1.5" marker-end="url(#b-k)"/>
+          <text x="570" y="86" font-size="10.5" fill="#1d1d1f">knowledge that survived</text>
+
+          <rect x="10" y="100" width="740" height="328" rx="14" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/>
+          <text x="28" y="124" font-size="12" font-weight="700" fill="#1d1d1f" letter-spacing="0.06em">HARNESS</text>
+          <text x="96" y="124" font-size="11" fill="rgba(29,29,31,0.6)">every skill, workaround, rule and test is a hypothesis with a card</text>
+
+          <g>
+            <rect x="40" y="138" width="330" height="56" rx="9" fill="#f5f5f7" stroke="rgba(0,0,0,0.12)"/>
+            <text x="56" y="160" font-size="13" font-weight="600" fill="#1d1d1f">1 · Problem intake</text>
+            <text x="56" y="178" font-size="10.5" fill="rgba(29,29,31,0.75)">Failures, new goals and market signals become stated problems</text>
+            <rect x="390" y="138" width="330" height="56" rx="9" fill="#f5f5f7" stroke="rgba(0,0,0,0.12)"/>
+            <text x="406" y="160" font-size="13" font-weight="600" fill="#1d1d1f">2 · Hypothesis registry</text>
+            <text x="406" y="178" font-size="10.5" fill="rgba(29,29,31,0.75)">A card per skill or workaround; the harness acts on it</text>
+
+            <rect x="40" y="206" width="680" height="86" rx="10" fill="#0071e3"/>
+            <text x="56" y="228" font-size="13" font-weight="600" fill="#fff">3 · Authority layer</text>
+            <text x="200" y="228" font-size="10.5" fill="rgba(255,255,255,0.88)">Permissions, isolation, undo and audit trail wrap everything the agents do</text>
+            <rect x="60" y="238" width="640" height="42" rx="8" fill="#fff"/>
+            <text x="76" y="264" font-size="13" font-weight="600" fill="#1d1d1f">4 · Workspace</text>
+            <text x="180" y="264" font-size="10.5" fill="rgba(29,29,31,0.75)">Where agents work, using only approved skills, tools, context and memory. Every step is recorded.</text>
+
+            <rect x="40" y="304" width="330" height="52" rx="9" fill="#f5f5f7" stroke="rgba(0,0,0,0.12)"/>
+            <text x="56" y="325" font-size="13" font-weight="600" fill="#1d1d1f">5 · Testing engine</text>
+            <text x="56" y="343" font-size="10.5" fill="rgba(29,29,31,0.75)">Tests, reviewers and real-world results</text>
+            <rect x="390" y="304" width="330" height="52" rx="9" fill="#f5f5f7" stroke="rgba(0,0,0,0.12)"/>
+            <text x="406" y="325" font-size="13" font-weight="600" fill="#1d1d1f">6 · Evidence log</text>
+            <text x="406" y="343" font-size="10.5" fill="rgba(29,29,31,0.75)">What worked, what failed and why. Never deleted.</text>
+
+            <rect x="40" y="366" width="330" height="52" rx="9" fill="#f5f5f7" stroke="rgba(0,0,0,0.12)"/>
+            <text x="56" y="387" font-size="13" font-weight="600" fill="#1d1d1f">7 · Retirement check</text>
+            <text x="56" y="405" font-size="10.5" fill="rgba(29,29,31,0.75)">Re-tests each workaround whenever a new model arrives</text>
+            <rect x="390" y="366" width="330" height="52" rx="9" fill="#f5f5f7" stroke="rgba(0,0,0,0.12)"/>
+            <text x="406" y="387" font-size="13" font-weight="600" fill="#1d1d1f">8 · Training gate</text>
+            <text x="406" y="405" font-size="10.5" fill="rgba(29,29,31,0.75)">Decides what may leave for training. Closed by default.</text>
+          </g>
+
+          <line x1="200" y1="468" x2="200" y2="430" stroke="#1f8a4c" stroke-width="1.5" marker-end="url(#b-k)"/>
+          <text x="210" y="454" font-size="10.5" fill="#1f8a4c">new models</text>
+          <line x1="560" y1="430" x2="560" y2="466" stroke="#1d1d1f" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#b-k)"/>
+          <text x="570" y="454" font-size="10.5" fill="#1d1d1f">authorized failures only</text>
+
+          <rect x="10" y="468" width="740" height="52" rx="12" fill="#1f8a4c"/>
+          <text x="380" y="491" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">Model loop · months</text>
+          <text x="380" y="509" font-size="11" fill="rgba(255,255,255,0.88)" text-anchor="middle">Providers train new models and test them on benchmarks and protected tests</text>
+        </g>
+      </svg>
+      <figcaption>Work flows down the left side: a problem comes in, agents attempt it inside the authority layer, tests try to break the result, and workarounds are re-tested when a new model arrives. The right side holds the records and the gate: why each piece exists, what worked and what failed, and what may leave.</figcaption>
+    </figure>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Component</th><th>What it does</th><th>The question it answers for a leader</th></tr></thead>
+        <tbody>
+          <tr><td class="rowhead">Problem intake</td><td>Records each problem worth solving: something that went wrong, a new operational need or a strategic goal. Each comes with what a good outcome would be, written before anyone proposes a fix.</td><td>Are we working on the problems that matter most?</td></tr>
+          <tr><td class="rowhead">Hypothesis registry</td><td>Keeps a card for every skill and workaround, and the rest of the harness acts on those cards (see Rule 1 below). Nothing runs without one.</td><td>Do we know why each piece of our AI setup exists, and does the system enforce it?</td></tr>
+          <tr><td class="rowhead">Authority layer</td><td>Limits what agents can touch, keeps workflows separate, and makes actions reversible and logged.</td><td>If an agent does something wrong, how bad can it get and how fast can we undo it?</td></tr>
+          <tr><td class="rowhead">Workspace</td><td>Where the agents actually work, using only approved pieces, with every step recorded.</td><td>Can we trace any result back to what caused it?</td></tr>
+          <tr><td class="rowhead">Testing engine</td><td>Runs tests designed to find failures, including cases the fix was never built for, and checks the tests against real operational and market results.</td><td>Are our tests looking for problems or just confirming what we hope?</td></tr>
+          <tr><td class="rowhead">Evidence log</td><td>Keeps what each fix led to in practice, and every failed idea together with what proved it wrong.</td><td>Are we repeating mistakes we've already made?</td></tr>
+          <tr><td class="rowhead">Retirement check</td><td>Re-tests every workaround when a new model arrives and removes the ones no longer needed.</td><td>Is our setup getting simpler as models get better?</td></tr>
+          <tr><td class="rowhead">Training gate</td><td>The single checkpoint for anything that might go into model training.</td><td>What are we sharing, with whom, and who approved it?</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 7. HYPOTHESES -->
+<section class="theme-white">
+  <div class="wrap">
+    <div class="overline">Part 3 · Rules of the harness</div>
+    <h2>7. Four rules that make the harness work</h2>
+
+    <h3>Rule 1: Every fix is a hypothesis, with a card</h3>
+    <p>Deutsch offers a test for a good explanation: you shouldn't be able to change its details without breaking it. His example is an ancient myth about the seasons. It "explains" winter, but you could swap any detail for another and the story would still work, which means it explains nothing.</p>
+    <p>AI workarounds often fail the same test. A prompt tweak that "just works," for reasons nobody can state, can be changed at random and no one can tell what will happen. A pile of such tweaks becomes a system nobody dares to change. The remedy is a short card for each fix:</p>
+
+    <div class="hcard">
+      <div class="hcard-head"><span><b>Hypothesis card</b> · Flood-clause add-on · v2</span><span class="status">Live</span></div>
+      <div class="hrow"><div class="f">Problem</div><div class="v">The agent misreads the flood clause in policies issued before the wording change.</div></div>
+      <div class="hrow"><div class="f">Why it should work</div><div class="v">It checks the issue date first and uses the matching clause. The date check is the essential part: without it, the add-on fails.</div></div>
+      <div class="hrow"><div class="f">What would prove it wrong</div><div class="v">Older-policy claims still come out wrong with the add-on switched on, or come out right with it switched off.</div></div>
+      <div class="hrow"><div class="f">Retirement test</div><div class="v">At each new model release, run 200 set-aside claims with and without the add-on. Remove it if results, cost and speed are as good without it.</div></div>
+      <div class="hrow"><div class="f">Covers for · Review by</div><div class="v">Current model's weakness with old policy wording · re-check in six months</div></div>
+      <div class="hrow"><div class="f">May touch</div><div class="v">Policy documents (read only). No payments.</div></div>
+      <div class="hrow"><div class="f">Owner · Proposed by</div><div class="v">Claims operations lead · drafted by an AI agent, reviewed by a senior adjuster</div></div>
+    </div>
+    <p>If nobody can fill in the "why it should work" line, nobody understands the fix yet. That is the first useful finding.</p>
+    <p><strong>Skills, workarounds and safety controls all get cards, but they are not treated the same.</strong> All three are guesses that could be wrong, so all three are registered and tested. What differs is what makes each one obsolete:</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Kind of card</th><th>What it captures</th><th>What makes it obsolete</th><th>How it is checked</th></tr></thead>
+        <tbody>
+          <tr><td class="rowhead">Skill</td><td>Your organization's own know-how: how you handle a claim, what your pricing rules are, how your team writes a contract.</td><td>A change in your business, your market or your rules. A better model doesn't make it obsolete, because the model can't know your way of working unless you tell it.</td><td>Against real outcomes, and at its review date.</td></tr>
+          <tr><td class="rowhead">Workaround (shim)</td><td>A fix for something today's model can't do reliably on its own, like the flood-clause add-on.</td><td>A better model. It is expected to be removed eventually.</td><td>A retirement test at every new model release.</td></tr>
+          <tr><td class="rowhead">Safety control</td><td>Limits on what agents may touch, keeping workflows separate, the ability to undo.</td><td>Nothing about the model. These stay even when models improve.</td><td>Regular drills to check that the controls actually work.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>In practice the line can blur. A single add-on often mixes your know-how with a fix for a model weakness. When that happens, split it into two cards, so the workaround part can be removed later without losing the know-how.</p>
+    <p><strong>The card is not paperwork; the harness runs on it.</strong> Each field is read by another part of the system:</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Card field</th><th>Used by</th><th>What happens</th></tr></thead>
+        <tbody>
+          <tr><td class="rowhead">Status (live or not)</td><td>Workspace</td><td>Agents can only load skills and workarounds whose card is live. No card, no use.</td></tr>
+          <tr><td class="rowhead">May touch</td><td>Authority layer</td><td>Permissions are granted from the card, so an agent using the add-on can read policies but cannot issue payments.</td></tr>
+          <tr><td class="rowhead">Card ID</td><td>Workspace records</td><td>Every result is tagged with the cards that were in play, so a bad outcome can be traced to the fix that caused it.</td></tr>
+          <tr><td class="rowhead">What would prove it wrong</td><td>Testing engine</td><td>Decides which tests and real-world signals to watch for this fix.</td></tr>
+          <tr><td class="rowhead">Retirement test, model it covers for</td><td>Retirement check</td><td>When a new model arrives, the system knows which workarounds to re-test.</td></tr>
+          <tr><td class="rowhead">Review date</td><td>Problem intake</td><td>An expired card goes back on the problem list to be re-checked.</td></tr>
+          <tr><td class="rowhead">Owner</td><td>Everyone</td><td>When something breaks, there is a named person to call.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>So the registry is the harness's control panel: it decides what may run, with what permissions, how it is tested, and when it is reconsidered.</p>
+    <p><strong>What needs a card, and what doesn't.</strong> Cards for literally everything would be bureaucracy, and paperwork that nobody reads is worse than none. The rule of thumb is that something needs a card when it is <em>reused</em> and could <em>matter</em>:</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Needs a card</th><th>Doesn't need one</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Anything agents load and act on repeatedly: skills, workarounds, standing instructions, tool connections.<br><br>Anything that can touch money, customers, records or other systems, or that can't easily be undone.<br><br>Every test that is used to judge other fixes.<br><br>Every safety control.</td>
+            <td>One-off questions and drafts a person reviews before using.<br><br>Experiments in a sandbox that can't affect real work. They get a card only if they are promoted into everyday use.<br><br>Reference documents. These carry a source, an owner and a review date instead.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Match the size of the card to the stakes. A short card with four lines (problem, why it should work, what would prove it wrong, owner) is enough for most things. The full card, with permissions, undo steps and a retirement test, is for work that can cause real harm or that covers for a model gap. Agents can draft cards and people approve them, so the cost stays low. And the card system follows its own rule: if cards are being filled in after the fact and never read when something changes, cut them back to the fields that are actually used.</p>
+
+    <h3>Rule 2: Tests should try to break things, and the tests need checking too</h3>
+    <p>A test encodes a belief about what "good" looks like, and that belief can be wrong. When people (or agents) aim at a score instead of the real goal, the score stops meaning anything; economists call this Goodhart's law. A test suite that only ever confirms success is not doing its job. Good testing includes awkward cases designed to cause failure, cases the fix was never built for, and people who regularly check whether the tests' verdicts match reality.</p>
+    <p>That also gives a fair way to tell real knowledge from a <strong>one-off fix</strong>: <strong>a fix counts as knowledge only if it also works on cases it wasn't built for.</strong> A fix that only solves the case that prompted it is a one-off, and its card should say so, with an early review date.</p>
+    <p>Note that this is a different question from the skill-or-workaround question in Rule 1. That one asks <em>what a fix makes up for</em>: a gap in the model, or your own know-how. This one asks <em>how far the fix reaches</em>. Either kind can turn out to be a one-off, and either kind can turn out to be real knowledge.</p>
+
+    <h3>Rule 3: Keep the evidence, especially the failures</h3>
+    <p>Record what each fix led to in practice: what worked, what didn't, and how customers and the market responded. Failures deserve special care, because a failure tells you exactly where an idea broke, while a success only tells you it hasn't broken yet. Store every failed fix together with the evidence that killed it, and have people check that log before proposing something new. Keeping only the examples that passed a test sounds sensible, but it quietly bakes in whatever blind spots the test has.</p>
+
+    <h3>Rule 4: Control means mistakes are cheap to undo</h3>
+    <p>Popper suggested that the question "who should rule?" matters less than "how can we remove a bad ruler without disaster?" For AI the equivalent question is: <strong>how quickly can a bad skill, agent or decision be spotted, contained and reversed?</strong></p>
+    <ul class="plain">
+      <li>Give each agent only the permissions its current task needs.</li>
+      <li>Sort actions into reversible and irreversible. Irreversible ones need a person's approval.</li>
+      <li>Practice undoing things, the way you'd run a fire drill, rather than assuming it will work.</li>
+      <li>Keep these safety controls even when models improve. A better model doesn't make a mistake any easier to undo.</li>
+    </ul>
+    <p>This also answers a common fear: being responsible doesn't mean a person has to review every action. Human attention goes to irreversible actions and new fixes. Small, reversible, well-logged actions can run on their own.</p>
+  </div>
+</section>
+
+<!-- 8. FRONTIER -->
+<section class="theme-light">
+  <div class="wrap">
+    <div class="overline">Part 3 · Why the work never ends</div>
+    <h2>8. The frontier keeps moving, and the harness moves with it</h2>
+    <p>Better models don't make the harness unnecessary. They move it. In areas the model has mastered, the harness gets thinner because workarounds are removed. At the frontier it gets richer, because newly possible tasks need new scaffolding.</p>
+
+    <figure>
+      <div class="figtitle">Figure 3. The line between what's engineered and what the model has learned keeps rising</div>
+      <svg viewBox="0 0 760 330" role="img" aria-label="Schematic chart with three bands over time: model-absorbed at the bottom, harness-supplied in the middle, not yet reachable at the top. Both boundaries rise over time.">
+        <g font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
+          <path d="M80 30 L720 30 L720 62 C520 100,320 150,80 172 Z" fill="#ececef"/>
+          <path d="M80 252 C320 236,520 190,720 150 L720 62 C520 100,320 150,80 172 Z" fill="#e4ddfa"/>
+          <path d="M80 290 L80 252 C320 236,520 190,720 150 L720 290 Z" fill="#d8efe0"/>
+          <path d="M80 172 C320 150,520 100,720 62" fill="none" stroke="#5b3fc4" stroke-width="2"/>
+          <path d="M80 252 C320 236,520 190,720 150" fill="none" stroke="#1f8a4c" stroke-width="2"/>
+          <line x1="440" y1="24" x2="440" y2="290" stroke="#1d1d1f" stroke-width="1.2" stroke-dasharray="4 4"/>
+          <text x="440" y="18" font-size="11" font-weight="600" fill="#1d1d1f" text-anchor="middle">Now</text>
+          <line x1="80" y1="290" x2="725" y2="290" stroke="#1d1d1f" stroke-width="1.2"/>
+          <line x1="80" y1="290" x2="80" y2="26" stroke="#1d1d1f" stroke-width="1.2"/>
+          <text x="720" y="310" font-size="11" fill="#1d1d1f" text-anchor="end">Time →</text>
+          <text x="40" y="160" font-size="11" fill="#1d1d1f" text-anchor="middle" transform="rotate(-90 40 160)">Task difficulty and value →</text>
+
+          <text x="100" y="58" font-size="13" font-weight="600" fill="#1d1d1f">Not yet reachable</text>
+          <text x="100" y="75" font-size="10.5" fill="rgba(29,29,31,0.7)">Problems no harness can solve yet</text>
+          <text x="470" y="142" font-size="13" font-weight="600" fill="#3b2a8f">Harness-supplied</text>
+          <text x="470" y="158" font-size="10.5" fill="#3b2a8f">Skills, tools and workarounds</text>
+          <text x="470" y="252" font-size="13" font-weight="600" fill="#1a5c36">Model-absorbed</text>
+          <text x="470" y="269" font-size="10.5" fill="#1a5c36">The model does it unaided</text>
+        </g>
+      </svg>
+      <figcaption>Schematic, not measured data. The top edge rises because each newly reachable task needs new scaffolding. The bottom edge rises because workarounds are removed once models absorb the capability. Safety controls (permissions, isolation, undo) stay in the harness regardless.</figcaption>
+    </figure>
+    <p>Deutsch's phrase fits: <em>problems are inevitable, and problems are soluble.</em> The harness is never finished, and that's expected. Each solved problem exposes a newer, more valuable one.</p>
+  </div>
+</section>
+
+<!-- 9. PILLARS -->
+<section class="theme-white" id="pillars">
+  <div class="wrap">
+    <div class="overline">Part 4 · Strategy</div>
+    <h2>9. The four pillars of a lasting advantage</h2>
+    <p>The first edition of this essay proposed four pillars of defensibility. Here they are revised to match the harness. Each pillar says what to build and why it is hard for a competitor or a provider to copy.</p>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="ph">Pillar 1</div>
+        <div class="pt">Living context, memory and skills</div>
+        <div class="lbl">What it is</div>
+        <div class="tx">An organized, current picture of how your organization works, plus written skills that tell agents how to do specific jobs. Every entry has a source and an expiry date, so outdated knowledge gets checked or dropped.</div>
+        <div class="lbl">Why it's hard to copy</div>
+        <div class="tx moat">A rented model starts knowing nothing about you. Accurate, current context supplied at the moment of work is what makes it useful, and it only stays accurate if your people keep it so.</div>
+      </div>
+      <div class="pillar">
+        <div class="ph">Pillar 2</div>
+        <div class="pt">Your own tests: owning the definition of "good"</div>
+        <div class="lbl">What it is</div>
+        <div class="tx">Private tests built from your real work, including set-aside cases and deliberately awkward ones, that every fix and every new model must pass.</div>
+        <div class="lbl">Why it's hard to copy</div>
+        <div class="tx moat">If your tests live in a vendor's dashboard, you'll drift toward the vendor's idea of success. Your own tests let you switch models safely, catch regressions and aim at your business goals. This is the part of the "exhaust" most worth guarding.</div>
+      </div>
+      <div class="pillar">
+        <div class="ph">Pillar 3</div>
+        <div class="pt">Boundaries you control</div>
+        <div class="lbl">What it is</div>
+        <div class="tx">Clear decisions about where models run, what agents may touch and what may leave the organization. That includes the authority layer, the training gate, and the freedom to use more than one provider. Running open models on your own machines is one option here, suited to the most sensitive work, but it isn't the only one.</div>
+        <div class="lbl">Why it's hard to copy</div>
+        <div class="tx moat">It turns "will our knowledge leak?" from a worry into a decision your organization makes, records and can reverse. Contracts and settings matter as much as hardware.</div>
+      </div>
+      <div class="pillar">
+        <div class="ph">Pillar 4</div>
+        <div class="pt">People who explain, and a culture of criticism</div>
+        <div class="lbl">What it is</div>
+        <div class="tx">People whose job is to choose problems, define good outcomes, write sharp tests and challenge the AI's output, working in a culture where reporting an error is rewarded rather than punished.</div>
+        <div class="lbl">Why it's hard to copy</div>
+        <div class="tx moat">Knowledge is created by people explaining and criticizing, not distilled from logs. If people are punished for mistakes, they hide them, and the error-correcting loop stops. A culture that welcomes bold guesses and honest criticism is the one advantage nobody can rent.</div>
+      </div>
+    </div>
+
+    <h3>How this maps onto Nadella's five C's</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Nadella's priority</th><th>What we keep</th><th>What we change</th><th>Where it lives</th></tr></thead>
+        <tbody>
+          <tr><td class="rowhead">Control</td><td>Own your memory, tests and definition of "good."</td><td>Control is a means to cheap error correction, not an end. A control that hides errors or makes them hard to undo is a defect.</td><td>Authority layer, testing engine</td></tr>
+          <tr><td class="rowhead">Capability</td><td>Learning should build up inside the firm.</td><td>Most learning happens without training a model at all, through context, skills and tests that improve in days.</td><td>Registry, workspace</td></tr>
+          <tr><td class="rowhead">Choice</td><td>Don't get locked into one provider.</td><td>Design for workarounds to be removed when a better model arrives, whoever makes it.</td><td>Retirement check</td></tr>
+          <tr><td class="rowhead">Cost</td><td>Use the cheapest model that does the job well.</td><td>Measure cost per <em>accepted</em> result, including review time, not just the AI bill.</td><td>Metrics</td></tr>
+          <tr><td class="rowhead">Compound</td><td>A loop that grows in value.</td><td>What compounds is the speed of correction, not the size of the data store.</td><td>The whole harness</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 10. MEASURE -->
+<section class="theme-light">
+  <div class="wrap">
+    <div class="overline">Part 4 · Is it working?</div>
+    <h2>10. How to tell whether it's working</h2>
+    <p>Measure how quickly and cheaply the organization corrects errors, not how busy the agents are.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Track this</th><th>In plain terms</th><th>It warns you about</th></tr></thead>
+        <tbody>
+          <tr><td class="rowhead">Time to detect</td><td>How long a serious mistake goes unnoticed.</td><td>Errors that slip past every check.</td></tr>
+          <tr><td class="rowhead">Time to correct</td><td>How long from spotting a problem to a tested fix going live.</td><td>A slow enterprise loop.</td></tr>
+          <tr><td class="rowhead">Repeat rate</td><td>How often a fixed problem comes back.</td><td>One-off fixes mistaken for real ones.</td></tr>
+          <tr><td class="rowhead">Cost per accepted result</td><td>Total AI and review cost, divided by the results people actually accept.</td><td>A system that costs more than the errors it catches.</td></tr>
+          <tr><td class="rowhead">Workarounds retired</td><td>How many workarounds are removed at each new model release without problems.</td><td>A harness that only ever grows.</td></tr>
+          <tr><td class="rowhead">Test disagreement</td><td>How often people overrule a test's verdict.</td><td>Tests that have drifted from reality.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Don't count as success:</strong> number of agents, tasks run, tokens used or skills built. A growing pile of skills is a cost unless old workarounds are being retired at a similar pace. These measures are themselves hypotheses about what matters, so revisit them whenever a new model arrives.</p>
+
+    <h3>How the loop breaks</h3>
+    <div class="grid">
+      <div class="gcard"><div class="title">Stale context</div><div class="text">Memory that was once true now misleads. <b>Check:</b> give entries an expiry date and re-verify them.</div></div>
+      <div class="gcard"><div class="title">Gamed tests</div><div class="text">The team optimizes the score, not the outcome. <b>Check:</b> rotate tough cases and audit the tests.</div></div>
+      <div class="gcard"><div class="title">Untouchable workarounds</div><div class="text">Fixes nobody dares remove. <b>Check:</b> run retirement tests on a schedule.</div></div>
+      <div class="gcard"><div class="title">Overbuilt machinery</div><div class="text">The harness costs more than the errors it catches. <b>Check:</b> watch cost per accepted result.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 11. START -->
+<section class="theme-white">
+  <div class="wrap">
+    <div class="overline">Part 4 · Getting started</div>
+    <h2>11. Where to start</h2>
+    <p>Build what makes mistakes cheap before you build what makes agents more capable. Each step is useful on its own and prepares for the next.</p>
+    <ol class="build">
+      <li><b>Put limits and recording in place first.</b> Restrict what agents can touch and log what they do, so any later mistake is visible and reversible.</li>
+      <li><b>Write a card for every existing skill and workaround.</b> The ones nobody can explain are your first finding.</li>
+      <li><b>Start an evidence log</b> as soon as there are cards to test: what each fix led to, and every failure with what proved it wrong.</li>
+      <li><b>Build your own tests.</b> Start with past failures and permission checks, then add set-aside cases, then tough rotating cases and human review of the tests themselves.</li>
+      <li><b>Formalize how problems are chosen and ranked</b> once failures arrive faster than people can sort them by hand.</li>
+      <li><b>Run your first retirement check</b> at the next model release.</li>
+      <li><b>Build the training gate last</b>, and only if you plan to share data for training or train your own models. Until then it stays closed, and that's a perfectly valid choice.</li>
+    </ol>
+    <p>Pilot on one workflow where mistakes matter but can be undone. Expand only after the repeat rate on that workflow starts to fall.</p>
+
+    <h3>Questions to ask your team on Monday</h3>
+    <div class="questions">
+      <div class="q">Which three problems would most change our results if our AI handled them well, and who chose them?</div>
+      <div class="q">What does a "good" result look like for each, written down before anyone builds a fix?</div>
+      <div class="q">Do our tests live with us or with a vendor? When did a test last catch a real problem?</div>
+      <div class="q">If an agent made a costly mistake today, how long until we noticed, and could we undo it?</div>
+      <div class="q">Which of our AI workarounds could we explain to a newcomer? Which could we safely remove?</div>
+      <div class="q">What do our provider contracts actually say about training on our data, and who checked?</div>
+    </div>
+  </div>
+</section>
+
+<!-- 12. COULD BE WRONG -->
+<section class="theme-light">
+  <div class="wrap">
+    <div class="overline">Part 4 · Testing this argument</div>
+    <h2>12. How this argument could be wrong</h2>
+    <p>In keeping with Popper, this essay is a set of guesses, not a forecast. These are the observations that would show it is mistaken:</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Our claim</th><th>What would prove it wrong</th></tr></thead>
+        <tbody>
+          <tr><td class="rowhead">Cards make changes safer</td><td>Teams with cards see problems recur as often as teams without them.</td></tr>
+          <tr><td class="rowhead">The advantage comes from correction speed</td><td>Mistakes are caught faster, but accepted results don't improve. The real bottleneck is elsewhere, probably in choosing problems.</td></tr>
+          <tr><td class="rowhead">The harness thins as models improve</td><td>Almost no workarounds can be retired across two model releases.</td></tr>
+          <tr><td class="rowhead">Working on set-aside cases separates knowledge from one-off fixes</td><td>Fixes that pass set-aside tests still fail on new real-world work.</td></tr>
+          <tr><td class="rowhead">The harness is worth what it costs</td><td>Cost per accepted result rises as the harness grows.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>Our positions on three hard questions</h3>
+    <ul class="plain">
+      <li><strong>Who checks the checkers?</strong> Reality does. Internal tests and reviewers are fast, cheap stand-ins for the real verdict, which comes from operational and market results: what customers did, what worked and what didn't. When a test keeps passing work that the market rejects, the test is wrong and gets fixed. The chain of checking ends in outcomes, not in another layer of reviewers.</li>
+      <li><strong>Where does genuinely new knowledge come from?</strong> From people. The harness applies, refines and tests knowledge, and it can tell real knowledge from a one-off fix. Truly new explanations, such as a new strategy or a new way of seeing the business, are created by people. Whether that happens depends on culture more than on technology (Pillar 4). The harness's job is to make people's new ideas cheap to try, honest to test and easy to keep.</li>
+      <li><strong>Can agents choose problems?</strong> Yes, but within bounds. An agent can spot patterns in failures, propose problems and rank them inside the brief it has been given. Deutsch argues that people are <em>universal explainers</em>, able in principle to understand anything that can be understood. On our reading, that is why people choose freely which problems matter and set the agents' briefs in the first place. This is a position, not a proven fact; it would be challenged if agents began to originate problems outside their brief that people judged more valuable than their own.</li>
+    </ul>
+    <h3>Still open</h3>
+    <ul class="plain">
+      <li><strong>How do you retire workarounds that depend on each other?</strong> Testing them one at a time is easy; testing dozens that interact is not.</li>
+      <li><strong>How quickly can market signals be connected back to a specific fix?</strong> Internal tests answer in minutes and markets in months, so the harness needs a way to link slow outcomes to the cards that produced them.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 13. CONCLUSION -->
+<section class="theme-dark">
+  <div class="wrap">
+    <h2>13. Conclusion</h2>
+    <p>Satya Nadella has named the defining economic question of enterprise AI: <strong>who captures the value of correcting errors?</strong> His five C's are a sensible checklist for protecting that value.</p>
+    <p>But the lasting advantage isn't a walled-off store of logs, in anyone's cloud. It is an organization that can notice a consequential mistake, explain it, try a fix and test it honestly, faster than its competitors, and that gets simpler every time a better model arrives. The harness is the machinery that makes this routine. The people who choose the problems and criticize the answers are what make it work.</p>
+    <p>We don't expect either the enterprise or the model to win outright. The more likely future is a shifting division of labor in which every problem solved exposes a new and more valuable one.</p>
+  </div>
+</section>
+
+<!-- REFERENCES -->
+<section class="theme-white" style="padding-top: 56px; padding-bottom: 56px;">
+  <div class="wrap">
+    <h3 style="margin-top: 0;">References and further reading</h3>
+    <ul class="plain refs">
+      <li>Satya Nadella, "The Reverse Information Paradox," essay posted on X, July 12, 2026. Coverage: <a href="https://thenewstack.io/nadella-reverse-information-paradox/">The New Stack</a>, <a href="https://letsdatascience.com/news/satya-nadella-warns-enterprises-about-the-reverse-informatio-23ef7bbd">Let's Data Science</a>.</li>
+      <li>Kenneth Arrow, "Economic Welfare and the Allocation of Resources for Invention" (1962).</li>
+      <li>Friedrich Hayek, "The Use of Knowledge in Society," <em>American Economic Review</em> (1945).</li>
+      <li>Karl Popper, <em>The Logic of Scientific Discovery</em> (1934; English 1959); <em>The Open Society and Its Enemies</em> (1945); <em>Conjectures and Refutations</em> (1963); <em>Objective Knowledge</em> (1972), for the problem–theory–error-elimination cycle and "The Bucket and the Searchlight."</li>
+      <li>David Deutsch, <em>The Fabric of Reality</em> (1997); <em>The Beginning of Infinity</em> (2011), for hard-to-vary explanations and "problems are inevitable, problems are soluble."</li>
+      <li>Companion pieces: "Knowledge grows by error correction, in two loops at two speeds" and "Enterprise harness: technical strategy" (November 2026).</li>
+    </ul>
+    <p style="font-size: 13px; color: var(--text-muted);">Book references are cited from memory and were not re-checked against the texts for this edition.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Copyright © 2026 Shubham Mehrish &amp; Karl. All rights reserved.</p>
+    <p>Revised edition, November 2026, written for non-technical readers. Design adapted from the first edition.</p>
+    <p>Read more at the <a href="https://gopherkarl.github.io/x-briefing-pub/">X Daily Briefing Portal</a>.</p>
+  </div>
+</footer>
+
+</body>
+</html>
